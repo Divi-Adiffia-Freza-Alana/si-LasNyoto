@@ -21,5 +21,11 @@ class DashboardController extends Controller
 
     }
 
+    public function indexcustomer(){
+   
+        return view('main');
+
+    }
+
     //
 }

@@ -44,7 +44,7 @@
                  
                   @endhasrole-->
                   <div class="col-2">
-                    <a class="btn btn-block bg-green" href="/transaksi-suplier-add" style="color:#ffff;float:right;" >Add New +</a>
+                    <a class="btn btn-block bg-blue" href="/transaksi-suplier-add" style="color:#ffff;float:right;" >Add New +</a>
                 </div>
                 </div>
              

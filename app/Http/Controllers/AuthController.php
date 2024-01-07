@@ -98,7 +98,7 @@ class AuthController extends Controller
 
             } 
  
-            return redirect()->intended('/');
+            return redirect()->intended('/dashboard');
         }
 
 
@@ -110,7 +110,7 @@ class AuthController extends Controller
         Session::flash('status', 'fail');
         Session::flash('message', 'Login Gagal');
 
-        return redirect('/login');
+        return redirect('/dashboard');
 
     }
 

@@ -30,10 +30,14 @@ use App\Http\Controllers\ProdukController;
 /*Route::get('/', function () {
     return view('dashboard');
 })->middleware('auth');*/
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/', [DashboardController::class, 'indexcustomer']);
+
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+
+
 Route::get('/registration', [AuthController::class, 'registration'])->name('registration');
 Route::post('/createregistration', [AuthController::class, 'createregistration']);
 Route::post('/login', [AuthController::class, 'authenticate']);

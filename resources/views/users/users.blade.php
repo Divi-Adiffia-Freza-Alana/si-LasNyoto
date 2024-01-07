@@ -30,7 +30,7 @@
                     <h3 class="card-title">DataTable Users</h3> 
                   </div>
                   <div class="col-2">
-                      <a class="btn btn-block bg-green" href="/users-add" style="color:#ffff;float:right;" >Add New +</a>
+                      <a class="btn btn-block bg-blue" href="/users-add" style="color:#ffff;float:right;" >Add New +</a>
                   </div>
                 </div>
               </div>

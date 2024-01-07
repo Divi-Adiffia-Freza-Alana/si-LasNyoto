@@ -24,7 +24,7 @@
           <div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
-              <div class="card-header bg-green">
+              <div class="card-header bg-blue">
                 <h3 class="card-title">Form Users</h3>
               </div>
               <!-- /.card-header -->
@@ -52,8 +52,7 @@
                         <label>Role</label>
                         <select id="role" name="role" class="form-control" required>
                         <option <?php echo (isset($data->role)&&$data->role=="superadmin"?"selected":""); ?> value="superadmin">Superadmin</option>
-                        <option <?php echo (isset($data->role)&&$data->role=="bag_dapur"?"selected":""); ?> value="bag_dapur">Bag Dapur</option>
-                        <option <?php echo (isset($data->role)&&$data->role=="pelayan"?"selected":""); ?> value="pelayan">Pelayan</option>
+                        <option <?php echo (isset($data->role)&&$data->role=="kurir"?"selected":""); ?> value="kurir">Kurir</option>
                         <option <?php echo (isset($data->role)&&$data->role=="konsumen"?"selected":""); ?> value="konsumen">Konsumen</option>
                         </select>
                       </div>
@@ -124,7 +123,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn bg-green">Submit</button>
+                  <button type="submit" class="btn bg-blue">Submit</button>
                 </div>
               </form>
             </div>
