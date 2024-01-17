@@ -94,11 +94,13 @@ class AuthController extends Controller
             Session::flash('message', 'Login Berhasil');
 
             if(auth()->user()->hasRole('konsumen')){
-                return redirect('/transaksi');
+                return redirect('/');
 
             } 
  
-            return redirect()->intended('/dashboard');
+           // return redirect()->intended('/dashboard');
+
+           return redirect('/dashboard');
         }
 
 

@@ -165,6 +165,7 @@
               </p>
             </a>
           </li>
+          
           <li class="nav-item">
             <a href="/produk" class="nav-link">
               <i class=" nav-icon fa-solid fa-box"></i>
@@ -178,6 +179,14 @@
               <i class=" nav-icon fa-solid fa-box"></i>
               <p>
                 Belanja Bahan Baku 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/kurir" class="nav-link">
+              <i class=" nav-icon fa-solid fa-users"></i>
+              <p>
+                Kurir 
               </p>
             </a>
           </li>

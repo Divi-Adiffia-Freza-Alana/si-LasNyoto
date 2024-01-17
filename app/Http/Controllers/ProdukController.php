@@ -80,7 +80,7 @@ class ProdukController extends Controller
 
   
     $validator = Validator::make($request->all(), [
-        'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
+        'foto' => 'image|mimes:jpeg,png,jpg|max:3072',
     ]);
 
     if ($validator->fails()) {
@@ -199,13 +199,13 @@ class ProdukController extends Controller
 
         // return redirect('/keeper');
 
-    $menu = Menu::findOrFail($id);
-    $menu->delete();
+    $produk = Produk::findOrFail($id);
+    $produk->delete();
 
     Session::flash('status', 'success');
-    Session::flash('message', 'Delete Data Menu Berhasil');
+    Session::flash('message', 'Delete Data Produk Berhasil');
 
-    return redirect('/menu');
+    return redirect('/produk');
 }
 
 

@@ -16,6 +16,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransaksiSuplierController; 
 use App\Http\Controllers\SuplierController; 
 use App\Http\Controllers\ProdukController; 
+use App\Http\Controllers\KurirController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,13 +31,13 @@ use App\Http\Controllers\ProdukController;
 /*Route::get('/', function () {
     return view('dashboard');
 })->middleware('auth');*/
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-Route::get('/', [DashboardController::class, 'indexcustomer']);
 
+Route::get('/', [DashboardController::class, 'indexcustomer'])->middleware('auth');
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/registration', [AuthController::class, 'registration'])->name('registration');
 Route::post('/createregistration', [AuthController::class, 'createregistration']);
@@ -72,6 +73,16 @@ Route::any('/bahanbakuproduk/{id}', [ProdukController::class, 'bahanbakuproduk']
 Route::any('/bahanbakuprodukstore', [ProdukController::class, 'bahanbakuprodukstore']);
 Route::any('/bahanbakuprodukindex', [ProdukController::class, 'bahanbakuprodukindex'])->name('bahanbakuproduk.index');
 Route::any('/bahanbakuproduk-delete/{id}', [ProdukController::class, 'bahanbakuprodukdelete']);
+
+
+//Route Kurir
+Route::get('/kurir', [KurirController::class, 'index'])->name('kurir.index');
+Route::any('/kurirstore', [KurirController::class, 'store']);
+Route::get('/kurir-add', [KurirController::class, 'add']);
+Route::any('/kurir-edit/{id}', [KurirController::class, 'edit']);
+Route::any('/kurir-delete/{id}', [KurirController::class, 'delete']);
+Route::any('/selectkurir', [KurirController::class, 'selectBagKurir']);
+
 
 
 

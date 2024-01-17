@@ -196,6 +196,21 @@
 
   });
 
+  var table = $('#data-tables-kurir').DataTable({
+      processing: true,
+      serverSide: true,
+      autoWidth: true,
+      ajax: "{{ route('kurir.index') }}",
+      columns: [ 
+         {data: 'id', name: 'id', visible:false},
+          {data: 'user.name', name: 'user.name'},
+          {data: 'no_hp', name: 'no_hp'},
+          {data: 'jk', name: 'jk'},
+          {data: 'action', name: 'action', orderable: false, searchable: false},
+      ]
+
+  });
+
   var tabletransaksi = $('#data-tables-transaksi').DataTable({
       processing: true,
       serverSide: true,
