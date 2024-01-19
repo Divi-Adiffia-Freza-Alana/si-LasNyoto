@@ -43,5 +43,11 @@ class Users extends Model
     {
     return $this->belongsTo(Bag_Dapur::Class, 'id', 'id_user');
     }
+
+    public function kurir()
+
+    {
+    return $this->belongsTo(Kurir::Class, 'id', 'id_user');
+    }
   
 }

@@ -233,9 +233,10 @@
         {data: 'kode', name: 'kode'},
         {data: 'tgl_transaksi', name: 'tgl_transaksi'},
         {data: 'konsumen.name', name: 'konsumen.name'},
-        {data: 'meja.nomor', name: 'meja.nomor'},
-        {data: 'bagdapur.nama', name: 'bagdapur.nama'},
-       {data: 'pelayan.nama', name: 'pelayan.nama'},
+       // {data: 'meja.nomor', name: 'meja.nomor'},
+      //{data: 'bagdapur.nama', name: 'bagdapur.nama'},
+      //{data: 'pelayan.nama', name: 'pelayan.nama'},
+        {data: 'kurir.nama', name: 'kurir.nama'},
         {data: 'total', name: 'total'},
         {data: 'tambahpesanan', name: 'tambahpesanan', visible: false},
         {data: 'statuspesanan', name: 'statusbayar'},
@@ -248,11 +249,11 @@
 
   });
 
-  var auth = '<?php echo auth()->user()->role; ?>';
+ /* var auth = '<?php echo auth()->user(); ?>';
       if(auth == 'konsumen'){
       tabletransaksi.columns( [5,6] ).visible( false );
       tabletransaksi.columns( [8] ).visible( true );
-      }
+      }*/
 
   var table = $('#data-tables-bahanbaku').DataTable({
       processing: true,

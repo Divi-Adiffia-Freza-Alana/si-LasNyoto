@@ -30,6 +30,7 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3><?= $menu?></h3>
+                <h3> </h3>
 
                 <p>Produk</p>
               </div>

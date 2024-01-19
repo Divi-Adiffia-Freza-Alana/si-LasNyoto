@@ -72,9 +72,10 @@
                     <th>Kode</th>
                     <th>Tanggal</th>
                     <th>Pembeli</th>
-                    <th>No Meja</th>
+                  <!--  <th>No Meja</th>
                     <th>Bag Dapur</th>
-                    <th>Pelayan</th>
+                    <th>Pelayan</th>-->
+                    <th>Kurir</th>
                     <th>Total</th>
                     <th>Tambah Pesanan</th>
                     <th>Status Pesanan</th>

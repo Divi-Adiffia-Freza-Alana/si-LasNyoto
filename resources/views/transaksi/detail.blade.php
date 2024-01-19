@@ -32,33 +32,33 @@
 
                     <div class="col-6"> Kode Transaksi :  {{$data->kode}}</div>
                     <div class="col-6"> Tanggal:  {{dateformat($data->tgl_transaksi)}}</div>
-                    <div class="col-6"> No. Meja :  {{$data->meja->nomor}}</div>
                     <div class="col-6"> Nama :  {{$data->konsumen->name}}</div>
+                    <div class="col-6"> No. Hp:  {{$data->no_hp}}</div>
                     
           
 
                   </div>
                   <br>
-                  <div> <b>Detail Menu </b></div>
+                  <div> <b>Detail Produk </b></div>
                   
                   <div class="row"> 
                     <table id="2" class="custom-table" style="width:100%!important;margin:0px 10px;">
                       <thead>
                       <tr>
                         <th>No</th>
-                        <th>Nama Menu</th>
-                        <th>Kode Menu</th>
+                        <th>Nama Produk</th>
+                        <th>Kode Produk</th>
                         <th>Quantity</th>
                         <th>Harga</th>
                       </tr>
                       </thead>
                       <tbody>
                          
-                        @foreach ($data->menu()->get() as $m)                 
+                        @foreach ($data->produk()->get() as $m)                 
                         <tr>
                         <td><?=$loop->iteration?></td> 
                         <td>{{$m->nama}}</td> 
-                        <td>{{$m->kd_menu}}</td> 
+                        <td>{{$m->kode_produk}}</td> 
                         <td>{{$m->pivot->qty}}</td> 
                         <td>{{$m->harga}}</td> 
                         </tr>          

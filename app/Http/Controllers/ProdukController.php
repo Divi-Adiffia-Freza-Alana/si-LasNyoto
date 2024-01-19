@@ -106,6 +106,8 @@ class ProdukController extends Controller
                 'foto' => $namefile,
                 'foto_url' => urlimage($namefile),
                 'harga' => $request->harga,
+                'status' => 'tersedia',
+
             ]);
 
 
@@ -127,8 +129,9 @@ class ProdukController extends Controller
 
         }
 
-        $produk = Produk::create([
-            'id' => Str::uuid(),
+        Produk::updateOrCreate(
+            ['id' => $request->id],
+            [
             'kode_produk' => $request->kode_produk,
             'nama' => $request->nama,
             'jenis' => $request->jenis,
@@ -136,6 +139,7 @@ class ProdukController extends Controller
             'harga' => $request->harga,
             'foto' => $namefile,
             'foto_url' => urlimage($namefile),
+            'status' => 'tersedia',
         ]);
 
            /*  $namefile='';

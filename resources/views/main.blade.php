@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="../css/style.css">
 	<!-- Font Icons -->
 	<link rel="stylesheet" href="../css/font-icons.css">
+	 <!-- Font Awesome -->
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<!-- Plugins/Components CSS -->
 	<link rel="stylesheet" href="../css/swiper.css">
@@ -98,13 +100,14 @@
 							<!-- Top Search
 							============================================= -->
 							<div id="top-account">
-								<a href="#modal-register" data-lightbox="inline" ><i class="bi-person me-1 position-relative" style="top: 1px;"></i><span class="d-none d-sm-inline-block font-primary fw-medium">Login</span></a>
+								<a href="/logout" data-lightbox="inline" ><i class=" fa-solid fa-right-from-bracket me-1 position-relative" style="top: 1px;"></i><span class="d-none d-sm-inline-block font-primary fw-medium">Logout</span></a>
 							</div><!-- #top-search end -->
 
 							<!-- Top Cart
 							============================================= -->
 							<div id="top-cart" class="header-misc-icon d-none d-sm-block">
-								<a href="#" id="top-cart-trigger"><i class="uil uil-shopping-bag"></i><span class="top-cart-number">5</span></a>
+								<a href="/cart" id=""><i class="uil uil-shopping-bag"></i></a>
+								<!--<a href="/cart" id=""><i class="uil uil-shopping-bag"></i><span class="top-cart-number">5</span></a>-->
 								<div class="top-cart-content">
 									<div class="top-cart-title">
 										<h4>Shopping Cart</h4>
@@ -145,7 +148,7 @@
 							<!-- Top Search
 							============================================= -->
 							<div id="top-search" class="header-misc-icon">
-								<a href="#" id="top-search-trigger"><i class="uil uil-search"></i><i class="bi-x-lg"></i></a>
+								<!--<a href="#" id="top-search-trigger"><i class="uil uil-search"></i><i class="bi-x-lg"></i></a>-->
 							</div><!-- #top-search end -->
 
 						</div>
@@ -162,6 +165,7 @@
 
 							<ul class="menu-container">
 								<li class="menu-item current"><a class="menu-link" href="#"><div>Produk</div></a></li>
+								<li class="menu-item current"><a class="menu-link" href="/transaksi"><div>Transaksi</div></a></li>
 								
 							</ul>
 
@@ -254,17 +258,20 @@
 								<!--	<div class="sale-flash badge bg-danger p-2">Sale!</div>-->
 									<div class="bg-overlay">
 										<div class="bg-overlay-content align-items-end justify-content-between" data-hover-animate="fadeIn" data-hover-speed="400">
-											<a href="#" class="btn btn-dark me-2" title="Add to Cart"><i class="bi-bag-plus"></i></a>
+											<a href="/add-to-cart/{{$d->id}}" class="btn btn-dark me-2" title="Add to Cart"><i class="bi-bag-plus"></i></a>
 											<!--<a href="../css/demos/shop/ajax/shop-item.html" class="btn btn-dark" data-lightbox="ajax"><i class="bi-eye"></i></a>-->
 										</div>
 										<div class="bg-overlay-bg bg-transparent"></div>
 									</div>
 								</div>
+
 								<div class="product-desc">
 									<div class="product-title mb-1"><h3><a href="#">{{$d->nama}}</a></h3></div>
 									<div class="product-price font-primary"><ins>Rp. {{$d->harga}}</ins></div>
 		
 								</div>
+								<a style="display:block;margin: auto;" href="/add-to-cart/{{$d->id}}" class="button button-3d button-small m-0"><i class="bi-bag-plus m-0"></i></a>
+
 							</div>
 						</div>
 

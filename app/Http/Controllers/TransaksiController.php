@@ -10,6 +10,8 @@ use App\Models\Bag_Dapur;
 use App\Models\Pelayan;
 use App\Models\Users;
 use App\Models\Transaksi;
+use App\Models\Produk;
+use App\Models\Kurir;
 use App\Models\Transaksi_detail;
 use Illuminate\Http\RedirectResponse;
 
@@ -24,6 +26,14 @@ class TransaksiController extends Controller
 {
     //
 
+    public function indexcustomer(){
+        $produk = Produk::query()->get();
+   
+        return view('main',["dataproduk"=>$produk]);
+
+    }
+    
+
     
     public function index(Request $request){
 
@@ -33,7 +43,7 @@ class TransaksiController extends Controller
         if ($request->ajax()) {
 
             if( auth()->user()->hasRole('konsumen')){
-                $transaksi = Transaksi::with(['menu','bagdapur','meja','pelayan','konsumen'])->where('id_konsumen', '=', auth()->user()->id);
+                $transaksi = Transaksi::with(['produk','kurir','konsumen'])->where('id_konsumen', '=', auth()->user()->id);
                 return  DataTables::of($transaksi)
                         ->addIndexColumn()
                      /* ->editColumn('category.nama', function($data){
@@ -42,9 +52,15 @@ class TransaksiController extends Controller
                         ->editColumn('tgl_transaksi', function($data){ 
                             return dateformat($data->tgl_transaksi);
                         })
+                        ->editColumn('kurir.nama', function($data){
+                            if($data->kurir == null){
+                                return '';
+                            }
+                            return $data->kurir->name;
+                        }) 
                         ->editColumn('konsumen.name', function($data){
                             return $data->konsumen->name;
-                        })
+                        })/*
                         ->editColumn('meja.nomor', function($data){
                             return $data->meja->nomor;
                         })
@@ -53,7 +69,7 @@ class TransaksiController extends Controller
                         })
                         ->editColumn('bagdapur.nama', function($data){
                             return $data->bagdapur->name;
-                        })
+                        })*/
                         ->addColumn('detail', function($row){
                             $btn = '<a class="btn bg-blue" href="/transaksi-detail/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-eye"></i> </a>';
                              return $btn;
@@ -64,7 +80,7 @@ class TransaksiController extends Controller
                         }
 
                         else if($data->status == 2){
-                            $btn = '<a class="btn bg-green" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Telah Selesai</a>';
+                            $btn = '<a class="btn bg-green" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Sedang Dikirim</a>';
                         }
                        
                         else{
@@ -107,7 +123,7 @@ class TransaksiController extends Controller
     
     
     
-                                $instance->with(['menu','bagdapur','meja','pelayan','konsumen'])->where('id_konsumen', '=', auth()->user()->id);
+                                $instance->with(['produk','kurir','konsumen'])->where('id_konsumen', '=', auth()->user()->id);
                                 //exit();
     
     
@@ -121,7 +137,7 @@ class TransaksiController extends Controller
                                   //  $query->where('id_user', '=', auth()->user()->id);}])->whereMonth('tgl_transaksi', $request->get('filtermonth'));
                                //$instance = Transaksi::with(['pelayan'])->get();
                                //$instance[0]->whereMonth('tgl_transaksi', $request->get('filtermonth'))
-                               $instance->with(['menu','bagdapur','meja','pelayan','konsumen'])->where('id_konsumen', '=', auth()->user()->id)->whereMonth('tgl_transaksi', $request->get('filtermonth'));
+                               $instance->with(['produk','kurir','konsumen'])->where('id_konsumen', '=', auth()->user()->id)->whereMonth('tgl_transaksi', $request->get('filtermonth'));
                        
                               // $instance = Transaksi::with(['pelayan'=> function ($query) {
                                // $query->where('id_user', '=', auth()->user()->id);}]);
@@ -139,8 +155,8 @@ class TransaksiController extends Controller
 
             }
             
-            else if( auth()->user()->hasRole('pelayan')){
-                $transaksi = Transaksi::with(['menu','bagdapur','konsumen','meja','pelayan'])->where('id_pelayan', '=', auth()->user()->id);
+            if( auth()->user()->hasRole('kurir')){
+                $transaksi = Transaksi::with(['produk','kurir','konsumen'])->where('id_kurir', '=', auth()->user()->id);
                 return  DataTables::of($transaksi)
                         ->addIndexColumn()
                      /* ->editColumn('category.nama', function($data){
@@ -152,22 +168,13 @@ class TransaksiController extends Controller
                         ->editColumn('konsumen.name', function($data){
                             return $data->konsumen->name;
                         })
-                        ->editColumn('meja.nomor', function($data){
-                            return $data->meja->nomor;
-                        })
-                        ->editColumn('pelayan.nama', function($data){
-                            if($data->pelayan == null){
+                        ->editColumn('kurir.nama', function($data){
+                            if($data->kurir == null){
                                 return '';
                             }
-                            return $data->pelayan->name;
+                            return $data->kurir->name;
                         }) 
-                        ->editColumn('bagdapur.nama', function($data){
-                            if($data->bagdapur == null){
-                                return '';
-                            }
-                            return $data->bagdapur->name;
-                        })
-          
+                
                         ->addColumn('detail', function($row){
                             $btn = '<a class="btn bg-blue" href="/transaksi-detail/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-eye"></i> </a>';
                              return $btn;
@@ -178,7 +185,7 @@ class TransaksiController extends Controller
                         }
 
                         else if($data->status == 2){
-                            $btn = '<a class="btn bg-green" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Telah Selesai</a>';
+                            $btn = '<a class="btn bg-green" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Sedang Dikirim</a>';
                         }
                        
                         else{
@@ -220,7 +227,7 @@ class TransaksiController extends Controller
 
 
                             //var_dump($request->get('filtermonth'));
-                            $instance = Transaksi::with(['menu','bagdapur','konsumen','meja','pelayan'])->where('id_pelayan', '=', auth()->user()->id);
+                            $instance = Transaksi::with(['produk','kurir','konsumen'])->where('id_kurir', '=', auth()->user()->id);
                             //exit();
 
 
@@ -234,7 +241,7 @@ class TransaksiController extends Controller
                               //  $query->where('id_user', '=', auth()->user()->id);}])->whereMonth('tgl_transaksi', $request->get('filtermonth'));
                            //$instance = Transaksi::with(['pelayan'])->get();
                            //$instance[0]->whereMonth('tgl_transaksi', $request->get('filtermonth'))
-                           $instance->with(['menu','bagdapur','konsumen','meja','pelayan'])->where('id_pelayan', '=', auth()->user()->id)->whereMonth('tgl_transaksi', $request->get('filtermonth'));
+                           $instance->with(['produk','kurir','konsumen'])->where('id_kurir', '=', auth()->user()->id)->whereMonth('tgl_transaksi', $request->get('filtermonth'));
 
                           // $instance = Transaksi::with(['pelayan'=> function ($query) {
                            // $query->where('id_user', '=', auth()->user()->id);}]);
@@ -252,13 +259,11 @@ class TransaksiController extends Controller
 
             }
 
-            else if( auth()->user()->hasRole('bag_dapur')){
+         /*   else if( auth()->user()->hasRole('bag_dapur')){
                 $transaksi = Transaksi::with(['menu','pelayan','konsumen','meja','bagdapur'])->where('id_bag_dapur', '=', auth()->user()->id);
                 return  DataTables::of($transaksi)
                         ->addIndexColumn()
-                     /* ->editColumn('category.nama', function($data){
-                            return $data->category[0]->nama;
-                        })*/
+                  
                         ->editColumn('tgl_transaksi', function($data){ 
                             return dateformat($data->tgl_transaksi);
                         })
@@ -362,11 +367,11 @@ class TransaksiController extends Controller
                         ->rawColumns(['action','detail','statusbayar','statuspesanan','tambahpesanan'])
                         ->make(true);
 
-            }
+            }*/
             else{
                    // $kurir = Kurir::with('');
            //$barang = Barang::query();
-            $transaksi = Transaksi::with(['menu','bagdapur','meja','konsumen','pelayan']);
+            $transaksi = Transaksi::with(['produk','kurir','konsumen',]);
             return  DataTables::of($transaksi)
                     ->addIndexColumn()
                  /* ->editColumn('category.nama', function($data){
@@ -375,27 +380,13 @@ class TransaksiController extends Controller
                     ->editColumn('tgl_transaksi', function($data){ 
                         return dateformat($data->tgl_transaksi);
                     })
-                    ->editColumn('konsumen.name', function($data){
-                        if($data->konsumen->name == null){
+                    ->editColumn('kurir.nama', function($data){
+                        if($data->kurir->name == null){
                             return '';
                         }
-                        return $data->konsumen->name;
+                        return $data->kurir->name;
                     })
-                    ->editColumn('meja.nomor', function($data){
-                        return $data->meja->nomor;
-                    })
-                    ->editColumn('pelayan.nama', function($data){
-                        if($data->pelayan->name == null){
-                            return '';
-                        }
-                        return $data->pelayan->name;
-                    })
-                    ->editColumn('bagdapur.nama', function($data){
-                        if($data->bagdapur->name == null){
-                            return '';
-                        }
-                        return $data->bagdapur->name;
-                    })
+               
                     ->addColumn('detail', function($row){
                         $btn = '<a class="btn bg-blue" href="/transaksi-detail/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-eye"></i> </a>';
                          return $btn;
@@ -406,7 +397,7 @@ class TransaksiController extends Controller
                     }
 
                     else if($data->status == 2){
-                        $btn = '<a class="btn btn-warning" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Telah Selesai</a>';
+                        $btn = '<a class="btn btn-warning" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >sedang dikirim</a>';
                     }
                    
                     else{
@@ -620,23 +611,22 @@ class TransaksiController extends Controller
          if($id)
          {
              
-          $transaksidata = Transaksi::with(['menu','bagdapur','konsumen'])->get()->find($id);
+          $transaksidata = Transaksi::with(['produk','kurir','konsumen'])->get()->find($id);
           
           //var_dump($transaksidata);
           //exit();
          
             
          } 
+        
 
          return view('transaksi.detail',['data' =>$transaksidata]);
      }
 
     public function addToCart($id)
     {
-        $menuall = Menu::all();
-        $menu = Menu::find($id);
-        $menumakanan = Menu::select("*")->where('jenis','=','makanan')->get();
-        $menuminuman = Menu::select("*")->where('jenis','=','minuman')->get();
+        $produkall = Produk::query()->get();
+        $produk = Produk::find($id);
         $userId = auth()->user()->id; // or any string represents user identifier
         //var_dump($userId);
         //exit();
@@ -652,14 +642,14 @@ class TransaksiController extends Controller
 
        // Cart::remove(456);
         \Cart::add(array(
-            'id' => $menu->id, // inique row ID
-            'name' => $menu->nama,
-            'price' =>  $menu->harga,
-            'photo' =>  $menu->foto_url,
+            'id' => $produk->id, // inique row ID
+            'name' => $produk->nama,
+            'price' =>  $produk->harga,
+            'photo' =>  $produk->foto_url,
             'quantity' =>  1
         ));
 
-        return view('transaksi.menu_cart',['datamakanan' =>$menumakanan, 'dataminuman' =>$menuminuman]);
+        return view('main',["dataproduk"=>$produkall]);
 
 
         
@@ -757,15 +747,18 @@ class TransaksiController extends Controller
         return redirect()->back()->withInput();
     }*/ /*else {*/
         // dd(Carbon::now()->format('d-m-Y'));
-        $bagdapur = Users::select("id")->whereRelation('bagdapur', 'status_kehadiran', '=', 'Hadir')->get();
+        $kurir = Users::select("id")->whereRelation('kurir', 'id_user', '!=', NULL)->get();
+       // var_dump($kurir);
+        //exit();
+      //  $bagdapur = Users::select("id")->whereRelation('bagdapur', 'status_kehadiran', '=', 'Hadir')->get();
            
        // $bagdapur = User::select("id")->bagdapur()->where('status_kehadiran', '=', "Hadir")->get();
-        $pelayan = Users::select("id")->whereRelation('pelayan', 'status_kehadiran', '=', 'Hadir')->get();;
+       // $pelayan = Users::select("id")->whereRelation('pelayan', 'status_kehadiran', '=', 'Hadir')->get();;
         //var_dump($pelayan[]->id);
         //exit();
         $transaksi = Transaksi::where('tgl_transaksi', '=', Carbon::now()->format('Y-m-d'))->get();
         $num = count($transaksi)+1;
-        $id_transaksi = "TR".Carbon::now()->format('Ymd').$num;
+        $id_transaksi = "INV".Carbon::now()->format('Ymd').$num;
         //$nownum = intval($num)+1;
 
        // var_dump($id_transaksi);
@@ -785,9 +778,9 @@ class TransaksiController extends Controller
             $transaksi = Transaksi::create([
                 'id' => Str::uuid(),
                 'id_konsumen' => auth()->user()->id,
-                'id_bag_dapur' => $bagdapur[rand(0,count($bagdapur)-1)]->id,
-                'id_pelayan' => $pelayan[rand(0,count($pelayan)-1)]->id,
-                'id_meja' => $request->meja,
+                'id_kurir' => $kurir[rand(0,count($kurir)-1)]->id,
+                //'id_pelayan' => $pelayan[rand(0,count($pelayan)-1)]->id,
+              //  'id_meja' => $request->meja,
                 'kode' => $id_transaksi,
                 //'tgl_transaksi' =>date("Y-m-d", strtotime($request->tgl_transaksi)),
                 'tgl_transaksi' =>Carbon::now()->format('Y-m-d'),
@@ -795,20 +788,23 @@ class TransaksiController extends Controller
                 'status' => 1,
                // 'no_meja' => $request->no_meja,
                 'status_bayar' => 1,
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'no_hp' => $request->no_hp,
              
             ]);
         
-        $mejadata = Meja::findOrFail($transaksi->id_meja);
+     //   $mejadata = Meja::findOrFail($transaksi->id_meja);
 
-        $mejadata->status = "Terpakai";
+       // $mejadata->status = "Terpakai";
         
-        $mejadata->save();
+        //$mejadata->save();
 
         foreach ($items as $row) {
             Transaksi_detail::create([  
                 'id' => Str::uuid(),
                 'id_transaksi' => $transaksi->id, 
-                'id_menu' => $row->id,
+                'id_produk' => $row->id,
                 'qty' => $row->quantity,
                 'harga' => $row->price,
                 'subtotal' => $row->price * $row->quantity,
@@ -842,64 +838,7 @@ class TransaksiController extends Controller
             }*/
             Session::flash('status', 'success');
             Session::flash('message', 'Data Transaksi Berhasil');
-        }
-    
-     else{
-        //dd($namefile);
-         Barang::updateOrCreate(
-             ['id' => $request->id],
-             [
-                'id_category' => $request->category,
-                'nama' => $request->nama,
-                'harga' => $request->harga,
-                'keterangan' => $request->keterangan,
-             ]
-             );
- 
-           /*  $namefile='';
-             if ($request->file('foto')){
-             $extension = $request->file('foto')->getClientOriginalExtension();
-             $namefile = $request->nama.'-'.now()->timestamp.'.'.$extension;
-             $request->file('foto')->move('foto', $namefile);
-             Keeper_foto::create([
-                'id' => Str::uuid(),
-                'id_keeper' => $request->id,
-                'nama' => $namefile,
-                'url' => urlimage($namefile) 
-
-            ]);
-            }
-     
-             else{ 
-                 $namefile=$request->fotolabel;
-             }
- 
-             if($request->fotolabel != NULL){
-                 $flight = Keeper_foto::find($request->id_foto);
-             
-                 $flight->nama = $namefile;
-                 $flight->url = urlimage($namefile); 
-                 $flight->save();
-             }*/
- 
-     
- 
-             /*Keeper_foto::updateOrCreate(
-                 ['id' => $request->id_foto],
-                 ['nama' => $namefile]);*/
-             
- 
-             Session::flash('status', 'success');
-             Session::flash('message', 'Edit Data Barang Berhasil');
-             
-         }
-            
-        /*  }*/
-
-
-
-      
-
+        }      
           
 
         return redirect('/transaksi');

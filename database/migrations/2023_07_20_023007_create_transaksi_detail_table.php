@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('transaksi_detail', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('id_menu')->required();
-            $table->foreign('id_menu')->references('id')->on('menu');
+            $table->uuid('id_produk')->required();
+            $table->foreign('id_produk')->references('id')->on('produk');
             $table->uuid('id_transaksi')->required();
             $table->foreign('id_transaksi')->references('id')->on('transaksi');
             //$table->uuid('id_transaksi')->required();
            // $table->foreign('id_transaksi')->references('id')->on('transaksi');
             $table->integer('qty'); 
-            $table->float('harga'); 
-            $table->float('subtotal');
+            $table->integer('harga'); 
+            $table->integer('subtotal');
             $table->timestamps();
         });
     }

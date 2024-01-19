@@ -210,6 +210,14 @@
             </a>
           </li>
           @endhasrole
+          <li class="nav-item">
+            <a href="/transaksi" class="nav-link">
+              <i class=" nav-icon fa-solid fa-cart-shopping"></i>
+              <p>
+                Transaksi 
+              </p>
+            </a>
+          </li>
           <!--<li class="nav-item">
             <a href="/meja" class="nav-link">
               <i class=" nav-icon fa-solid fa-table"></i>
@@ -219,14 +227,7 @@
             </a>
           </li>
       
-            <li class="nav-item">
-            <a href="/transaksi" class="nav-link">
-              <i class=" nav-icon fa-solid fa-cart-shopping"></i>
-              <p>
-                Transaksi 
-              </p>
-            </a>
-          </li>
+   
           <li class="nav-item">
             <a href="/bahanbaku" class="nav-link">
               <i class="nav-icon fa-solid fa-bowl-food"></i>

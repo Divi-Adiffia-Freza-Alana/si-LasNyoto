@@ -39,9 +39,8 @@
               <form action="/kurirstore" method="post" enctype="multipart/form-data">
               @csrf
                 <div class="card-body">
-  
-
                   <div class="row">
+                    <input type="hidden" name="id" id="id" value="<?php echo (isset($data->id)?$data->id:""); ?>">
                     <div class="form-group col-md-4">
                       <label>User</label>
                       <select id="selectuser" name="user" class="form-control" style="width: 100%;">

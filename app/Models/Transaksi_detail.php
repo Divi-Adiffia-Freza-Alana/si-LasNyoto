@@ -12,7 +12,7 @@ class Transaksi_detail extends Model
 
     protected $table = 'transaksi_detail';
     
-    protected $fillable = ['id','id_menu','id_transaksi','qty','harga','subtotal'];
+    protected $fillable = ['id','id_produk','id_transaksi','qty','harga','subtotal'];
 
     public function getIncrementing(){
         return false;

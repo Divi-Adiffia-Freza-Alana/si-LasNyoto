@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('kode');
             $table->uuid('id_konsumen')->required();
             $table->foreign('id_konsumen')->references('id')->on('users');
-            $table->uuid('id_bag_dapur')->required();
-            $table->foreign('id_bag_dapur')->references('id')->on('users');
-            $table->uuid('id_pelayan')->required();
-            $table->foreign('id_pelayan')->references('id')->on('users');
-            $table->uuid('id_meja')->required();
-            $table->foreign('id_meja')->references('id')->on('meja');
+            $table->uuid('id_kurir')->required();
+            $table->foreign('id_kurir')->references('id')->on('users');
             $table->date('tgl_transaksi');
-            $table->float('total');
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->text('alamat');
+            $table->integer('total');
             $table->string('status');
             $table->string('status_bayar');
             $table->timestamps();

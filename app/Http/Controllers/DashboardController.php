@@ -12,6 +12,9 @@ use App\Models\BahanBaku;
 class DashboardController extends Controller
 {
     public function index(){
+  
+
+
         $countbahanbaku = BahanBaku::all()->count();
         $countmenu = Menu::all()->count();
         $countkurir = Produk::all()->count();

@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('produk', function (Blueprint $table) {
+        Schema::create('menu', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('kode_produk');
+            $table->string('kode_menu');
             $table->string('nama');
             $table->string('jenis');
             $table->string('deskripsi');
             $table->string('foto');
             $table->string('foto_url');
-            $table->decimal('harga');
+            $table->integer('harga');
+            $table->string('status');
             $table->timestamps();
             $table->softDeletes();
         });

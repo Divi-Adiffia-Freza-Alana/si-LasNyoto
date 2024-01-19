@@ -32,7 +32,7 @@ use App\Http\Controllers\KurirController;
     return view('dashboard');
 })->middleware('auth');*/
 
-Route::get('/', [DashboardController::class, 'indexcustomer'])->middleware('auth');
+Route::get('/', [TransaksiController::class, 'indexcustomer'])->middleware('auth');
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
@@ -195,18 +195,29 @@ Route::any('/unpresent/{id}', [PelayanController::class, 'unpresent']);
 Route::any('/present-dapur/{id}', [BagDapurController::class, 'present']);
 Route::any('/unpresent-dapur/{id}', [BagDapurController::class, 'unpresent']);
 
-});
-Route::group(['middleware' => ['role:bag_dapur']], function () {
 Route::any('/done/{id}', [TransaksiController::class, 'done']);
 
 });
 
 
-Route::group(['middleware' => ['role:pelayan']], function () {
+
+
+/*Route::group(['middleware' => ['role:bag_dapur']], function () {
+Route::any('/done/{id}', [TransaksiController::class, 'done']);
+
+});*/
+
+
+Route::group(['middleware' => ['role:kurir']], function () {
     Route::any('/deliver/{id}', [TransaksiController::class, 'deliver']);
     
     });
 
+/*Route::group(['middleware' => ['role:pelayan']], function () {
+Route::any('/deliver/{id}', [TransaksiController::class, 'deliver']);
+
+});*/
+    
 
     
     
