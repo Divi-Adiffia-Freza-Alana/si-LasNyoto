@@ -31,7 +31,7 @@
           <div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
-              <div class="card-header bg-green">
+              <div class="card-header bg-blue">
                 <h3 class="card-title">Form Bahan Baku</h3>
               </div>
               <!-- /.card-header -->
@@ -64,7 +64,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn bg-green">Submit</button>
+                  <button type="submit" class="btn bg-blue">Submit</button>
                 </div>
               </form>
             </div>

@@ -4,7 +4,7 @@
       <img src="{{asset('/')}}img/logowhite.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
       <div style="color:#fff;font-size:16px;font-weight:700;" class="text-center font-weight-light white">Admin</div>
     </a>-->
-    <div style="display: flex; justify-content: center;"><img src="{{asset('/')}}img/" width="100px" height="100%" ></img></div>
+    <div style="display: flex; justify-content: center;"><img src="{{asset('/')}}img/" width="100px" height="100%" alt="Logo" ></img></div>
     <!--    <div style="color:#fff;font-size:16px;font-weight:700;" class="text-center font-weight-light white"><b>Admin</b></div>-->
 
     <!-- Sidebar -->
@@ -175,6 +175,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/bahanbaku" class="nav-link">
+              <i class="nav-icon fa-solid fa-toolbox"></i>
+              <p>
+                Bahan Baku 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/transaksi-suplier" class="nav-link">
               <i class=" nav-icon fa-solid fa-box"></i>
               <p>
@@ -199,13 +207,13 @@
               </p>
             </a>
           </li>-->
-          @hasrole('superadmin')
-     
+
+          @hasrole('konsumen')
           <li class="nav-item">
-            <a href="/users" class="nav-link">
-              <i class=" nav-icon fa-solid fa-users"></i>
+            <a href="/" class="nav-link">
+              <i class=" nav-icon fa-solid fa-box"></i>
               <p>
-                Pengguna 
+                Katalog Produk 
               </p>
             </a>
           </li>
@@ -218,6 +226,17 @@
               </p>
             </a>
           </li>
+          @hasrole('superadmin')
+     
+          <li class="nav-item">
+            <a href="/users" class="nav-link">
+              <i class=" nav-icon fa-solid fa-users"></i>
+              <p>
+                Pengguna 
+              </p>
+            </a>
+          </li>
+          @endhasrole
           <!--<li class="nav-item">
             <a href="/meja" class="nav-link">
               <i class=" nav-icon fa-solid fa-table"></i>
@@ -225,17 +244,10 @@
                 Meja 
               </p>
             </a>
-          </li>
+          </li>-->
       
    
-          <li class="nav-item">
-            <a href="/bahanbaku" class="nav-link">
-              <i class="nav-icon fa-solid fa-bowl-food"></i>
-              <p>
-                Bahan Baku 
-              </p>
-            </a>
-          </li>-->
+
           @hasrole('superadmin')
 
           @endhasrole

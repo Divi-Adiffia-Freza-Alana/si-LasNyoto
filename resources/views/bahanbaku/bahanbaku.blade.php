@@ -38,7 +38,7 @@
                     <h3 class="card-title">DataTable Bahan Baku</h3> 
                   </div>
                   <div class="col-2">
-                      <a class="btn btn-block bg-green" href="/bahanbaku-add" style="color:#ffff;float:right;" >Add New +</a>
+                      <a class="btn btn-block bg-blue" href="/bahanbaku-add" style="color:#ffff;float:right;" >Add New +</a>
                   </div>
                 </div>
               </div>
@@ -50,9 +50,10 @@
                     <th>Nama</th>
                     <th>Stok</th>
                     <th>Satuan</th>
-                    <th>Status</th>
+                    <!--<th>Status</th>
+                    <th>Manajemen Stok</th> -->
                    <!--<th>Foto</th>-->
-                    <th>Manajemen Stok</th> 
+                  
                    <!-- <th>Log</th> -->
                     <th>Action</th>
                   </tr>

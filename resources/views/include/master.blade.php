@@ -264,8 +264,8 @@
           {data: 'nama', name: 'nama'},
           {data: 'stok', name: 'stok'},
           {data: 'satuan', name: 'satuan'},
-          {data: 'status', name: 'status'},
-          {data: 'manajemenstok', name: 'manajemenstok', orderable: false, searchable: false},
+         // {data: 'status', name: 'status'},
+          //{data: 'manajemenstok', name: 'manajemenstok', orderable: false, searchable: false},
          // {data: 'log', name: 'log', orderable: false, searchable: false},
           {data: 'action', name: 'action', orderable: false, searchable: false},
       ]

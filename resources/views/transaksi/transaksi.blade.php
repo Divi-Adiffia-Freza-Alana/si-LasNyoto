@@ -43,9 +43,7 @@
                   </div>
                  
                   @endhasrole-->
-                  <div class="col-2">
-                    <a class="btn btn-block bg-green" href="/chooseproduct" style="color:#ffff;float:right;" >Add New +</a>
-                </div>
+                 
                 </div>
              
               </div>

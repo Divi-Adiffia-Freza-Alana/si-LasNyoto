@@ -40,7 +40,7 @@
               @csrf
                 <div class="card-body">
                   <div class="row">
-                    <input type="text" name="id_transaksi" id="id_transaksi" value="<?php echo (isset($data)?$data:""); ?>">
+                    <input type="hidden" name="id_transaksi" id="id_transaksi" value="<?php echo (isset($data)?$data:""); ?>">
 
                     <div class="form-group col-md-6">
                       <label>Bahan Baku</label>
