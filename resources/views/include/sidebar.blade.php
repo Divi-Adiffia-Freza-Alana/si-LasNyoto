@@ -4,7 +4,7 @@
       <img src="{{asset('/')}}img/logowhite.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
       <div style="color:#fff;font-size:16px;font-weight:700;" class="text-center font-weight-light white">Admin</div>
     </a>-->
-    <div style="display: flex; justify-content: center;"><img src="{{asset('/')}}img/" width="100px" height="100%" alt="Logo" ></img></div>
+    <div style="display: flex; justify-content: center;"><img src="{{asset('/')}}img/logonyotopng.png" width="100px" height="100%" alt="Logo" ></img></div>
     <!--    <div style="color:#fff;font-size:16px;font-weight:700;" class="text-center font-weight-light white"><b>Admin</b></div>-->
 
     <!-- Sidebar -->

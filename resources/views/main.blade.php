@@ -22,6 +22,8 @@
 	<!-- Plugins/Components CSS -->
 	<link rel="stylesheet" href="../css/swiper.css">
 
+	
+
 	<!-- Niche Demos -->
 	<link rel="stylesheet" href="../css/demos/shop/shop.css">
 
@@ -91,7 +93,7 @@
 						============================================= -->
 						<div id="logo" class="me-lg-4">
 							<a href="demo-shop.html">
-								<img class="logo-default" srcset="" src="" alt="Las Nyoto Logo">
+								<img class="logo-default" srcset="" src="{{asset('/')}}img/logonyotopng.png" alt="Las Nyoto Logo">
 							</a>
 						</div><!-- #logo end -->
 
@@ -266,10 +268,10 @@
 								</div>
 
 								<div class="product-desc">
+									<!--<div class="product-title mb-1"><h3><a href="#">{{$d->nama}}</a></h3></div>-->
 									<div class="product-title mb-1"><h3><a href="#">{{$d->nama}}</a></h3></div>
-									<div class="product-price font-primary"><ins>Rp. {{$d->harga}}</ins></div>
-		
-								</div>
+									<div class="product-price font-primary">Rp. <ins class="money">{{$d->harga}}</ins></div>
+									<div style=" text-align: justify;text-justify: inter-word;"><h6>{{$d->deskripsi}} </h6></div></div>
 								<a style="display:block;margin: auto;" href="/add-to-cart/{{$d->id}}" class="button button-3d button-small m-0"><i class="bi-bag-plus m-0"></i></a>
 
 							</div>
@@ -364,5 +366,18 @@
 	============================================= -->
 	<script src="../js/functions.js"></script>
 
+		<!-- jQuery -->
+	<script src="{{asset('/')}}plugins/jquery/jquery.min.js"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="{{asset('/')}}plugins/jquery-ui/jquery-ui.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script>
+	$(document).ready(function(){
+		// Format mata uang.
+		$('.money').mask('0.000.000.000', {reverse: true});
+	  })
+	</script>
 </body>
 </html>
