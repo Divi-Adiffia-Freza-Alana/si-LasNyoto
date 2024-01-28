@@ -18,8 +18,8 @@ return new class extends Migration
             //$table->uuid('id_transaksi')->required();
            // $table->foreign('id_transaksi')->references('id')->on('transaksi');
             $table->integer('qty'); 
-            $table->float('harga'); 
-            $table->float('subtotal');
+            $table->integer('harga'); 
+            $table->integer('subtotal');
             $table->timestamps();
             $table->softDeletes();
         });

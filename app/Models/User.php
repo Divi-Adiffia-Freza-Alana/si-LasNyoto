@@ -72,5 +72,12 @@ class User extends Authenticatable
     {
     return $this->belongsTo(Kurir::Class, 'id', 'id_user');
     }
+
+    
+    public function marketing()
+
+    {
+    return $this->belongsTo(Marketing::Class, 'id', 'id_user');
+    }
   
 }

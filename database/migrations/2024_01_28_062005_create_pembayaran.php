@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksi_suplier', function (Blueprint $table) {
+        Schema::create('pembayaran', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('id_suplier')->required();
-            $table->string('kode');
-            $table->datetime('tgl_transaksi');
-            $table->integer('total');
-            $table->string('status_bayar');
+            $table->uuid('id_transaksi')->required();
+            $table->foreign('id_transaksi')->references('id')->on('transaksi');
+            $table->string('foto');
+            $table->string('url_foto');
+            $table->integer('jumlah');
+            $table->enum('jenis', ['lunas', 'cicilan1','cicilan2']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksi_suplier');
+        Schema::dropIfExists('pembayaran');
     }
 };

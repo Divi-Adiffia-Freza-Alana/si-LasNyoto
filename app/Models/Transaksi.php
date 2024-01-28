@@ -42,6 +42,21 @@ class Transaksi extends Model
         return $this->hasOne(Users::Class, 'id', 'id_kurir');
     }
 
+    public function sph()
+    {
+        return $this->belongsTo(Sph::Class, 'id', 'id_sph');
+    }
+
+    public function metodepembayaran()
+    {
+        return $this->hasOne(Pembayaran::Class, 'id', 'id_metode_pembayaran');
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::Class, 'id', 'id_transaksi');
+    }
+
 
     /*public function bagdapur()
     {

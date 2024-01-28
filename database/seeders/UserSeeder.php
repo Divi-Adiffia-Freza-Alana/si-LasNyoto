@@ -20,9 +20,11 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         //
-        $role = Role::create(['name' => 'superadmin']);
-        $role = Role::create(['name' => 'konsumen']);
-        $role = Role::create(['name' => 'kurir']);
+        $role1 = Role::create(['name' => 'superadmin']);
+        $role2 = Role::create(['name' => 'konsumen']);
+        $role3 = Role::create(['name' => 'kurir']);
+        $role4 = Role::create(['name' => 'owner']);
+        $role5 = Role::create(['name' => 'marketing']);
 
         
       /*  $users = DB::table('users')->create([
@@ -39,9 +41,21 @@ class UserSeeder extends Seeder
             'deskripsi' => 'abc',
             'foto' => 'Railing Deck-1705594868.jpg',
             'foto_url' => 'http://localhost:8000/foto/Railing Deck-1705594868.jpg',
-            'harga' => 300000,
+           // 'harga' => 300000,
             'status' => 'tersedia',
             ]); 
+
+            $produk2 = Produk::create([
+                'id' => Str::uuid(),
+                'kode_produk' => "K01",
+                'nama' => 'Kanopi',
+                'jenis' => 'Besi',
+                'deskripsi' => 'abc',
+                'foto' => 'Kanopi-1705855191.jpg',
+                'foto_url' => 'http://127.0.0.1:8000/foto/Kanopi-1705855191.jpg',
+             //   'harga' => 2000000,
+                'status' => 'tersedia',
+                ]); 
 
         $user = User::create([
             'id' => Str::uuid(),
@@ -65,21 +79,49 @@ class UserSeeder extends Seeder
 
             ]); 
 
+        $user4 = User::create([
+            'id' => Str::uuid(),
+            'name' => "pemilik",
+            'email' => 'pemilik@gmail.com',
+            'password' => Hash::make('pemilik12345'),
 
-        DB::table('model_has_roles')->insert([
+            ]); 
+
+        $user5 = User::create([
+            'id' => Str::uuid(),
+            'name' => "marketing",
+            'email' => 'marketing@gmail.com',
+            'password' => Hash::make('marketing12345'),
+
+            ]); 
+
+
+         $model1 = DB::table('model_has_roles')->insert([
             'role_id' => 1,
             'model_type' => "App\Models\User",
             'model_id' => $user->id,
         ]);
-        DB::table('model_has_roles')->insert([
+        $model2 = DB::table('model_has_roles')->insert([
             'role_id' => 2,
             'model_type' => "App\Models\User",
             'model_id' => $user2->id,
         ]);
-        DB::table('model_has_roles')->insert([
+        $model3 = DB::table('model_has_roles')->insert([
             'role_id' => 3,
             'model_type' => "App\Models\User",
             'model_id' => $user3->id,
+        ]);
+
+        $model4 = DB::table('model_has_roles')->insert([
+            'role_id' => 4,
+            'model_type' => "App\Models\User",
+            'model_id' => $user4->id,
+        ]);
+
+        $model5 = DB::table('model_has_roles')->insert([
+            'role_id' => 5,
+            'model_type' => "App\Models\User",
+            'model_id' => $user5->id,
         ]);
 
        // $user->assignRole('superadmin');

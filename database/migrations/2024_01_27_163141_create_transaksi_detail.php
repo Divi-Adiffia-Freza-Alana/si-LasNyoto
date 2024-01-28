@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('harga'); 
             $table->integer('subtotal');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

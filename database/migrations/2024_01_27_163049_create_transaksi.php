@@ -18,16 +18,22 @@ return new class extends Migration
             $table->foreign('id_konsumen')->references('id')->on('users');
             $table->uuid('id_kurir')->required();
             $table->foreign('id_kurir')->references('id')->on('users');
+            $table->uuid('id_marketing')->required();
+            $table->foreign('id_marketing')->references('id')->on('users');
+            $table->uuid('id_metode_pembayaran')->required();
+            $table->foreign('id_metode_pembayaran')->references('id')->on('metode_pembayaran');
+          
+            $table->uuid('id_sph')->required();
+            $table->foreign('id_sph')->references('id')->on('sph');
             $table->date('tgl_transaksi');
             $table->string('nama');
             $table->string('no_hp');
             $table->text('alamat');
             $table->integer('total');
             $table->string('status');
-            $table->string('status_bayar');
+       //     $table->string('status_bayar');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

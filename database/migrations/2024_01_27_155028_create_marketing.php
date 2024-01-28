@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaction_bahanbaku', function (Blueprint $table) {
+        Schema::create('marketing', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('id_bahanbaku')->required();
-            $table->foreign('id_bahanbaku')->references('id')->on('bahan_baku');
-            $table->integer('stok_awal');
-            $table->integer('stok_terpakai');
-            $table->integer('sisa');
-            $table->softDeletes();
+            $table->uuid('id_user')->required();
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->string('no_hp');
+            $table->string('jk');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaction_bahanbaku');
+        Schema::dropIfExists('marketing');
     }
 };

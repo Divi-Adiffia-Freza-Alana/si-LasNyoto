@@ -777,21 +777,28 @@ class TransaksiController extends Controller
 
             $transaksi = Transaksi::create([
                 'id' => Str::uuid(),
+                'kode' => $id_transaksi,
                 'id_konsumen' => auth()->user()->id,
                 'id_kurir' => $kurir[rand(0,count($kurir)-1)]->id,
+                'id_marketing' => $marketing[rand(0,count($marketing)-1)]->id,
+                'id_metode_pembayaran' => $marketing[rand(0,count($marketing)-1)]->id,
+                'id_sph' => $marketing[rand(0,count($marketing)-1)]->id,
+                'tgl_transaksi' =>Carbon::now()->format('Y-m-d'),
+                'nama' => $request->nama,
+                'no_hp' => $request->no_hp,
+                'alamat' => $request->alamat,
+                'total' => 0,
+                'status' => 1,
+
+              
                 //'id_pelayan' => $pelayan[rand(0,count($pelayan)-1)]->id,
               //  'id_meja' => $request->meja,
-                'kode' => $id_transaksi,
+               
                 //'tgl_transaksi' =>date("Y-m-d", strtotime($request->tgl_transaksi)),
-                'tgl_transaksi' =>Carbon::now()->format('Y-m-d'),
-                'total' => \Cart::getTotal(),
-                'status' => 1,
-               // 'no_meja' => $request->no_meja,
-                'status_bayar' => 1,
-                'nama' => $request->nama,
-                'alamat' => $request->alamat,
-                'no_hp' => $request->no_hp,
              
+               //'total' => \Cart::getTotal(),
+          
+               // 'no_meja' => $request->no_meja,
             ]);
         
      //   $mejadata = Meja::findOrFail($transaksi->id_meja);

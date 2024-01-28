@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('foto');
             $table->string('foto_url');
-            $table->integer('harga');
+           // $table->integer('harga');
             $table->string('status');
             $table->timestamps();
             $table->softDeletes();

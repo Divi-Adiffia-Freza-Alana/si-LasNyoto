@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('bahan_baku', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nama');
-            $table->float('stok');
+            $table->integer('stok');
             $table->string('satuan');
             $table->softDeletes();
             $table->timestamps();

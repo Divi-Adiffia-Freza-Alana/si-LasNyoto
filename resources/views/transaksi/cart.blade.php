@@ -93,14 +93,23 @@
                             <label for="exampleInputEmail1">No Meja </label>
                             <input type="text" class="form-control" name="no_meja" id="no_meja" placeholder="No Meja"  required>
                           </div>-->
-                          <div class="form-group col-md-6">
+                          <div class="form-group col-md-4">
                             <label>Nama Pemesan</label>
                             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama"  required>
                           </div>
-                          <div class="form-group col-md-6">
+                          <div class="form-group col-md-4">
                             <label>No. HP</label>
                             <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="No. HP"  required>
                           </div>
+                                                <!-- select -->
+                          <div class="form-group col-md-4">
+                            <label>Metode Pembayaran </label>
+                            <select id="metodepembayaran" name="metodepembayaran" class="form-control" required>
+                            <option value="lunas">Lunas</option>
+                            <option value="kredit">Kredit</option>
+                            </select>
+                          </div>
+                      
                           <div class="form-group col-md-12">
                             <label>Alamat </label>
                             <textarea class="form-control" rows="3" placeholder="Enter ..."  id="alamat" name="alamat"></textarea>
