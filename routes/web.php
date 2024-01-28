@@ -209,9 +209,10 @@ Route::any('/done/{id}', [TransaksiController::class, 'done']);
 
 
 Route::any('/sph/{id}', [TransaksiController::class, 'sph']);
-
-
+Route::any('/detailsph/{id}', [TransaksiController::class, 'detailsph']);
 Route::any('/sphstore', [TransaksiController::class, 'sphstore']);
+Route::any('/sphapprove/{id}', [TransaksiController::class, 'sphapprove']);
+Route::any('/sphdecline/{id}', [TransaksiController::class, 'sphdecline']);
 
 
 

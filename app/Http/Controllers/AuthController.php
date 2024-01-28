@@ -107,7 +107,7 @@ class AuthController extends Controller
             }
  
             else if(auth()->user()->hasRole('purchasing')){
-                return redirect('/transaksi-purchasing');
+                return redirect('/transaksi-suplier');
             }
  
            // return redirect()->intended('/dashboard');

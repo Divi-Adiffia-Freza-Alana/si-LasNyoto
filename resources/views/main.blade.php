@@ -102,7 +102,7 @@
 							<!-- Top Search
 							============================================= -->
 							<div id="top-account">
-								<a href="/logout" data-lightbox="inline" ><i class=" fa-solid fa-right-from-bracket me-1 position-relative" style="top: 1px;"></i><span class="d-none d-sm-inline-block font-primary fw-medium">Logout</span></a>
+								<a href="/logout"  ><i class=" fa-solid fa-right-from-bracket me-1 position-relative" style="top: 1px;"></i><span class="d-none d-sm-inline-block font-primary fw-medium">Logout</span></a>
 							</div><!-- #top-search end -->
 
 							<!-- Top Cart
