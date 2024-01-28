@@ -96,11 +96,23 @@ class AuthController extends Controller
             if(auth()->user()->hasRole('konsumen')){
                 return redirect('/');
 
-            } 
+            } else if(auth()->user()->hasRole('owner')){
+                return redirect('/transaksi-owner');
+            }
+            else if(auth()->user()->hasRole('marketing')){
+                return redirect('/transaksi-marketing');
+            }
+            else if(auth()->user()->hasRole('kurir')){
+                return redirect('/transaksi-kurir');
+            }
+ 
+            else if(auth()->user()->hasRole('purchasing')){
+                return redirect('/transaksi-purchasing');
+            }
  
            // return redirect()->intended('/dashboard');
 
-           return redirect('/dashboard');
+           return redirect('/transaksi');
         }
 
 

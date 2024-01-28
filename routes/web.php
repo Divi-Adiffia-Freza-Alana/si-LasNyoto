@@ -160,6 +160,12 @@ Route::any('/selectmeja', [MejaController::class, 'selectMeja']);
 
 //Route Transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+Route::get('/transaksi-customer', [TransaksiController::class, 'indextransaksicustomer'])->name('transaksicustomer.index');
+Route::get('/transaksi-marketing', [TransaksiController::class, 'indextransaksimarketing'])->name('transaksimarketing.index');
+Route::get('/transaksi-owner', [TransaksiController::class, 'indextransaksiowner'])->name('transaksiowner.index');
+Route::get('/transaksi-kurir', [TransaksiController::class, 'indextransaksikurir'])->name('transaksikurir.index');
+Route::get('/transaksi-purchasing', [TransaksiController::class, 'indextransaksipurchasing'])->name('transaksipurchasing.index');
+
 Route::any('/transaksistore', [TransaksiController::class, 'store']);
 Route::get('/transaksi-add', [TransaksiController::class, 'add']);
 Route::any('/transaksi-edit/{id}', [TransaksiController::class, 'edit']);
@@ -197,15 +203,16 @@ Route::any('/unpresent-dapur/{id}', [BagDapurController::class, 'unpresent']);
 
 Route::any('/done/{id}', [TransaksiController::class, 'done']);
 
+
 });
 
 
 
+Route::any('/sph/{id}', [TransaksiController::class, 'sph']);
 
-/*Route::group(['middleware' => ['role:bag_dapur']], function () {
-Route::any('/done/{id}', [TransaksiController::class, 'done']);
 
-});*/
+Route::any('/sphstore', [TransaksiController::class, 'sphstore']);
+
 
 
 Route::group(['middleware' => ['role:kurir']], function () {
@@ -213,19 +220,5 @@ Route::group(['middleware' => ['role:kurir']], function () {
     
     });
 
-/*Route::group(['middleware' => ['role:pelayan']], function () {
-Route::any('/deliver/{id}', [TransaksiController::class, 'deliver']);
 
-});*/
-    
-
-    
-    
-//Keranjang 
-/*Route::get('/produk', [KeranjangController::class, 'index']);
-Route::get('/cart', [KeranjangController::class, 'cart'])->name('keranjang.cart');
-
-Route::get('/add-to-cart/{id}', [KeranjangController::class, 'addToCart']);
-Route::patch('/update-cart', [KeranjangController::class, 'update']);
-Route::delete('remove-from-cart', [KeranjangController::class, 'remove']);*/
 

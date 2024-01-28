@@ -103,10 +103,24 @@
                           </div>
                                                 <!-- select -->
                           <div class="form-group col-md-4">
+                            <label>Jenis Pembayaran </label>
+                            <select id="jenispembayaran" name="jenispembayaran" class="form-control" required>
+                            <option value="Lunas">Lunas</option>
+                            <option value="Kredit">Kredit</option>
+                            </select>
+                          </div>
+
+
+
+                          <div class="form-group col-md-4">
                             <label>Metode Pembayaran </label>
-                            <select id="metodepembayaran" name="metodepembayaran" class="form-control" required>
-                            <option value="lunas">Lunas</option>
-                            <option value="kredit">Kredit</option>
+                            <select id="metode_pembayaran" name="metode_pembayaran" class="form-control" required>
+                              @foreach ($metodepembayaran as $p)
+                            <option value="{{$p->id}}">{{$p->jenis}} - {{$p->no_rek}} </option>
+                           <!-- <option value="tfbca">Transfer BCA - 0143000091</option>
+                            <option value="tfbri">Transfer BRI - 0243000091</option>
+                            <option value="tfbni">Transfer BNI - 0343000091</option>-->
+                            @endforeach
                             </select>
                           </div>
                       

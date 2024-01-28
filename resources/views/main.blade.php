@@ -167,7 +167,7 @@
 
 							<ul class="menu-container">
 								<li class="menu-item current"><a class="menu-link" href="#"><div>Produk</div></a></li>
-								<li class="menu-item current"><a class="menu-link" href="/transaksi"><div>Transaksi</div></a></li>
+								<li class="menu-item current"><a class="menu-link" href="/transaksi-customer"><div>Transaksi</div></a></li>
 								
 							</ul>
 

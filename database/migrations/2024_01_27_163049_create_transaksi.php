@@ -22,7 +22,6 @@ return new class extends Migration
             $table->foreign('id_marketing')->references('id')->on('users');
             $table->uuid('id_metode_pembayaran')->required();
             $table->foreign('id_metode_pembayaran')->references('id')->on('metode_pembayaran');
-          
             $table->uuid('id_sph')->required();
             $table->foreign('id_sph')->references('id')->on('sph');
             $table->date('tgl_transaksi');
@@ -30,7 +29,8 @@ return new class extends Migration
             $table->string('no_hp');
             $table->text('alamat');
             $table->integer('total');
-            $table->string('status');
+            $table->enum('jenispembayaran', ['Lunas','Kredit']);
+            $table->string('statusorder');
        //     $table->string('status_bayar');
             $table->timestamps();
             $table->softDeletes();

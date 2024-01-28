@@ -11,6 +11,7 @@
     <div class="sidebar">
       <!-- SidebarSearch Form -->
       <div class="form-inline">
+        <div style="width:100% ;text-align: center; color:#ffff;" class="mb-1">Selamat Datang <?php echo auth()->user()->name?></div>
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div style="background:#f9f9f9;" class="input-group-append">
@@ -21,9 +22,10 @@
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
+     
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Sidebar Menu Admin-->
           @hasrole('superadmin')
           <li class="nav-item">
             <a href="/" class="nav-link">
@@ -33,160 +35,11 @@
               </p>
             </a>
           </li>
-        @endhasrole
-          <!--<li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class=" nav-icon fa-solid fa-paw"></i>
-              <p>
-                Satwa
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/satwa" class="nav-link">
-                  <i class="nav-icon fas fa-table"></i>
-                  <p>Data Satwa Masuk</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/satwamutasi" class="nav-link">
-                  <i class="nav-icon fas fa-table"></i>
-                  <p>Data Satwa Keluar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/satwamati" class="nav-link">
-                  <i class="nav-icon fas fa-table"></i>
-                  <p>Data Satwa Kematian</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/mastersatwa" class="nav-link">
-                  <i class="fa-solid fa-database nav-icon"></i>
-                  <p>Master Satwa</p>
-                </a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-item">
-            <a href="/kandang" class="nav-link">
-              <i class="nav-icon fa-solid fa-door-closed"></i>
+            <a href="/transaksi" class="nav-link">
+              <i class=" nav-icon fa-solid fa-cart-shopping"></i>
               <p>
-              Kandang 
-              </p>
-            </a>
-          </li>-->
-         <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class=" nav-icon fa-solid fa-door-closed"></i>
-              <p>
-                Kandang
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/satwa" class="nav-link">
-                  <i class="nav-icon fas fa-table"></i>
-                  <p>Data Satwa</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/satwa" class="nav-link">
-                  <i class="fa-solid fa-database nav-icon"></i>
-                  <p>Master Satwa</p>
-                </a>
-              </li>
-            </ul>
-          </li>-->
-         
-         <!-- <li class="nav-item">
-            <a href="{{ url('zona') }}" class="nav-link">
-              <i class="nav-icon fa-solid fa-location-dot"> </i>
-              <p>
-                Zona 
-              </p>
-            </a>
-          </li>-->
-        
-
-          <!--@hasrole('superadmin')
-          <li class="nav-item">
-            <a href="{{ url('zona') }}" class="nav-link">
-              <i class="nav-icon fa-solid fa-location-dot"> </i>
-              <p>
-                Zona 
-              </p>
-            </a>
-          </li>
-          @endhasrole-->
-          <!--<li class="nav-item">
-            <a href="{{ url('keeper') }}" class="nav-link">
-              <i class="nav-icon fa-solid fa-user"></i>
-              <p>
-                Keeper 
-              </p>
-            </a>
-          </li>-->
-          @hasrole('superadmin')
-        <!--  <li class="nav-item">
-            <a href="/menu" class="nav-link">
-              <i class="nav-icon fa-solid fa-utensils"></i>
-              <p>
-                Menu 
-              </p>
-            </a>
-          </li>
-         
-
-          <li class="nav-item">
-            <a href="/bagdapur" class="nav-link">
-              <i class=" nav-icon fa-solid fa-users"></i>
-              <p>
-                Bag Dapur 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/pelayan" class="nav-link">
-              <i class=" nav-icon fa-solid fa-users"></i>
-              <p>
-                Pelayan 
-              </p>
-            </a>
-          </li>-->
-
-          <li class="nav-item">
-            <a href="/suplier" class="nav-link">
-              <i class=" nav-icon fa-solid fa-users"></i>
-              <p>
-                Suplier 
-              </p>
-            </a>
-          </li>
-          
-          <li class="nav-item">
-            <a href="/produk" class="nav-link">
-              <i class=" nav-icon fa-solid fa-box"></i>
-              <p>
-                Produk 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/bahanbaku" class="nav-link">
-              <i class="nav-icon fa-solid fa-toolbox"></i>
-              <p>
-                Bahan Baku 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/transaksi-suplier" class="nav-link">
-              <i class=" nav-icon fa-solid fa-box"></i>
-              <p>
-                Belanja Bahan Baku 
+                Transaksi 
               </p>
             </a>
           </li>
@@ -198,36 +51,22 @@
               </p>
             </a>
           </li>
-          @endhasrole
-          <!--<li class="nav-item">
-            <a href="index.html" class="nav-link">
-              <i class=" nav-icon fa-solid fa-gear"></i>
-              <p>
-                Settings 
-              </p>
-            </a>
-          </li>-->
-
-          @hasrole('konsumen')
           <li class="nav-item">
-            <a href="/" class="nav-link">
-              <i class=" nav-icon fa-solid fa-box"></i>
+            <a href="/kurir" class="nav-link">
+              <i class=" nav-icon fa-solid fa-users"></i>
               <p>
-                Katalog Produk 
+                Marketing 
               </p>
             </a>
           </li>
-          @endhasrole
           <li class="nav-item">
-            <a href="/transaksi" class="nav-link">
-              <i class=" nav-icon fa-solid fa-cart-shopping"></i>
+            <a href="/kurir" class="nav-link">
+              <i class=" nav-icon fa-solid fa-users"></i>
               <p>
-                Transaksi 
+                Purchasing 
               </p>
             </a>
           </li>
-          @hasrole('superadmin')
-     
           <li class="nav-item">
             <a href="/users" class="nav-link">
               <i class=" nav-icon fa-solid fa-users"></i>
@@ -236,29 +75,100 @@
               </p>
             </a>
           </li>
-          @endhasrole
-          <!--<li class="nav-item">
-            <a href="/meja" class="nav-link">
-              <i class=" nav-icon fa-solid fa-table"></i>
-              <p>
-                Meja 
-              </p>
-            </a>
-          </li>-->
+        @endhasrole
+
+        <!-- Sidebar Menu Konsumen-->
+        
+        @hasrole('konsumen')
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class=" nav-icon fa-solid fa-box"></i>
+            <p>
+              Katalog Produk 
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/transaksi-customer" class="nav-link">
+            <i class=" nav-icon fa-solid fa-cart-shopping"></i>
+            <p>
+              Transaksi Customer
+            </p>
+          </a>
+        </li>
+        @endhasrole
+
+
       
-   
+        <!-- Sidebar Menu Staf Penjualan / Marketing-->
+        @hasrole('marketing')
+        <li class="nav-item">
+          <a href="/transaksi-marketing" class="nav-link">
+            <i class=" nav-icon fa-solid fa-cart-shopping"></i>
+            <p>
+              Transaksi 
+            </p>
+          </a>
+        </li>
+                  
+        <li class="nav-item">
+          <a href="/produk" class="nav-link">
+            <i class=" nav-icon fa-solid fa-box"></i>
+            <p>
+              Produk 
+            </p>
+          </a>
+        </li>
+        @endhasrole
+        <!-- Sidebar Menu Staf Pembelian -->
+        @hasrole('purchasing')
+        <li class="nav-item">
+          <a href="/suplier" class="nav-link">
+            <i class=" nav-icon fa-solid fa-users"></i>
+            <p>
+              Suplier 
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/bahanbaku" class="nav-link">
+            <i class="nav-icon fa-solid fa-toolbox"></i>
+            <p>
+              Bahan Baku 
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/transaksi-suplier" class="nav-link">
+            <i class=" nav-icon fa-solid fa-box"></i>
+            <p>
+              Belanja Bahan Baku 
+            </p>
+          </a>
+        </li>
+        @endhasrole
 
-          @hasrole('superadmin')
+        <!-- Sidebar Pemilik -->
+        @hasrole('owner')
+  
+        <li class="nav-item">
+          <a href="/transaksi" class="nav-link">
+            <i class=" nav-icon fa-solid fa-cart-shopping"></i>
+            <p>
+              Transaksi 
+            </p>
+          </a>
+        </li>
+        @endhasrole
 
-          @endhasrole
-          <li class="nav-item">
-            <a href="/logout" class="nav-link"> 
-              <i class="nav-icon fa-solid fa-right-from-bracket"></i>
-              <p>
-                Logout 
-              </p>
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/logout" class="nav-link"> 
+            <i class="nav-icon fa-solid fa-right-from-bracket"></i>
+            <p>
+              Logout 
+            </p>
+          </a>
+        </li>
           
         </ul>
       </nav>

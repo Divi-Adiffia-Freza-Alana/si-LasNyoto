@@ -79,5 +79,11 @@ class User extends Authenticatable
     {
     return $this->belongsTo(Marketing::Class, 'id', 'id_user');
     }
+
+    public function purchasing()
+
+    {
+    return $this->belongsTo(Marketing::Class, 'id', 'id_user');
+    }
   
 }

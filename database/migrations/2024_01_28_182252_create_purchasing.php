@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sph', function (Blueprint $table) {
+        Schema::create('purchasing', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('kode')->nullable();
-            $table->date('tgl')->nullable();
-            $table->text('deskripsi')->nullable();
-            $table->enum('status', ['diterima', 'ditolak'])->nullable();
+            $table->uuid('id_user')->required();
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->string('no_hp');
+            $table->string('jk');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sph');
+        Schema::dropIfExists('purchasing');
     }
 };

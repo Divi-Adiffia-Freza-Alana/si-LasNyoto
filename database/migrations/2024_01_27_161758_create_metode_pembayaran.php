@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('metode_pembayaran', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('no_rek');
-            $table->enum('jenis', ['kredit','lunas']);
+            $table->enum('jenis', ['Cash','Transfer Bank BRI','Transfer Bank BNI','Transfer Bank BCA']);
+            $table->string('no_rek')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

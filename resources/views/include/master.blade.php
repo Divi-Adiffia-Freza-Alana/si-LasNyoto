@@ -249,6 +249,75 @@
 
   });
 
+
+
+  var tabletransaksicustomer = $('#data-tables-transaksicustomer').DataTable({
+      processing: true,
+      serverSide: true,
+     // ajax: "{{ route('transaksi.index') }}",
+     ajax: {
+
+          url: "{{ route('transaksicustomer.index') }}",
+
+          data: function (d) {
+
+                d.filtermonth = $('#filtermonth').val(),
+
+                d.search = $('input[type="search"]').val()
+
+            }
+
+          },
+      columns: [
+        {data: 'id', name: 'id',orderable: false, searchable: false,visible:false},
+        {data: 'kode', name: 'kode'},
+        {data: 'tgl_transaksi', name: 'tgl_transaksi'},
+        {data: 'konsumen.name', name: 'konsumen.name'},
+        {data: 'marketing.nama', name: 'marketing.nama'},
+        {data: 'total', name: 'total'},
+        {data: 'tambahpesanan', name: 'tambahpesanan', visible: false},
+        {data: 'statuspesanan', name: 'statusbayar'},
+        {data: 'statusbayar', name: 'statusbayar'},
+        {data: 'detail', name: 'detail', orderable: false, searchable: false}, 
+        {data: 'action', name: 'action', orderable: false, searchable: false},
+          
+      ]
+
+
+  });
+
+
+  var tabletransaksimarketing = $('#data-tables-transaksimarketing').DataTable({
+      processing: true,
+      serverSide: true,
+     // ajax: "{{ route('transaksi.index') }}",
+     ajax: {
+          url: "{{ route('transaksimarketing.index') }}",
+
+          data: function (d) {
+
+                d.filtermonth = $('#filtermonth').val(),
+
+                d.search = $('input[type="search"]').val()
+
+            }
+
+          },
+      columns: [
+        {data: 'id', name: 'id',orderable: false, searchable: false,visible:false},
+        {data: 'kode', name: 'kode'},
+        {data: 'tgl_transaksi', name: 'tgl_transaksi'},
+        {data: 'nama', name: 'nama'},
+        {data: 'no_hp', name: 'no_hp'},
+        {data: 'sph', name: 'sph', orderable: false, searchable: false},
+        {data: 'statussph', name: 'statussph',orderable: false, searchable: false},
+        {data: 'action', name: 'action', orderable: false, searchable: false,  visible: false}
+          
+      ]
+
+
+  });
+
  /* var auth = '<?php echo auth()->user(); ?>';
       if(auth == 'konsumen'){
       tabletransaksi.columns( [5,6] ).visible( false );

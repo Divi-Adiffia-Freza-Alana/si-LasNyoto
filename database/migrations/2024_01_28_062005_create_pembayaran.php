@@ -15,10 +15,10 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('id_transaksi')->required();
             $table->foreign('id_transaksi')->references('id')->on('transaksi');
-            $table->string('foto');
-            $table->string('url_foto');
-            $table->integer('jumlah');
-            $table->enum('jenis', ['lunas', 'cicilan1','cicilan2']);
+            $table->string('foto')->nullable();
+            $table->string('url_foto')->nullable();
+            $table->integer('jumlah')->nullable();
+            $table->enum('status', ['Lunas', 'Cicilan1','Cicilan2'])->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

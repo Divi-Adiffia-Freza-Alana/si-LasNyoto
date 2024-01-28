@@ -12,7 +12,7 @@ class Transaksi extends Model
 
     protected $table = 'transaksi';  
     
-    protected $fillable = ['id','id_konsumen','id_kurir','kode','tgl_transaksi','total','status', 'status_bayar','nama','alamat','no_hp'];
+    protected $fillable = ['id', 'kode', 'id_konsumen','id_kurir','id_marketing', 'id_metode_pembayaran', 'id_sph','tgl_transaksi', 'nama','no_hp','alamat', 'total','jenispembayaran','statusorder'];
 
     public function getIncrementing(){
         return false;
@@ -28,7 +28,7 @@ class Transaksi extends Model
 
     public function produk()
     {
-        return $this->belongsToMany(Produk::class,'transaksi_detail','id_transaksi','id_produk')->withPivot('qty');
+        return $this->belongsToMany(Produk::class,'transaksi_detail','id_transaksi','id_produk')->withPivot(['id','qty','harga']);
     }
 
     public function konsumen()
@@ -42,9 +42,15 @@ class Transaksi extends Model
         return $this->hasOne(Users::Class, 'id', 'id_kurir');
     }
 
+    
+    public function marketing()
+    {
+        return $this->hasOne(Users::Class, 'id', 'id_marketing');
+    }
+
     public function sph()
     {
-        return $this->belongsTo(Sph::Class, 'id', 'id_sph');
+        return $this->hasOne(Sph::Class, 'id', 'id_sph');
     }
 
     public function metodepembayaran()

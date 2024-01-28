@@ -9,7 +9,11 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
+use App\Models\Marketing;
+use App\Models\Kurir;
+use App\Models\Purchasing;
 use App\Models\Produk;
+use App\Models\Metode_Pembayaran;
 use Spatie\Permission\Models\Permission;
 
 class UserSeeder extends Seeder
@@ -25,6 +29,7 @@ class UserSeeder extends Seeder
         $role3 = Role::create(['name' => 'kurir']);
         $role4 = Role::create(['name' => 'owner']);
         $role5 = Role::create(['name' => 'marketing']);
+        $role6 = Role::create(['name' => 'purchasing']);
 
         
       /*  $users = DB::table('users')->create([
@@ -81,8 +86,8 @@ class UserSeeder extends Seeder
 
         $user4 = User::create([
             'id' => Str::uuid(),
-            'name' => "pemilik",
-            'email' => 'pemilik@gmail.com',
+            'name' => "owner",
+            'email' => 'owner@gmail.com',
             'password' => Hash::make('pemilik12345'),
 
             ]); 
@@ -95,6 +100,14 @@ class UserSeeder extends Seeder
 
             ]); 
 
+            $user6 = User::create([
+                'id' => Str::uuid(),
+                'name' => "purchasing",
+                'email' => 'purchasing@gmail.com',
+                'password' => Hash::make('purchasing12345'),
+    
+                ]); 
+    
 
          $model1 = DB::table('model_has_roles')->insert([
             'role_id' => 1,
@@ -122,6 +135,55 @@ class UserSeeder extends Seeder
             'role_id' => 5,
             'model_type' => "App\Models\User",
             'model_id' => $user5->id,
+        ]);
+
+        $model6 = DB::table('model_has_roles')->insert([
+            'role_id' => 6,
+            'model_type' => "App\Models\User",
+            'model_id' => $user6->id,
+        ]);
+
+
+        $metode1 = DB::table('metode_pembayaran')->insert([
+            'id' => Str::uuid(),
+            'jenis' => "Cash",
+            'no_rek' => 'Bayar Di Gerai'
+        ]);
+        $metode2 = DB::table('metode_pembayaran')->insert([
+            'id' => Str::uuid(),
+            'jenis' => "Transfer Bank BRI",
+            'no_rek' => '0343000091'
+        ]);
+        $metode3 = DB::table('metode_pembayaran')->insert([
+            'id' => Str::uuid(),
+            'jenis' => "Transfer Bank BNI",
+            'no_rek' => '0243000091'
+        ]);
+        $metode4 = DB::table('metode_pembayaran')->insert([
+            'id' => Str::uuid(),
+            'jenis' => "Transfer Bank BCA",
+            'no_rek' => '0143000091'
+        ]);
+
+        $kurir = DB::table('kurir')->insert([
+            'id' => Str::uuid(),
+            'id_user' => $user3->id,
+            'no_hp' => '087828737389',
+            'jk' => 'Laki-Laki'
+        ]);
+
+        $marketing = DB::table('marketing')->insert([
+            'id' => Str::uuid(),
+            'id_user' => $user5->id,
+            'no_hp' => '087828737383',
+            'jk' => 'Laki-Laki'
+        ]);
+
+        $purchasing = DB::table('purchasing')->insert([
+            'id' => Str::uuid(),
+            'id_user' => $user6->id,
+            'no_hp' => '087828737384',
+            'jk' => 'Laki-Laki'
         ]);
 
        // $user->assignRole('superadmin');

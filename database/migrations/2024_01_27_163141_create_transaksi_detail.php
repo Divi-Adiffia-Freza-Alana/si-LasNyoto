@@ -20,8 +20,8 @@ return new class extends Migration
             //$table->uuid('id_transaksi')->required();
            // $table->foreign('id_transaksi')->references('id')->on('transaksi');
             $table->integer('qty'); 
-            $table->integer('harga'); 
-            $table->integer('subtotal');
+            $table->integer('harga')->nullable(); 
+            $table->integer('subtotal')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

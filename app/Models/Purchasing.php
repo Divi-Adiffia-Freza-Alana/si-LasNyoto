@@ -6,37 +6,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pembayaran  extends Model
+class Purchasing extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $table = 'pembayaran';
+    protected $table = 'purchasing';
     
-    protected $fillable = [
-        'id',
-        'id_transaksi',
-        'foto',
-        'url_foto',
-        'jumlah',
-        'status'
-
-    ];
+    protected $fillable = ['id','id_user','no_hp','jk'];
 
     public function getIncrementing(){
         return false;
     }
     public function getKeyType(){
         return 'string';
+        
     }
 
-
-
-
-
-    public function transaksi()
+    public function user()
     {
-        return $this->belongsTo(Transaksi::Class, 'id_transaksi', 'id');
+        return $this->hasOne(Users::Class, 'id', 'id_user');
     }
 
-  
+    /*public function keeperfoto()
+    {
+        return $this->hasMany(Keeper_foto::Class, 'id_keeper', 'id');
+    }*/
 }
