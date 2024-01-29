@@ -35,7 +35,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-10">
-                    <h3 class="card-title">DataTable Transaksi Penjualan </h3> 
+                    <h3 class="card-title">DataTable Transaksi Staf Pengiriman </h3> 
                   </div>
                  <!-- @hasrole('konsumen')
                   <div class="col-2">
@@ -63,7 +63,7 @@
                   <option value="8">Agustus</option>
                   </select>
                 </div>
-                <table id="data-tables-transaksi" class="table table-bordered table-striped" style="width:100%!important">
+                <table id="data-tables-transaksikurir" class="table table-bordered table-striped" style="width:100%!important">
                   <thead>
                   <tr>
                     <th>Id</th>
@@ -73,7 +73,7 @@
                   <!--  <th>No Meja</th>
                     <th>Bag Dapur</th>
                     <th>Pelayan</th>-->
-                    <th>Pengirim</th>
+                    <th>Kurir</th>
                     <th>Total</th>
                     <th>Tambah Pesanan</th>
                     <th>Status Pesanan</th>

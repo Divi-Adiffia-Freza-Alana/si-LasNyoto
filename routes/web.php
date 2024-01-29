@@ -166,6 +166,7 @@ Route::get('/transaksi-owner', [TransaksiController::class, 'indextransaksiowner
 Route::get('/transaksi-kurir', [TransaksiController::class, 'indextransaksikurir'])->name('transaksikurir.index');
 Route::get('/transaksi-purchasing', [TransaksiController::class, 'indextransaksipurchasing'])->name('transaksipurchasing.index');
 
+
 Route::any('/transaksistore', [TransaksiController::class, 'store']);
 Route::get('/transaksi-add', [TransaksiController::class, 'add']);
 Route::any('/transaksi-edit/{id}', [TransaksiController::class, 'edit']);

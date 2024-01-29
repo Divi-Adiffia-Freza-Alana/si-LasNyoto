@@ -97,7 +97,7 @@ class AuthController extends Controller
                 return redirect('/');
 
             } else if(auth()->user()->hasRole('owner')){
-                return redirect('/transaksi-owner');
+                return redirect('/transaksi');
             }
             else if(auth()->user()->hasRole('marketing')){
                 return redirect('/transaksi-marketing');

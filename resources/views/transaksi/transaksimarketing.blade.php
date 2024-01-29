@@ -35,7 +35,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-10">
-                    <h3 class="card-title">DataTable Transaksi Marketing </h3> 
+                    <h3 class="card-title">DataTable Transaksi Staf Penjualan </h3> 
                   </div>
                  <!-- @hasrole('konsumen')
                   <div class="col-2">

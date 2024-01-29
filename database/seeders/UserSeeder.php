@@ -78,33 +78,33 @@ class UserSeeder extends Seeder
             ]); 
         $user3 = User::create([
             'id' => Str::uuid(),
-            'name' => "kurir",
-            'email' => 'kurir@gmail.com',
-            'password' => Hash::make('kurir12345'),
+            'name' => "Staf Pengiriman",
+            'email' => 'stafpengiriman@gmail.com',
+            'password' => Hash::make('stafpengiriman12345'),
 
             ]); 
 
         $user4 = User::create([
             'id' => Str::uuid(),
-            'name' => "owner",
-            'email' => 'owner@gmail.com',
+            'name' => "pemilik",
+            'email' => 'pemilik@gmail.com',
             'password' => Hash::make('pemilik12345'),
 
             ]); 
 
         $user5 = User::create([
             'id' => Str::uuid(),
-            'name' => "marketing",
-            'email' => 'marketing@gmail.com',
-            'password' => Hash::make('marketing12345'),
+            'name' => "Staf Penjualan",
+            'email' => 'stafpenjualan@gmail.com',
+            'password' => Hash::make('stafpenjualan12345'),
 
             ]); 
 
             $user6 = User::create([
                 'id' => Str::uuid(),
-                'name' => "purchasing",
-                'email' => 'purchasing@gmail.com',
-                'password' => Hash::make('purchasing12345'),
+                'name' => "Staf Pembelian Bahan Baku",
+                'email' => 'stafpembelianbahanbaku@gmail.com',
+                'password' => Hash::make('stafpembelianbahanbaku12345'),
     
                 ]); 
     

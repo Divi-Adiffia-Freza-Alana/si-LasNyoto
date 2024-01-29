@@ -73,7 +73,7 @@
                   <!--  <th>No Meja</th>
                     <th>Bag Dapur</th>
                     <th>Pelayan</th>-->
-                    <th>Marketing</th>
+                    <th>Staf Penjualan</th>
                     <th>SPH</th>
                     <th>Status Pesanan</th>
                     <th>Status Bayar</th>

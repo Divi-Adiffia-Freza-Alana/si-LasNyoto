@@ -39,7 +39,7 @@
             <a href="/transaksi" class="nav-link">
               <i class=" nav-icon fa-solid fa-cart-shopping"></i>
               <p>
-                Transaksi 
+                Transaksi Admin
               </p>
             </a>
           </li>
@@ -106,7 +106,7 @@
           <a href="/transaksi-marketing" class="nav-link">
             <i class=" nav-icon fa-solid fa-cart-shopping"></i>
             <p>
-              Transaksi 
+              Transaksi Penjualan
             </p>
           </a>
         </li>
@@ -151,11 +151,35 @@
         <!-- Sidebar Pemilik -->
         @hasrole('owner')
   
+ 
+
         <li class="nav-item">
           <a href="/transaksi" class="nav-link">
+            <i class=" nav-icon fa-solid fa-file"></i>
+            <p>
+              Laporan Penjualan
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/transaksi-suplier" class="nav-link">
+            <i class=" nav-icon fa-solid fa-file"></i>
+            <p>
+              Laporan Bahan Baku
+            </p>
+          </a>
+        </li>
+        
+        @endhasrole
+
+        @hasrole('kurir')
+
+        <li class="nav-item">
+          <a href="/transaksi-kurir" class="nav-link">
             <i class=" nav-icon fa-solid fa-cart-shopping"></i>
             <p>
-              Transaksi 
+              Transaksi Pengiriman
             </p>
           </a>
         </li>

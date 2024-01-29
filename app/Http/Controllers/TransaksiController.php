@@ -247,6 +247,218 @@ class TransaksiController extends Controller
           return view('transaksi.transaksi'); 
       }
 
+
+      public function indextransaksikurir(Request $request){
+
+        // var_dump(Barang::with('category')->get()->find('f997b850-662e-4f19-b0b6-4dc33a8b9c5b'));
+     
+      //exit();
+          if ($request->ajax()) {
+  
+              
+              
+           /*   else if( auth()->user()->hasRole('bag_dapur')){
+                  $transaksi = Transaksi::with(['menu','pelayan','konsumen','meja','bagdapur'])->where('id_bag_dapur', '=', auth()->user()->id);
+                  return  DataTables::of($transaksi)
+                          ->addIndexColumn()
+                    
+                          ->editColumn('tgl_transaksi', function($data){ 
+                              return dateformat($data->tgl_transaksi);
+                          })
+                          ->editColumn('konsumen.name', function($data){
+                              return $data->konsumen->name;
+                          })
+                          ->editColumn('meja.nomor', function($data){
+                              return $data->meja->nomor;
+                          })
+                          ->editColumn('pelayan.nama', function($data){
+                              if($data->pelayan->name == null){
+                                  return '';
+                              }
+                              return $data->pelayan->name;
+                          })
+                          ->editColumn('bagdapur.nama', function($data){
+                              if($data->bagdapur->name == null){
+                                  return '';
+                              }
+                              return $data->bagdapur->name;
+                          })
+                          ->addColumn('detail', function($row){
+                              $btn = '<a class="btn bg-blue" href="/transaksi-detail/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-eye"></i> </a>';
+                               return $btn;
+                       })
+                       ->addColumn('statuspesanan', function($data){
+                          if($data->status == 1){
+                              $btn = '<a class="btn bg-blue" href="/done/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Silahkan Tunggu</a>';
+                          }
+  
+                          else if($data->status == 2){
+                              $btn = '<a class="btn bg-green" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Telah Selesai</a>';
+                          }
+                         
+                          else{
+                          
+                              $btn = '<a class="btn bg-green" href="" style="color:#ffff;display:inline-block;" >Selesai Diantar </a>';
+                          }
+                          
+                           return $btn;
+                   })
+                       ->addColumn('statusbayar', function($data){
+                          if($data->status_bayar == 1){
+                              $btn = '<a class="btn btn-warning" href="/paid/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Belum Lunas</a>';
+                          }
+                          else{
+                              $btn = '<a class="btn bg-green" href="" style="color:#00000;display:inline-block;" >Sudah Lunas</a>';
+                          }
+                         
+                           return $btn;
+                   })
+                   ->addColumn('tambahpesanan', function($data){
+                      if($data->status_bayar == 1){
+                          $btn = '<a class="btn bg-green" href="/chooseproduct-tambah" style="color:#00000;display:inline-block;" >Tambah Pesanan</a>';
+     
+                      }
+                      else{
+                          $btn = '<a class="btn btn-warning" href="" style="color:#00000;display:inline-block;" >Tidak dapat menambah pesanan</a>';
+                      }
+                     
+                       return $btn;
+               })
+                          ->addColumn('action', function($row){
+                                 $btn ='<a class="btn btn-danger" href="/transaksi-delete/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-trash"></i></a>';
+                                  return $btn;
+                          })
+                      ->filter(function ($instance) use ($request) {
+  
+                          if ($request->get('filtermonth') == NULL ) {
+  
+  
+  
+                              //var_dump($request->get('filtermonth'));
+                              $instance = Transaksi::with(['menu','pelayan','meja','konsumen','bagdapur'])->where('id_bag_dapur', '=', auth()->user()->id);
+                              //exit();
+  
+  
+                            //  $instance->whereMonth('tgl_transaksi', $request->get('filtermonth'));
+  
+                          }
+                          
+                          else{
+                            //  var_dump($request->get('filtermonth'));
+                              //$instance = Transaksi::with(['pelayan'=> function ($query) {
+                                //  $query->where('id_user', '=', auth()->user()->id);}])->whereMonth('tgl_transaksi', $request->get('filtermonth'));
+                             //$instance = Transaksi::with(['pelayan'])->get();
+                             //$instance[0]->whereMonth('tgl_transaksi', $request->get('filtermonth'))
+                             $instance->with(['menu','pelayan','konsumen','meja','bagdapur'])->where('id_bag_dapur', '=', auth()->user()->id)->whereMonth('tgl_transaksi', $request->get('filtermonth'));
+  
+                            // $instance = Transaksi::with(['pelayan'=> function ($query) {
+                             // $query->where('id_user', '=', auth()->user()->id);}]);
+                          
+                             //$instance = Transaksi::whereMonth('tgl_transaksi', $request->get('filtermonth'));
+                              //var_dump($instance);
+                          }
+  
+               
+  
+                      })
+                          
+                          ->rawColumns(['action','detail','statusbayar','statuspesanan','tambahpesanan'])
+                          ->make(true);
+  
+              }*/
+              
+                     // $kurir = Kurir::with('');
+             //$barang = Barang::query();
+              $transaksi = Transaksi::with(['produk','kurir','konsumen',]);
+              return  DataTables::of($transaksi)
+                      ->addIndexColumn()
+                   /* ->editColumn('category.nama', function($data){
+                          return $data->category[0]->nama;
+                      })*/
+                      ->editColumn('tgl_transaksi', function($data){ 
+                          return dateformat($data->tgl_transaksi);
+                      })
+                      ->editColumn('kurir.nama', function($data){
+                          if($data->kurir->name == null){
+                              return '';
+                          }
+                          return $data->kurir->name;
+                      })
+                 
+                      ->addColumn('detail', function($row){
+                          $btn = '<a class="btn bg-blue" href="/transaksi-detail/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-eye"></i> </a>';
+                           return $btn;
+                   })
+                   ->addColumn('statusorder', function($data){
+                      if($data->statusorder == 1){
+                          $btn = '<a class="btn bg-blue" href="/done/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Silahkan Tunggu</a>';
+                      }
+  
+                      else if($data->statusorder == 2){
+                          $btn = '<a class="btn btn-warning" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >sedang dikirim</a>';
+                      }
+                     
+                      else{
+                      
+                          $btn = '<a class="btn bg-green" href="" style="color:#ffff;display:inline-block;" >Selesai Diantar </a>';
+                      }
+                     
+                       return $btn;
+               })
+                   ->addColumn('statusbayar', function($data){
+                      if($data->status_bayar == 1){
+                          $btn = '<a class="btn btn-warning" href="/countpaid/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Belum Lunas</a>';
+                      }
+                      
+                      else{
+                          $btn = '<a class="btn bg-green" href="" style="color:#00000;display:inline-block;" >Sudah Lunas</a>';
+                      }
+                     
+                       return $btn;
+               })
+               ->addColumn('tambahpesanan', function($data){
+                  if($data->status_bayar == 1){
+                      $btn = '<a class="btn bg-green" href="/chooseproduct-tambah" style="color:#00000;display:inline-block;" >Tambah Pesanan</a>';
+  
+                  }
+                  else{
+                      $btn = '<a class="btn btn-warning" href="" style="color:#00000;display:inline-block;" >Tidak dapat menambah pesanan</a>';
+                  }
+                 
+                   return $btn;
+           })
+                      ->addColumn('action', function($row){
+                             $btn ='<a class="btn btn-danger" href="/transaksi-delete/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-trash"></i></a>';
+                              return $btn;
+                      })
+  
+                      ->filter(function ($instance) use ($request) {
+  
+                          if ($request->get('filtermonth') ) {
+  
+                             // var_dump("HAHA");
+                              //exit();
+   
+                              $instance->whereMonth('tgl_transaksi', $request->get('filtermonth')->orderBy('status')->orderBy('status_bayar'));
+  
+                          }else{
+                              $instance->orderBy('created_at','asc');
+                          }
+  
+               
+  
+                      })
+                      
+                      ->rawColumns(['action','detail','statusbayar','statusorder','tambahpesanan'])
+                      ->make(true);
+  
+              }
+          
+          
+          return view('transaksi.transaksikurir'); 
+      }
+
+
     public function indextransaksimarketing(Request $request){
 
         // var_dump(Barang::with('category')->get()->find('f997b850-662e-4f19-b0b6-4dc33a8b9c5b'));

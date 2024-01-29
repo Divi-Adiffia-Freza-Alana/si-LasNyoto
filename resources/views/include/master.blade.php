@@ -250,6 +250,45 @@
   });
 
 
+  var tabletransaksikurir = $('#data-tables-transaksikurir').DataTable({
+      processing: true,
+      serverSide: true,
+     // ajax: "{{ route('transaksi.index') }}",
+     ajax: {
+
+          url: "{{ route('transaksi.index') }}",
+
+          data: function (d) {
+
+                d.filtermonth = $('#filtermonth').val(),
+
+                d.search = $('input[type="search"]').val()
+
+            }
+
+          },
+      columns: [
+        {data: 'id', name: 'id',orderable: false, searchable: false,visible:false},
+        {data: 'kode', name: 'kode'},
+        {data: 'tgl_transaksi', name: 'tgl_transaksi'},
+        {data: 'konsumen.name', name: 'konsumen.name'},
+       // {data: 'meja.nomor', name: 'meja.nomor'},
+      //{data: 'bagdapur.nama', name: 'bagdapur.nama'},
+      //{data: 'pelayan.nama', name: 'pelayan.nama'},
+        {data: 'kurir.nama', name: 'kurir.nama'},
+        {data: 'total', name: 'total'},
+        {data: 'tambahpesanan', name: 'tambahpesanan', visible: false},
+        {data: 'statusorder', name: 'statusorder'},
+        {data: 'statusbayar', name: 'statusbayar'},
+        {data: 'detail', name: 'detail', orderable: false, searchable: false}, 
+        {data: 'action', name: 'action', orderable: false, searchable: false},
+          
+      ]
+
+
+  });
+
+
 
   var tabletransaksicustomer = $('#data-tables-transaksicustomer').DataTable({
       processing: true,

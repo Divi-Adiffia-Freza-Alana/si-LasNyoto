@@ -37,15 +37,17 @@
                   <div class="col-10">
                     <h3 class="card-title">DataTable Transaksi Belanja Bahan Bahanbaku Suplier </h3> 
                   </div>
-                 <!-- @hasrole('konsumen')
+                 <!-- 
                   <div class="col-2">
                       <a class="btn btn-block bg-green" href="/chooseproduct" style="color:#ffff;float:right;" >Add New +</a>
                   </div>
                  
-                  @endhasrole-->
+                  -->
+                  @hasrole('purchasing')
                   <div class="col-2">
                     <a class="btn btn-block bg-blue" href="/transaksi-suplier-add" style="color:#ffff;float:right;" >Add New +</a>
                 </div>
+                @endhasrole
                 </div>
              
               </div>
