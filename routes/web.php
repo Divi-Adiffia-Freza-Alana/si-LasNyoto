@@ -216,6 +216,15 @@ Route::any('/sphapprove/{id}', [TransaksiController::class, 'sphapprove']);
 Route::any('/sphdecline/{id}', [TransaksiController::class, 'sphdecline']);
 
 
+Route::any('/validatepaid/{id}', [TransaksiController::class, 'validatepaid']);
+Route::any('/validatepaidstore', [TransaksiController::class, 'validatepaidstore']);
+
+Route::any('/paidtf/{id}', [TransaksiController::class, 'paidtf']);
+Route::any('/paidtfstore', [TransaksiController::class, 'paidtfstore']);
+
+
+
+
 
 Route::group(['middleware' => ['role:kurir']], function () {
     Route::any('/deliver/{id}', [TransaksiController::class, 'deliver']);

@@ -75,8 +75,9 @@
                     <th>Pelayan</th>-->
                     <th>Staf Penjualan</th>
                     <th>SPH</th>
-                    <th>Status Pesanan</th>
+                    <th>Jenis Pembayaran</th>       
                     <th>Status Bayar</th>
+                    <th>Status Pesanan</th>
                     <th>Detail</th>
                     <th>Action</th>
                   </tr>

@@ -55,13 +55,15 @@ class Transaksi extends Model
 
     public function metodepembayaran()
     {
-        return $this->hasOne(Pembayaran::Class, 'id', 'id_metode_pembayaran');
+        return $this->hasOne(Metode_Pembayaran::Class, 'id', 'id_metode_pembayaran');
     }
 
     public function pembayaran()
     {
-        return $this->hasMany(Pembayaran::Class, 'id', 'id_transaksi');
+        return $this->hasMany(Pembayaran::Class, 'id_transaksi', 'id');
     }
+
+  
 
 
     /*public function bagdapur()

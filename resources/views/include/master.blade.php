@@ -124,10 +124,10 @@
 <script>
   $(document).ready(() => {
     
-      $("#bayar").change(function () {
+      $("#bayar").keyup(function () {
          var int = $("#total").val() - $("#bayar").val();
          //console.log(int);
-         $("#kembali").val(int);
+         $("#kembalian").val(int);
       });
 
 
@@ -314,8 +314,9 @@
         {data: 'konsumen.name', name: 'konsumen.name'},
         {data: 'marketing.nama', name: 'marketing.nama'},
         {data: 'sph', name: 'sph'},
-        {data: 'statusorder', name: 'statusorder'},
+        {data: 'jenispembayaran', name: 'jenispembayaran'},
         {data: 'statusbayar', name: 'statusbayar'},
+        {data: 'statusorder', name: 'statusorder'},
         {data: 'detail', name: 'detail', orderable: false, searchable: false}, 
         {data: 'action', name: 'action', orderable: false, searchable: false},
           

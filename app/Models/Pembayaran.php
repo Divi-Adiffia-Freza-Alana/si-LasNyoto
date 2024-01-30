@@ -31,8 +31,6 @@ class Pembayaran  extends Model
 
 
 
-
-
     public function transaksi()
     {
         return $this->belongsTo(Transaksi::Class, 'id_transaksi', 'id');
