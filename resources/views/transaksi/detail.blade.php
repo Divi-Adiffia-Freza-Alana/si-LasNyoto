@@ -73,7 +73,8 @@
                     
                     <div class="col-6"> Status Pesanan: <b><?php if($data->status == 1){ echo 'Dalam Proses';}else{ echo 'Telah Selesai';}?></b></div>
                     <div class="col-6" style="text-align:right;"> Total : <b>Rp. {{$data->total}}</b></div>
-                    <div class="col-6"> Status Pembayaran : <b> <?php if($data->status_bayar == 1){ echo 'Belum lunas';}else{ echo 'Sudah Lunas';}?></b></div>
+                    <?php  $last = count($data->pembayaran)-1;?>
+                    <div class="col-6"> Status Pembayaran : <b> <?php if($data->pembayaran[$last]->status == NULL){ echo 'Belum lunas';}else{ echo 'Sudah Lunas';}?></b></div>
                     <div class="col-6" > </div>
                     
                     <div class="col-6" > 

@@ -256,7 +256,7 @@
      // ajax: "{{ route('transaksi.index') }}",
      ajax: {
 
-          url: "{{ route('transaksi.index') }}",
+          url: "{{ route('transaksikurir.index') }}",
 
           data: function (d) {
 
@@ -279,7 +279,7 @@
         {data: 'total', name: 'total'},
         {data: 'tambahpesanan', name: 'tambahpesanan', visible: false},
         {data: 'statusorder', name: 'statusorder'},
-        {data: 'statusbayar', name: 'statusbayar'},
+        {data: 'statusbayar', name: 'statusbayar',visible: false},
         {data: 'detail', name: 'detail', orderable: false, searchable: false}, 
         {data: 'action', name: 'action', orderable: false, searchable: false},
           
