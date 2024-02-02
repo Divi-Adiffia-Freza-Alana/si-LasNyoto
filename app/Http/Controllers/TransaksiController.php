@@ -17,6 +17,7 @@ use App\Models\Metode_Pembayaran;
 use App\Models\Pembayaran;
 use App\Models\Sph;
 use App\Models\Transaksi_detail;
+use App\Models\BahanBaku;
 use Illuminate\Http\RedirectResponse;
 
 
@@ -241,8 +242,9 @@ class TransaksiController extends Controller
                           $btn = '<a class="btn btn-warning" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Siap Dikirim</a>';
                       }
                       else if($data->statusorder == 3){
-                        $btn = '<a class="btn btn-warning" href="/deliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Sedang Dikirim</a>';
+                        $btn = '<a class="btn btn-warning" href="/donedeliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Sedang Dikirim</a>';
                     }
+                    
                    
                       else{
                       
@@ -359,6 +361,38 @@ class TransaksiController extends Controller
         //$transaksidata = Transaksi::query()->get()->find($id);
         $transaksidata = Transaksi::findOrFail($id);
 
+       // var_dump($transaksidata->produk[1]->bahanbaku[0]->stok);
+       // exit();    
+
+      //  var_dump($transaksidata->produk[1]->pivot->qty);
+       // exit();        
+
+       // var_dump($transaksidata->produk[1]->bahanbaku[0]->id);
+       // exit();        
+
+        // Cek Berapa Produk
+        foreach($transaksidata->produk as $produk) {
+            //simpen banyak produk qty
+            $produkqty = $produk->pivot->qty;
+
+           
+
+          // Cek Banyak Bahan Baku
+            foreach($produk->bahanbaku as $bahan) {
+             
+
+                $bahanbakudata = BahanBaku::findOrFail($bahan->id);
+               // var_dump($bahanbakudata->stok - $produkqty * $bahan->pivot->qty);
+               // exit();
+                //update
+                $bahanbakudata->stok = $bahanbakudata->stok - $produkqty * $bahan->pivot->qty;
+                $bahanbakudata->save();
+    
+             }
+         }
+
+            
+
         $transaksidata->statusorder = 2;
         
         $transaksidata->save();
@@ -405,15 +439,18 @@ class TransaksiController extends Controller
     
    public function deliverstore(Request $request): RedirectResponse
    {
-    var_dump($request->all());
-    exit();
+   
     $transaksidata = Transaksi::findOrFail($request->id);
     $transaksidata->nopol = $request->nopol;
     $transaksidata->kendaraan = $request->merk;
     $transaksidata->tgl_kirim = Carbon::now()->format('Y-m-d');
+    $transaksidata->statusorder = 3;
+    $transaksidata->save();
      
     Session::flash('status', 'success');
     Session::flash('message', 'Data Pengirim Berhasil');
+
+    return redirect('/transaksi-kurir');
 
    }
 
@@ -707,7 +744,7 @@ class TransaksiController extends Controller
               
             ]);
         
-            if($request->jenispembayaran == "Lunas"){
+            if($request->jenispembayaran == "Tunai"){
 
                 $pembayaran1 =  Pembayaran::create([  
                      'id' => Str::uuid(),

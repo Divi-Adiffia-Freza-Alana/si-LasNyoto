@@ -127,6 +127,7 @@
             </p>
           </a>
         </li>
+
         @endhasrole
         <!-- Sidebar Menu Staf Pembelian -->
         @hasrole('purchasing')
