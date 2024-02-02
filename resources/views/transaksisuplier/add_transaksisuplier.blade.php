@@ -44,12 +44,17 @@
                       <label for="exampleInputEmail1">Kode Transaksi </label>
                       <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode Transaksi"  value="<?php echo(isset($data)?$data:"");?>">
                     </div>
+
                     <div class="form-group col-md-6">
+                      <label for="exampleInputEmail1">Nama Toko </label>
+                      <input type="text" class="form-control" id="nama_toko" name="nama_toko" placeholder="Nama Toko"  value="<?php echo(isset($data)?$data:"");?>">
+                    </div>
+                    <!--<div class="form-group col-md-6">
                       <label>Suplier</label>
                       <select id="selectsuplier" name="suplier" class="form-control" style="width: 100%;" required>
 
                       </select>
-                    </div>
+                    </div>-->
                     <div class="form-group col-md-6">
                       <label>Tanggal</label>
                         <div class="input-group date">

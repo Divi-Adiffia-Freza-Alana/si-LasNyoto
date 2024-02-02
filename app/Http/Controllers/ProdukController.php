@@ -80,7 +80,7 @@ class ProdukController extends Controller
 
   
     $validator = Validator::make($request->all(), [
-        'foto' => 'image|mimes:jpeg,png,jpg|max:3072',
+        'foto' => 'image|mimes:jpeg,png,jpg',
     ]);
 
     if ($validator->fails()) {
@@ -106,7 +106,7 @@ class ProdukController extends Controller
                 'foto' => $namefile,
                 'foto_url' => urlimage($namefile),
                 'harga' => $request->harga,
-                'status' => 'tersedia',
+                'status' => $request->status,
 
             ]);
 
@@ -128,18 +128,18 @@ class ProdukController extends Controller
             $namefile = $request->fotolabel;
 
         }
-
+ 
         Produk::updateOrCreate(
             ['id' => $request->id],
             [
-            'kode_produk' => $request->kode_produk,
-            'nama' => $request->nama,
-            'jenis' => $request->jenis,
-            'deskripsi' => $request->deskripsi,
-            'harga' => $request->harga,
-            'foto' => $namefile,
-            'foto_url' => urlimage($namefile),
-            'status' => 'tersedia',
+                'kode_produk' => $request->kode_produk,
+                'nama' => $request->nama,
+                'jenis' => $request->jenis,
+                'deskripsi' => $request->deskripsi,
+                'foto' => $namefile,
+                'foto_url' => urlimage($namefile),
+                'harga' => $request->harga,
+                'status' => $request->status,
         ]);
 
            /*  $namefile='';

@@ -24,7 +24,7 @@ class DashboardController extends Controller
     }
 
     public function indexcustomer(){
-        $produk = Produk::query()->get();
+        $produk = Produk::where('status','=','Tersedia')->get();
    
         return view('main',["dataproduk"=>$produk]);
 

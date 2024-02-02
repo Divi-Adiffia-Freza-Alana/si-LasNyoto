@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
             'deskripsi' => 'abc',
             'foto' => 'Railing Deck-1705594868.jpg',
             'foto_url' => 'http://localhost:8000/foto/Railing Deck-1705594868.jpg',
-           // 'harga' => 300000,
+            'harga' => 300000,
             'status' => 'tersedia',
             ]); 
 
@@ -58,14 +58,14 @@ class UserSeeder extends Seeder
                 'deskripsi' => 'abc',
                 'foto' => 'Kanopi-1705855191.jpg',
                 'foto_url' => 'http://127.0.0.1:8000/foto/Kanopi-1705855191.jpg',
-             //   'harga' => 2000000,
+                'harga' => 2000000,
                 'status' => 'tersedia',
                 ]); 
 
         $user = User::create([
             'id' => Str::uuid(),
-            'name' => "admin",
-            'email' => 'admin@gmail.com',
+            'name' => "kasir",
+            'email' => 'kasir@gmail.com',
             'password' => Hash::make('admin12345'),
 
             ]); 
@@ -73,6 +73,7 @@ class UserSeeder extends Seeder
             'id' => Str::uuid(),
             'name' => "konsumen",
             'email' => 'konsumen@gmail.com',
+            'no_hp' => '087828845123',
             'password' => Hash::make('konsumen12345'),
 
             ]); 
@@ -102,9 +103,9 @@ class UserSeeder extends Seeder
 
             $user6 = User::create([
                 'id' => Str::uuid(),
-                'name' => "Staf Pembelian Bahan Baku",
-                'email' => 'stafpembelianbahanbaku@gmail.com',
-                'password' => Hash::make('stafpembelianbahanbaku12345'),
+                'name' => "Staf Bahan Baku",
+                'email' => 'stafbahanbaku@gmail.com',
+                'password' => Hash::make('stafbahanbaku12345'),
     
                 ]); 
     

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('stok');
             $table->string('satuan');
+            $table->enum('status', ['Aman', 'Menipis', 'Habis'])->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -72,9 +72,9 @@
                   <div class="row" style="padding-left: 100px;padding-right: 100px;"> 
                     <div class="col-12 mb-4">Demikian penawaran harga yang kami ajukan. Atas perhatiannya kami ucapkan terima kasih.</div>
                     
-                    <form action="/sphbergaining" method="post" enctype="multipart/form-data" class="col-12">
+                    <!--<form action="/sphbergaining" method="post" enctype="multipart/form-data" class="col-12">
                       @csrf
-                      <input type="hidden" class="form-control" id="id" name="id"  value="{{$datatransaksi->sph->id}}">
+                      <input type="hidden" class="form-control" id="id" name="id"  value="{{$datatransaksi->sph->id}}">-->
                   
                         <!-- textarea -->
                         <!--<div class="form-group">
@@ -82,18 +82,18 @@
                           <textarea class="form-control" rows="3" placeholder="Isi Penawaran ..."  id="deskripsi" name="deskripsi"><?php echo (isset($data->deskripsi)?$data->deskripsi:""); ?></textarea>
                         </div>-->
                         <div class="form-group col-12">
-                          <label for="exampleInputEmail1">Ajukan Harga Penawaran </label>
-                          <input type="text" class="form-control" id="harga_penawaran" name="harga_penawaran" placeholder="Harga Penawaran" required>
+                          <label for="exampleInputEmail1"> Harga Penawaran Kustomer</label>
+                          <input type="text" class="form-control" id="harga_penawaran" name="harga_penawaran" placeholder="Harga Penawaran"  value="{{$datatransaksi->sph->harga_penawaran}}" readonly>
                         </div>
                  
-                    <div class="col-6" > 
+                   <!-- <div class="col-6" > 
                       <button type="submit" class="btn bg-blue">Kirim</button>
                       </div>
-                   </form>
-                    <!--<div class="col-6" > 
+                   </form>-->
+                    <div class="col-6" > 
                     <a class="btn bg-blue " href="/sphapprove/{{$datatransaksi->sph->id}}" style="color:#ffff;display:inline-block;" >Setujui </a>
                     <a class="btn bg-danger" href="/sphdecline/{{$datatransaksi->sph->id}}" style="color:#ffff;display:inline-block;" >Tolak </a>
-                    </div>-->
+                    </div>
                  
 
                     

@@ -74,7 +74,7 @@
                     <th>Bag Dapur</th>
                     <th>Pelayan</th>-->
                     <th>Staf Penjualan</th>
-                    <th>SPH</th>
+                   
                     <th>Jenis Pembayaran</th>       
                     <th>Status Bayar</th>
                     <th>Status Pesanan</th>

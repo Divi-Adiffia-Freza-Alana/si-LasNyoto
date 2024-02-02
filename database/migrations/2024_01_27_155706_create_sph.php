@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('kode')->nullable();
             $table->date('tgl')->nullable();
             $table->text('deskripsi')->nullable();
+            $table->integer('harga_penawaran')->nullable();
             $table->enum('status', ['diterima', 'ditolak'])->nullable();
             $table->timestamps();
             $table->softDeletes();

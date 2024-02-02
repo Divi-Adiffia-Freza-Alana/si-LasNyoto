@@ -17,6 +17,7 @@ class Sph extends Model
         'kode',
         'tgl',
         'deskripsi',
+        'harga_penawaran',
         'status',
     ];
 

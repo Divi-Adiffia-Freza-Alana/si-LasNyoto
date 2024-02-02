@@ -270,7 +270,7 @@
 								<div class="product-desc">
 									<!--<div class="product-title mb-1"><h3><a href="#">{{$d->nama}}</a></h3></div>-->
 									<div class="product-title mb-1"><h3><a href="#">{{$d->nama}}</a></h3></div>
-									<!--<div class="product-price font-primary">Rp. <ins class="money">{{$d->harga}}</ins></div>-->
+									<div class="product-price font-primary">Rp. <ins class="money">{{$d->harga}}</ins></div>
 									<div style=" text-align: justify;text-justify: inter-word;"><h6>{{$d->deskripsi}} </h6></div></div>
 								<a style="display:block;margin: auto;" href="/add-to-cart/{{$d->id}}" class="button button-3d button-small m-0"><i class="bi-bag-plus m-0"></i></a>
 

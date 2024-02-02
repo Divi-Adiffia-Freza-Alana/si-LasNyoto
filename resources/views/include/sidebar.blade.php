@@ -89,6 +89,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="/transaksi-sph-customer" class="nav-link">
+            <i class=" nav-icon fa-solid fa-file"></i>
+            <p>
+              SPH
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="/transaksi-customer" class="nav-link">
             <i class=" nav-icon fa-solid fa-cart-shopping"></i>
             <p>
@@ -122,14 +130,14 @@
         @endhasrole
         <!-- Sidebar Menu Staf Pembelian -->
         @hasrole('purchasing')
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a href="/suplier" class="nav-link">
             <i class=" nav-icon fa-solid fa-users"></i>
             <p>
               Suplier 
             </p>
           </a>
-        </li>
+        </li>-->
         <li class="nav-item">
           <a href="/bahanbaku" class="nav-link">
             <i class="nav-icon fa-solid fa-toolbox"></i>

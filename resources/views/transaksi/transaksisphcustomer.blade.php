@@ -35,27 +35,44 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-10">
-                    <h3 class="card-title">DataTable Bahan Baku</h3> 
+                    <h3 class="card-title">DataTable SPH Customer </h3> 
                   </div>
+                 <!-- @hasrole('konsumen')
                   <div class="col-2">
-                      <a class="btn btn-block bg-blue" href="/bahanbaku-add" style="color:#ffff;float:right;" >Add New +</a>
+                      <a class="btn btn-block bg-green" href="/chooseproduct" style="color:#ffff;float:right;" >Add New +</a>
                   </div>
+                 
+                  @endhasrole-->
+                 
                 </div>
+             
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="data-tables-bahanbaku" class="table table-bordered table-striped" style="width:100%!important">
+                <div class="form-group col-2">
+                  <label>Month</label>
+                  <select id="filtermonth" name="filtermonth" class="form-control" required>
+                  <option value=" ">Pilih Bulan</option>
+                  <option value="1">Januari</option>
+                  <option value="2">Februari</option>
+                  <option value="3">Maret</option>
+                  <option value="4">April</option>
+                  <option value="5">Mei</option>
+                  <option value="6">Juni</option>
+                  <option value="7">Juli</option>
+                  <option value="8">Agustus</option>
+                  </select>
+                </div>
+                <table id="data-tables-transaksisphcustomer" class="table table-bordered table-striped" style="width:100%!important">
                   <thead>
                   <tr>
-                    <th>Nama</th>
-                    <th>Stok</th>
-                    <th>Satuan</th>
-                    <th>Status</th>
-                   <!-- <th>Manajemen Stok</th> -->
-                   <!--<th>Foto</th>-->
-                  
-                   <!-- <th>Log</th> -->
-                    <th>Action</th>
+                    <th>Id</th>
+                    <th>Kode</th>
+                    <th>Tanggal</th>
+                    <th>Pembeli</th>
+                    <th>Staf Penjualan</th>
+                    <th>SPH</th>   
+                    <th>Status SPH</th>
                   </tr>
                   </thead>
                   <tbody>

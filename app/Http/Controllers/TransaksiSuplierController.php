@@ -9,6 +9,7 @@ use App\Models\Meja;
 use App\Models\Bag_Dapur;
 use App\Models\Pelayan;
 use App\Models\Users;
+use App\Models\BahanBaku;
 use App\Models\Transaksi;
 use App\Models\Transaksi_Suplier;
 use App\Models\Transaksi_Suplier_Detail;
@@ -104,7 +105,7 @@ class TransaksiSuplierController extends Controller
         //dd($request->all());
        $transaksisuplier = Transaksi_Suplier::create([
         'id' => Str::uuid(),
-        'id_suplier' => $request->suplier,
+        'nama_toko' => $request->nama_toko,
         'kode' => $request->kode,
         'tgl_transaksi' => date("Y-m-d", strtotime($request->tgl_transaksi)),
         'total' => 0,
@@ -117,11 +118,11 @@ class TransaksiSuplierController extends Controller
        $transaksisuplier= Transaksi_Suplier::updateOrCreate(
             ['id' => $request->id],
             [          
-                'id_suplier' => $request->suplier,
+                'nama_toko' => $request->nama_toko,
                 'kode' => $request->kode,
-                'tgl_transaksi' => $request->tgl_transaksi,
+                'tgl_transaksi' => date("Y-m-d", strtotime($request->tgl_transaksi)),
                 'total' => 0,
-                'status_bayar' => 'Lunas'        
+                'status_bayar' => 'Lunas'      
             ]
 
             );
@@ -172,8 +173,16 @@ class TransaksiSuplierController extends Controller
             'subtotal' => $request->subtotal,
     
        ]);
+
+       $bahanbakudata = BahanBaku::findOrFail($request->bahanbaku);
+
+       $bahanbakudata->stok = $transaksibarangsuplier->qty;
+       
+       $bahanbakudata->save();
+
+
         Session::flash('status', 'success');
-        Session::flash('message', 'Tambah Data Barang Suplier Berhasil');
+        Session::flash('message', 'Tambah Data Barang Belanja Berhasil');
 
       // return redirect()->back();
         return view('transaksisuplier.add_transaksisuplierbarang',['data' =>$transaksibarangsuplier->id_transaksi]);

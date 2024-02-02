@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('kode_produk');
             $table->string('nama');
             $table->string('jenis');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('foto');
             $table->string('foto_url');
-           // $table->integer('harga');
-            $table->string('status');
+            $table->integer('harga');
+            $table->enum('status', ['Tersedia', 'Kosong']);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -11,7 +11,7 @@
 <body style="background-color: #f9f9f9;" class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper" style="height: 100vh;">
   <div class="wrapper-form-login p-3 rounded" style="background-color: #ffff;display: block; width: 30%; position:fixed; top: 50%;  left: 50%;  transform: translate(-50%, -50%); ">
-        <img src="{{asset('/')}}img/" alt="Logo Las Nyoto" width="100" height="100%" style="display:block;margin:10px auto;">
+        <img src="{{asset('/')}}img/logonyotopng.png" alt="Logo Las Nyoto" width="100" height="100%" style="display:block;margin:10px auto;">
         </img>
         @if (Session::get('status')=="fail")
             <div class="alert alert-danger" role="alert">
@@ -34,6 +34,11 @@
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
           <input type="email" class="form-control" id="email" name="email"aria-describedby="emailHelp" required>
+          <!--<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">No. HP</label>
+          <input type="text" class="form-control" id="no_hp" name="no_hp" required>
           <!--<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
         </div>
         <div class="mb-3">

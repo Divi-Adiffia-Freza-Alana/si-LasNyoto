@@ -132,13 +132,13 @@
 
 
       $("#hargatransaksisuplier").keyup(function () {
-         var int1 = $("#qtytransaksisuplier").val() * $("#hargatransaksisuplier").cleanVal();
+         var int1 = $("#qtytransaksisuplier").val() * $("#hargatransaksisuplier").val();
          console.log(int1);
          $("#subtotaltransaksisuplier").val(int1);
       });
 
       $("#qtytransaksisuplier").keyup(function () {
-         var int2 = $("#qtytransaksisuplier").val() * $("#hargatransaksisuplier").cleanVal();
+         var int2 = $("#qtytransaksisuplier").val() * $("#hargatransaksisuplier").val();
          console.log(int2);
          $("#subtotaltransaksisuplier").val(int2);
       });
@@ -313,12 +313,44 @@
         {data: 'tgl_transaksi', name: 'tgl_transaksi'},
         {data: 'konsumen.name', name: 'konsumen.name'},
         {data: 'marketing.nama', name: 'marketing.nama'},
-        {data: 'sph', name: 'sph'},
         {data: 'jenispembayaran', name: 'jenispembayaran'},
         {data: 'statusbayar', name: 'statusbayar'},
         {data: 'statusorder', name: 'statusorder'},
         {data: 'detail', name: 'detail', orderable: false, searchable: false}, 
         {data: 'action', name: 'action', orderable: false, searchable: false},
+          
+      ]
+
+
+  });
+
+  
+  var tabletransaksisphcustomer = $('#data-tables-transaksisphcustomer').DataTable({
+      processing: true,
+      serverSide: true,
+     // ajax: "{{ route('transaksi.index') }}",
+     ajax: {
+
+          url: "{{ route('transaksisphcustomer.index') }}",
+
+          data: function (d) {
+
+                d.filtermonth = $('#filtermonth').val(),
+
+                d.search = $('input[type="search"]').val()
+
+            }
+
+          },
+      columns: [
+        {data: 'id', name: 'id',orderable: false, searchable: false,visible:false},
+        {data: 'kode', name: 'kode'},
+        {data: 'tgl_transaksi', name: 'tgl_transaksi'},
+        {data: 'konsumen.name', name: 'konsumen.name'},
+        {data: 'marketing.nama', name: 'marketing.nama'},
+        {data: 'sph', name: 'sph'},
+        {data: 'status_sph', name: 'status_sph'},
+
           
       ]
 
@@ -346,8 +378,8 @@
         {data: 'id', name: 'id',orderable: false, searchable: false,visible:false},
         {data: 'kode', name: 'kode'},
         {data: 'tgl_transaksi', name: 'tgl_transaksi'},
-        {data: 'nama', name: 'nama'},
-        {data: 'no_hp', name: 'no_hp'},
+        {data: 'konsumen.name', name: 'konsumen.name'},
+        {data: 'konsumen.no_hp', name: 'konsumen.no_hp'},
         {data: 'sph', name: 'sph', orderable: false, searchable: false},
         {data: 'statussph', name: 'statussph',orderable: false, searchable: false},
         {data: 'action', name: 'action', orderable: false, searchable: false,  visible: false}
@@ -372,7 +404,7 @@
           {data: 'nama', name: 'nama'},
           {data: 'stok', name: 'stok'},
           {data: 'satuan', name: 'satuan'},
-         // {data: 'status', name: 'status'},
+         {data: 'status', name: 'status'},
           //{data: 'manajemenstok', name: 'manajemenstok', orderable: false, searchable: false},
          // {data: 'log', name: 'log', orderable: false, searchable: false},
           {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -638,9 +670,24 @@
 $(document).ready(function(){
     // Format mata uang.
     $('.money').mask('0.000.000.000', {reverse: true});
+    
+  $('form').on('submit', function(){
+    $('.money').unmask();
+  });
   })
 </script>
 
+
+<!--<script>
+  $(document).ready(() => {
+    
+      $(".money").keyup(function () {
+        $('.money').cleanVal();
+      });
+
+
+  });
+</script>-->
 <!-- datatble 
 <script type="text/javascript" src="{{asset('/')}}js/datatable.js"></script>
 logic -->

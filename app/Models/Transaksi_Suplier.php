@@ -14,7 +14,7 @@ class Transaksi_Suplier extends Model
     
     protected $fillable = [
         'id',
-        'id_suplier',
+        'nama_toko',
         'kode',
         'tgl_transaksi',
         'total',

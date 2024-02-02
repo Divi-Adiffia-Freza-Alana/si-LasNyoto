@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('transaksi_suplier', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('id_suplier')->required();
+         //   $table->uuid('id_suplier')->required();
+            $table->string('nama_toko');
             $table->string('kode');
             $table->datetime('tgl_transaksi');
             $table->integer('total');

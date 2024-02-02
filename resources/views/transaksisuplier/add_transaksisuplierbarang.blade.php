@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label for="exampleInputEmail1">harga</label>
-                      <input type="number" class="form-control money" name="harga" id="hargatransaksisuplier" placeholder="harga" min= "0" required>
+                      <input type="number" class="form-control" name="harga" id="hargatransaksisuplier" placeholder="harga" min= "0" required>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="exampleInputEmail1">subtotal</label>

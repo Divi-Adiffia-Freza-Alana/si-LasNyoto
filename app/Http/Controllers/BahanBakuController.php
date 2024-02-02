@@ -56,17 +56,17 @@ class BahanBakuController extends Controller
                        
                          return $btn; 
                  }) 
-                    ->addColumn('manajemenstok', function($row){
+                  /*  ->addColumn('manajemenstok', function($row){
                            $btn = '<a class="btn btn-primary" href="/bahanbaku-transaction/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-pen-to-square"></i> </a>';
                             return $btn;
-                    })
+                    })*/
                   
                     ->addColumn('action', function($row){
                         $btn = '<a class="btn btn-primary" href="/bahanbaku-edit/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-pen-to-square"></i> </a>
                                 <a class="btn btn-danger" href="/bahanbaku-delete/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-trash"></i></a>';
                          return $btn;
                  })
-                    ->rawColumns(['manajemenstok','log','status','action'])
+                    ->rawColumns(['status','action'])
                     ->make(true);
         }
         return view('bahanbaku.bahanbaku');

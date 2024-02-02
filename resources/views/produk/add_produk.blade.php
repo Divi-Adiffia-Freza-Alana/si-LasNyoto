@@ -80,15 +80,15 @@
                       </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Harga</label>
-                      <input type="text" class="form-control money" name="harga" id="harga" placeholder="Harga" value="<?php echo (isset($data->harga)?$data->harga:""); ?>" required>
+                      <input type="text" class="form-control money" name="harga" id="harga" placeholder="Harga" value="<?php echo (isset($data->harga)?$data->harga:""); ?>" data-mask="0.000.000.000" data-mask-reverse="true" required>
                     </div>
-                    <!--<div class="form-group">
+                    <div class="form-group">
                       <label>status</label>
                       <select id="status" name="status" class="form-control" required>
                       <option <?php echo (isset($data->status)&&$data->status=="Tersedia"?"selected":""); ?> value="Tersedia">Tersedia</option>
-                      <option <?php echo (isset($data->status)&&$data->status=="Habis"?"selected":""); ?> value="Habis">Habis</option>
+                      <option <?php echo (isset($data->status)&&$data->status=="Kosong"?"selected":""); ?> value="Kosong">Kosong</option>
                       </select>
-                    </div>-->
+                    </div>
 
 
   

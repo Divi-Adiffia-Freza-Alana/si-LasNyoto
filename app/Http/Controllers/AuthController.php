@@ -44,6 +44,7 @@ class AuthController extends Controller
                 $user =User::create([
                 'id' => Str::uuid(),
                 'name' => $request->name,
+                'no_hp' => $request->no_hp,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'role' => 'konsumen',
@@ -124,7 +125,7 @@ class AuthController extends Controller
         Session::flash('status', 'fail');
         Session::flash('message', 'Login Gagal');
 
-        return redirect('/dashboard');
+        return redirect('/login');
 
     }
 

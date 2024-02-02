@@ -93,19 +93,19 @@
                             <label for="exampleInputEmail1">No Meja </label>
                             <input type="text" class="form-control" name="no_meja" id="no_meja" placeholder="No Meja"  required>
                           </div>-->
-                          <div class="form-group col-md-4">
+                         <!-- <div class="form-group col-md-4">
                             <label>Nama Pemesan</label>
                             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama"  required>
-                          </div>
-                          <div class="form-group col-md-4">
+                          </div>-->
+                         <!-- <div class="form-group col-md-4">
                             <label>No. HP</label>
                             <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="No. HP"  required>
-                          </div>
+                          </div>-->
                                                 <!-- select -->
                           <div class="form-group col-md-4">
                             <label>Jenis Pembayaran </label>
                             <select id="jenispembayaran" name="jenispembayaran" class="form-control" required>
-                            <option value="Lunas">Lunas</option>
+                            <option value="Tunai">Tunai</option>
                             <option value="Kredit">Kredit</option>
                             </select>
                           </div>
@@ -167,7 +167,7 @@
                                     </div>
                                 </div> 
                             </td>
-                            <td data-th="Price">Rp.{{ $details['price'] }}</td>
+                            <td class="" data-th="Price">Rp.{{ $details['price'] }}</td>
                             <td data-th="Quantity">
                                 <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" min="1" />
                             </td>

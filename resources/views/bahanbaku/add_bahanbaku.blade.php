@@ -56,6 +56,7 @@
                       <label for="exampleInputEmail1">Satuan </label>
                       <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Satuan" value="<?php echo (isset($data->satuan)?$data->satuan:""); ?>" required>
                     </div>
+                    
   
                   </div>
               

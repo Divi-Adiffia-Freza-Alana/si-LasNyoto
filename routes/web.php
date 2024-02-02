@@ -13,6 +13,8 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MejaController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\TransaksiController; 
+use App\Http\Controllers\CustomerController; 
+use App\Http\Controllers\MarketingController; 
 use App\Http\Controllers\TransaksiSuplierController; 
 use App\Http\Controllers\SuplierController; 
 use App\Http\Controllers\ProdukController; 
@@ -32,7 +34,7 @@ use App\Http\Controllers\KurirController;
     return view('dashboard');
 })->middleware('auth');*/
 
-Route::get('/', [TransaksiController::class, 'indexcustomer'])->middleware('auth');
+Route::get('/', [CustomerController::class, 'indexcustomer'])->middleware('auth');
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
@@ -160,8 +162,9 @@ Route::any('/selectmeja', [MejaController::class, 'selectMeja']);
 
 //Route Transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
-Route::get('/transaksi-customer', [TransaksiController::class, 'indextransaksicustomer'])->name('transaksicustomer.index');
-Route::get('/transaksi-marketing', [TransaksiController::class, 'indextransaksimarketing'])->name('transaksimarketing.index');
+Route::get('/transaksi-customer', [CustomerController::class, 'indextransaksicustomer'])->name('transaksicustomer.index');
+Route::get('/transaksi-sph-customer', [CustomerController::class, 'indextransaksisphcustomer'])->name('transaksisphcustomer.index');
+Route::get('/transaksi-marketing', [MarketingController::class, 'indextransaksimarketing'])->name('transaksimarketing.index');
 Route::get('/transaksi-owner', [TransaksiController::class, 'indextransaksiowner'])->name('transaksiowner.index');
 Route::get('/transaksi-kurir', [TransaksiController::class, 'indextransaksikurir'])->name('transaksikurir.index');
 Route::get('/transaksi-purchasing', [TransaksiController::class, 'indextransaksipurchasing'])->name('transaksipurchasing.index');
@@ -211,16 +214,19 @@ Route::any('/done/{id}', [TransaksiController::class, 'done']);
 
 Route::any('/sph/{id}', [TransaksiController::class, 'sph']);
 Route::any('/detailsph/{id}', [TransaksiController::class, 'detailsph']);
+Route::any('/validasisph/{id}', [MarketingController::class, 'validasisph']);
 Route::any('/sphstore', [TransaksiController::class, 'sphstore']);
-Route::any('/sphapprove/{id}', [TransaksiController::class, 'sphapprove']);
-Route::any('/sphdecline/{id}', [TransaksiController::class, 'sphdecline']);
+Route::any('/sphapprove/{id}', [MarketingController::class, 'sphapprove']);
+Route::any('/sphdecline/{id}', [MarketingController::class, 'sphdecline']);
+Route::any('/sphbergaining', [TransaksiController::class, 'sphbergaining']);
+
 
 
 Route::any('/validatepaid/{id}', [TransaksiController::class, 'validatepaid']);
 Route::any('/validatepaidstore', [TransaksiController::class, 'validatepaidstore']);
 
-Route::any('/paidtf/{id}', [TransaksiController::class, 'paidtf']);
-Route::any('/paidtfstore', [TransaksiController::class, 'paidtfstore']);
+Route::any('/paidtf/{id}', [CustomerController::class, 'paidtf']);
+Route::any('/paidtfstore', [CustomerController::class, 'paidtfstore']);
 
 
 
@@ -228,6 +234,8 @@ Route::any('/paidtfstore', [TransaksiController::class, 'paidtfstore']);
 
 Route::group(['middleware' => ['role:kurir']], function () {
     Route::any('/deliver/{id}', [TransaksiController::class, 'deliver']);
+    Route::any('/deliverstore', [TransaksiController::class, 'deliverstore']);
+    Route::any('/donedeliver/{id}', [TransaksiController::class, 'donedeliver']);
     
     });
 
