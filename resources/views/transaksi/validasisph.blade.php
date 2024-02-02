@@ -83,7 +83,7 @@
                         </div>-->
                         <div class="form-group col-12">
                           <label for="exampleInputEmail1"> Harga Penawaran Kustomer</label>
-                          <input type="text" class="form-control" id="harga_penawaran" name="harga_penawaran" placeholder="Harga Penawaran"  value="{{$datatransaksi->sph->harga_penawaran}}" readonly>
+                          <input type="text" class="form-control money" id="harga_penawaran" name="harga_penawaran" placeholder="Harga Penawaran"  value="{{$datatransaksi->sph->harga_penawaran}}" readonly>
                         </div>
                  
                    <!-- <div class="col-6" > 

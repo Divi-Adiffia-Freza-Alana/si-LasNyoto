@@ -33,7 +33,7 @@
                     <div class="col-6"> Kode Transaksi :  {{$data->kode}}</div>
                     <div class="col-6"> Tanggal:  {{dateformat($data->tgl_transaksi)}}</div>
                     <div class="col-6"> Nama :  {{$data->konsumen->name}}</div>
-                    <div class="col-6"> No. Hp:  {{$data->no_hp}}</div>
+                    <div class="col-6"> No. Hp:  {{$data->konsumen->no_hp}}</div>
                     
           
 
@@ -72,7 +72,7 @@
 
                     
                     <div class="col-6"> Status Pesanan: <b><?php if($data->status == 1){ echo 'Dalam Proses';}else{ echo 'Telah Selesai';}?></b></div>
-                    <div class="col-6" style="text-align:right;"> Total : <b>Rp. {{$data->total}}</b></div>
+                    <div class="col-6 " style="text-align:right;"> Total : Rp. <b class="money"> {{$data->total}}</b></div>
                     <?php  $last = count($data->pembayaran)-1;?>
                     <div class="col-6"> Status Pembayaran : <b> <?php if($data->pembayaran[$last]->status == NULL){ echo 'Belum lunas';}else{ echo 'Sudah Lunas';}?></b></div>
                     <div class="col-6" > </div>

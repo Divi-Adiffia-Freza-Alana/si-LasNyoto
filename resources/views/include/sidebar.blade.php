@@ -47,7 +47,7 @@
             <a href="/kurir" class="nav-link">
               <i class=" nav-icon fa-solid fa-users"></i>
               <p>
-                Kurir 
+                Staf Pengiriman 
               </p>
             </a>
           </li>
@@ -55,7 +55,7 @@
             <a href="/kurir" class="nav-link">
               <i class=" nav-icon fa-solid fa-users"></i>
               <p>
-                Marketing 
+                Staf Penjualan 
               </p>
             </a>
           </li>
@@ -63,7 +63,7 @@
             <a href="/kurir" class="nav-link">
               <i class=" nav-icon fa-solid fa-users"></i>
               <p>
-                Purchasing 
+                Staf Bahan Baku 
               </p>
             </a>
           </li>

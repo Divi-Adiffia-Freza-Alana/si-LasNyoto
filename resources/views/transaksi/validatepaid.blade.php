@@ -62,16 +62,16 @@
                     </div>
                     <div class="form-group col-md-4">
                       <label for="exampleInputEmail1">Harga </label>
-                      <input type="text" class="form-control" id="harga" name="harga[]" placeholder="Harga" value="{{$p->pivot->harga}}" readonly>
+                      <input type="text" class="form-control money" id="harga" name="harga[]" placeholder="Harga" value="{{$p->pivot->harga}}" readonly>
                     </div>
                     @endforeach
                     <div class="form-group col-md-4">
                       <label for="exampleInputEmail1">Total harga </label>
-                      <input type="text" class="form-control" id="total" name="total" placeholder="Harga" value="{{$datatransaksi->transaksi->total}}" readonly>
+                      <input type="text" class="form-control money" id="total" name="total" placeholder="Harga" value="{{$datatransaksi->transaksi->total}}" readonly>
                     </div>
                 <div class="form-group col-md-4">
                       <label for="exampleInputEmail1">Jumlah Bayar </label>
-                      <input type="text" class="form-control" id="bayar" name="bayar" placeholder="" value="" required>
+                      <input type="text" class="form-control money " id="bayar" name="bayar" placeholder="" value="" required>
                     </div>   <!-- 
                     <div class="form-group col-md-4">
                       <label for="exampleInputEmail1">Kembalian </label>

@@ -60,7 +60,7 @@
                         <td>{{$m->nama}}</td> 
                         <td>{{$m->kode_produk}}</td> 
                         <td>{{$m->pivot->qty}}</td> 
-                        <td>{{$m->pivot->harga}}</td> 
+                        <td class="money">{{$m->pivot->harga}}</td> 
                         </tr>          
                         @endforeach
                       </tbody>
@@ -83,7 +83,7 @@
                         </div>-->
                         <div class="form-group col-12">
                           <label for="exampleInputEmail1">Ajukan Harga Penawaran </label>
-                          <input type="text" class="form-control" id="harga_penawaran" name="harga_penawaran" placeholder="Harga Penawaran" required>
+                          <input type="text" class="form-control money" id="harga_penawaran" name="harga_penawaran" placeholder="Harga Penawaran" required>
                         </div>
                  
                     <div class="col-6" > 

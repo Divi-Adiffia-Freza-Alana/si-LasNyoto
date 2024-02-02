@@ -167,11 +167,11 @@
                                     </div>
                                 </div> 
                             </td>
-                            <td class="" data-th="Price">Rp.{{ $details['price'] }}</td>
+                            <td class="money" data-th="Price">Rp. {{ $details['price'] }}</td>
                             <td data-th="Quantity">
                                 <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" min="1" />
                             </td>
-                            <td data-th="Subtotal" class="text-center">Rp.{{ $details['price'] * $details['quantity'] }}</td>
+                            <td data-th="Subtotal" class="text-center money">Rp.{{ $details['price'] * $details['quantity'] }}</td>
                             <td class="actions" data-th="">
                                 <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
                                 <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa-solid fa-trash"></i></button>
@@ -185,7 +185,7 @@
                 <tr>
                     <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Kembali Pilih Produk</a></td>
                     <td colspan="2" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center"><strong>Total Rp.{{ $total }}</strong></td>
+                    <td class="hidden-xs text-center">Total Rp.<strong class="money"> {{ $total }}</strong></td>
                 </tr>
                 </tfoot>
             </table>
@@ -681,6 +681,18 @@
 
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $(document).ready(function(){
+      // Format mata uang.
+      $('.money').mask('0.000.000.000', {reverse: true});
+      
+    $('form').on('submit', function(){
+      $('.money').unmask();
+    });
+    })
+  </script>
 <!-- Select logic -->
 <script src="{{asset('/')}}js/select.js"></script>
 

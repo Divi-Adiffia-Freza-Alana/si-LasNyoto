@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group col-md-4">
                       <label for="exampleInputEmail1">Harga </label>
-                      <input type="text" class="form-control" id="harga" name="harga[]" placeholder="Harga" value="{{$p->pivot->harga}}" readonly>
+                      <input type="text" class="form-control money" id="harga" name="harga[]" placeholder="Harga" value="{{$p->pivot->harga}}" readonly>
                     </div>
                     @endforeach
 
