@@ -72,7 +72,7 @@
                   <tr>
                     <th>Id</th>
                     <th>Kode</th>
-                    <th>Suplier</th>
+                    <th>Nama Toko</th>
                     <th>Tanggal</th>
                     <th>Total</th>
                     <th>Detail</th>

@@ -132,13 +132,13 @@
 
 
       $("#hargatransaksisuplier").keyup(function () {
-         var int1 = $("#qtytransaksisuplier").val() * $("#hargatransaksisuplier").val();
+         var int1 = $("#qtytransaksisuplier").val() * $("#hargatransaksisuplier").cleanVal();
          console.log(int1);
          $("#subtotaltransaksisuplier").val(int1);
       });
 
       $("#qtytransaksisuplier").keyup(function () {
-         var int2 = $("#qtytransaksisuplier").val() * $("#hargatransaksisuplier").val();
+         var int2 = $("#qtytransaksisuplier").val() * $("#hargatransaksisuplier").cleanVal();
          console.log(int2);
          $("#subtotaltransaksisuplier").val(int2);
       });
@@ -549,7 +549,7 @@
       columns: [
         {data: 'id', name: 'id',orderable: false, searchable: false,visible:false},
         {data: 'kode', name: 'kode'},
-        {data: 'suplier.nama', name: 'suplier.nama'},
+        {data: 'nama_toko', name: 'nama_toko'},
         {data: 'tgl_transaksi', name: 'tgl_transaksi'},
         {data: 'total', name: 'total'},
         {data: 'detail', name: 'detail', orderable: false, searchable: false}, 

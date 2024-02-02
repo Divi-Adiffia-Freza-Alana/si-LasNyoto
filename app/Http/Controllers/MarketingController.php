@@ -170,11 +170,12 @@ class MarketingController extends Controller
         
     
         $sph = Sph::find($id);
-        //set cicilan 1
-    
-    
         $sph->status = 'diterima';
         $sph->save();
+        $transaksi = Transaksi::find($sph->transaksi->id);
+        $transaksi->total = $sph->harga_penawaran;
+        $transaksi->save();
+    
                          
         return redirect('/transaksi-marketing');
         

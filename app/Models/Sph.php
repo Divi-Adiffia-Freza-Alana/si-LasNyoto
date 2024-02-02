@@ -34,7 +34,7 @@ class Sph extends Model
 
     public function transaksi()
     {
-        return $this->belongsTo(Transaksi::Class, 'id_sph', 'id');
+        return $this->belongsTo(Transaksi::Class, 'id', 'id_sph');
     }
 
    /* public function pelayan()
