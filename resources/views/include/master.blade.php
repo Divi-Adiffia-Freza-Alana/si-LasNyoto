@@ -186,6 +186,12 @@
 
   });
 
+  $('#selectstok').change(function(){
+    console.log("asup");
+    tablebahanbaku.draw();
+
+  });
+
   var table = $('#data-tables-pelayan').DataTable({
       processing: true,
       serverSide: true,
@@ -449,6 +455,7 @@
         data: function (d) {
           d.id = $('#selectbahanbaku').val(),
           d.search = $('input[type="search"]').val()
+          d.stok = $('#selectstok').val()
           }
 
         },

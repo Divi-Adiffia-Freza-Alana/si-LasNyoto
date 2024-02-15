@@ -74,13 +74,13 @@ class BahanBakuController extends Controller
                        // exit();
 
                         $instance->Where('id', $request->get('id'));
-
-                    }else{
+                    }
+                    if($request->get('stok')){
+                        $instance->Where('stok', $request->get('stok'));
+                    }
+                    else{
                         $instance->orderBy('nama','asc');
                     }
-
-         
-
                 })
                     ->rawColumns(['status','action'])
                     ->make(true);

@@ -44,13 +44,24 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              
+              <div class="row">
                 <div class="form-group col-md-4">
                   <label>Bahan Baku</label>
                   <select id="selectbahanbaku" name="bahanbaku" class="form-control" style="width: 100%;" required>
 
                   </select>
                 </div>
+                <div class="form-group col-md-4">
+                  <label>Status</label>
+                  <select id="selectstok" name="stok" class="form-control" required>
+                  <option value=" ">Pilih Status</option>
+                  <option value="> 5">Aman</option>
+                  <option value="> 1">Menipis</option>
+                  <option value="= 0">Habis</option>
+                  </select>
+                </div>
+              </div>
+   
                 <table id="data-tables-bahanbaku" class="table table-bordered table-striped" style="width:100%!important">
                   <thead>
                   <tr>
