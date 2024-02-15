@@ -252,6 +252,9 @@ class TransaksiController extends Controller
                       else if($data->statusorder == 3){
                         $btn = '<a class="btn btn-warning" href="/donedeliver/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Sedang Dikirim</a>';
                     }
+                    else if($data->statusorder == 4){
+                        $btn = '<a class="btn btn-warning" href="/deliverconfirm/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Konfirmasi Pengiriman</a>';
+                    }
                     
                    
                       else{
@@ -417,30 +420,13 @@ class TransaksiController extends Controller
 
     public function deliver($id){
         
-        //$transaksidata = Transaksi::query()->get()->find($id);
-      //  $transaksidata = Transaksi::findOrFail($id);
+
 
         $transaksi = Transaksi::query()->get()->find($id);
     
-        //var_dump($transaksi->produk[0]->pivot);
-        //exit();
+ 
     
-        return view('transaksi.deliver',["datatransaksi"=>$transaksi]);
-
-
-       // $transaksidata->statusorder = 3;
-        
-        //$transaksidata->save();
-
-        //$menu = Menu::all();
-       // $kandangdata = Kandang::with('keeperKandang')->get()->find($id);
-        //dd($keeperdata);
-
-        //var_dump($barang);
-        //exit();
-       // return redirect('/transaksi-kurir');
-
-        
+        return view('transaksi.deliver',["datatransaksi"=>$transaksi]);        
 
     }
 
@@ -449,13 +435,13 @@ class TransaksiController extends Controller
    {
    
     $transaksidata = Transaksi::findOrFail($request->id);
-    $transaksidata->statusorder = 3;
+    $transaksidata->statusorder = 4;
     $transaksidata->save();
 
     $pengirimandata = Pengiriman::findOrFail($request->id_pengiriman);
     $pengirimandata->nopol = $request->nopol;
     $pengirimandata->kendaraan = $request->merk;
-    $pengirimandata->tgl_kirim = Carbon::now()->format('Y-m-d');
+    $pengirimandata->tgl_kirim =  date("Y-m-d", strtotime($request->tgl_kirim));
     $pengirimandata->nama_penerima = $request->nama_penerima;
     $pengirimandata->save();
      
@@ -466,12 +452,45 @@ class TransaksiController extends Controller
 
    }
 
+   public function deliverconfirm($id){
+        
+
+
+    $transaksi = Transaksi::query()->get()->find($id);
+
+
+
+    return view('transaksi.deliverconfirm',["datatransaksi"=>$transaksi]);        
+
+}
+
+
+public function deliverconfirmstore(Request $request): RedirectResponse
+{
+  
+
+$transaksidata = Transaksi::findOrFail($request->id);
+$transaksidata->statusorder = 5;
+$transaksidata->save();
+
+$pengirimandata = Pengiriman::findOrFail($request->id_pengiriman);
+
+$pengirimandata->nama_penerima = $request->penerima;
+$pengirimandata->save();
+ 
+Session::flash('status', 'success');
+Session::flash('message', 'Data Konfirmasi Pengiriman Berhasil');
+
+return redirect('/transaksi-kurir');
+
+}
+
     public function donedeliver($id){
         
         //$transaksidata = Transaksi::query()->get()->find($id);
         $transaksidata = Transaksi::findOrFail($id);
 
-        $transaksidata->statusorder = 4;
+        $transaksidata->statusorder = 6;
         
         $transaksidata->save();
 

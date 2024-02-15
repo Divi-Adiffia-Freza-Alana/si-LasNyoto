@@ -25,37 +25,22 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header bg-blue">
-                <h3 class="card-title">Data Pengiriman </h3>
+                <h3 class="card-title">Data Penerima Barang </h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="/deliverstore" method="post" enctype="multipart/form-data">
+              <form action="/deliverconfirmstore" method="post" enctype="multipart/form-data">
               @csrf
                 <div class="card-body">
                   <div class="row">
                   <input type="hidden" id="id_pengiriman" name="id_pengiriman" value="<?php echo (isset($datatransaksi->pengiriman->id)?$datatransaksi->pengiriman->id:""); ?>">
                   <input type="hidden" id="id" name="id" value="<?php echo (isset($datatransaksi->id)?$datatransaksi->id:""); ?>">
+   
                     <div class="form-group col-md-6">
-                      <label for="exampleInputEmail1">Merk Kendaraan </label>
-                      <input type="text" class="form-control" id="merk" name="merk" placeholder="Merk Kendaraan"  value="">
+                      <label for="exampleInputEmail1">Nama Penerima </label>
+                      <input type="text" class="form-control" id="penerima" name="penerima"  placeholder="Nama Penerima"  value="">
                     </div>
-                    <div class="form-group col-md-6">
-                      <label for="exampleInputEmail1">No. Polisi </label>
-                      <input type="text" class="form-control" id="nopol" name="nopol"  placeholder="no. Polisi"  value="">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="exampleInputEmail1">Nama Pengirim </label>
-                      <input type="text" class="form-control" id="pengirim" name="pengirim"  placeholder="Nama Pengirim"  value="{{$datatransaksi->kurir->name}}">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label>Tanggal Pengiriman</label>
-                        <div class="input-group date">
-                            <input id="estimasi" type="text" class="form-control datepicker" name="tgl_kirim" value="" required/>
-                            <div class="input-group-append">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                            </div>
-                        </div> 
-                    </div>
+        
                    <!-- <div class="form-group col-md-6">
                       <label for="exampleInputEmail1">Tanggal Pengiriman </label>
                       <input type="password" class="form-control" id="password" name="password" placeholder="password" placeholder="Password" value="<?php echo(isset($data->password)?$data->password:"");?>">

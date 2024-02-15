@@ -237,7 +237,8 @@ Route::group(['middleware' => ['role:kurir']], function () {
     Route::any('/deliver/{id}', [TransaksiController::class, 'deliver']);
     Route::any('/deliverstore', [TransaksiController::class, 'deliverstore']);
     Route::any('/donedeliver/{id}', [TransaksiController::class, 'donedeliver']);
-    
+    Route::any('/deliverconfirm/{id}', [TransaksiController::class, 'deliverconfirm']);
+    Route::any('/deliverconfirmstore', [TransaksiController::class, 'deliverconfirmstore']);
     });
 
 

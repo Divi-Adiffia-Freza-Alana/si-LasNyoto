@@ -74,7 +74,7 @@
                       <input type="text" class="form-control money " id="bayar" name="bayar" placeholder="" value="" required>
                     </div>  
                     <?php
-                    if($datatransaksi->estimasi = NULL){
+                    if($datatransaksi->estimasi == NULL){
                      echo ' <div class="form-group col-md-4">
                       <label>Tanggal Estimasi</label>
                         <div class="input-group date">
