@@ -71,7 +71,11 @@
 
                   <div class="row" style="padding-left: 100px;padding-right: 100px;"> 
                     <div class="col-12 mb-4">Demikian penawaran harga yang kami ajukan. Atas perhatiannya kami ucapkan terima kasih.</div>
-                    
+                    <div class="form-group col-md-12">
+                      <label>Deskripsi Pesanan </label>
+                      <textarea class="form-control" rows="3" placeholder="Enter ..."  id="deskripsi" name="" readonly>{{$datatransaksi->deskripsi}}
+                      </textarea>
+                    </div>
                     <!--<form action="/sphbergaining" method="post" enctype="multipart/form-data" class="col-12">
                       @csrf
                       <input type="hidden" class="form-control" id="id" name="id"  value="{{$datatransaksi->sph->id}}">-->

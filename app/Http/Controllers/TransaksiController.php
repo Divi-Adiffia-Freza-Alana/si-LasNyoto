@@ -812,11 +812,11 @@ return redirect('/transaksi-kurir');
                 'estimasi' =>NULL,
                 //'nama' => $request->nama,
                 //'no_hp' => $request->no_hp,
-               
                 'total' => \Cart::getTotal(),
                 'tipe' => $tipe,
                 'jenispembayaran' => $request->jenispembayaran,
                 'statusorder' => 1,
+                'deskripsi' => $request->deskripsi,
 
               
             ]);

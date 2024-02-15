@@ -60,18 +60,24 @@
                         <td>{{$m->nama}}</td> 
                         <td>{{$m->kode_produk}}</td> 
                         <td>{{$m->pivot->qty}}</td> 
-                        <td>{{$m->harga}}</td> 
+                        <td>{{$m->pivot->harga}}</td> 
                         </tr>          
                         @endforeach
                       </tbody>
                     </table>
+
+                    <div class="form-group col-md-12">
+                      <label>Deskripsi Pesanan </label>
+                      <textarea class="form-control" rows="3" placeholder="Enter ..."  id="deskripsi" name="" readonly>{{$data->deskripsi}}
+                      </textarea>
+                    </div>
                    
                   </div>     
                   <br>
                   <div class="row"> 
 
                     
-                    <div class="col-6"> Status Pesanan: <b><?php if($data->status == 1){ echo 'Dalam Proses';}else{ echo 'Telah Selesai';}?></b></div>
+                    <div class="col-6"> Status Pesanan: <b><?php if($data->status <= 5){ echo 'Dalam Proses';}else{ echo 'Telah Selesai';}?></b></div>
                     <div class="col-6 " style="text-align:right;"> Total : Rp. <b class="money"> {{$data->total}}</b></div>
                     <?php  $last = count($data->pembayaran)-1;?>
                     <div class="col-6"> Status Pembayaran : <b> <?php if($data->pembayaran[$last]->status == NULL){ echo 'Belum lunas';}else{ echo 'Sudah Lunas';}?></b></div>

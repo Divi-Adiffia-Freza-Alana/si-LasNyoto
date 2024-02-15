@@ -46,6 +46,11 @@
                       <label>Isi SPH </label>
                       <textarea class="form-control" rows="3" placeholder="Enter ..."  id="deskripsi" name="deskripsi"></textarea>
                     </div>
+                    <div class="form-group col-md-12">
+                      <label>Deskripsi Pesanan </label>
+                      <textarea class="form-control" rows="3" placeholder="Enter ..."  id="deskripsi" name="" readonly>{{$datatransaksi->deskripsi}}
+                      </textarea>
+                    </div>
                     @foreach ($datatransaksi->produk as $p)
                     <input type="hidden" name="id_pivot[]" id="id_pivot" value="{{$p->pivot->id}}">
                     <div class="form-group col-md-4">

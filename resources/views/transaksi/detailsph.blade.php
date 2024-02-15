@@ -77,10 +77,11 @@
                       <input type="hidden" class="form-control" id="id" name="id"  value="{{$datatransaksi->sph->id}}">
                   
                         <!-- textarea -->
-                        <!--<div class="form-group">
-                          <label>Penawaran </label>
-                          <textarea class="form-control" rows="3" placeholder="Isi Penawaran ..."  id="deskripsi" name="deskripsi"><?php echo (isset($data->deskripsi)?$data->deskripsi:""); ?></textarea>
-                        </div>-->
+                        <div class="form-group col-md-12">
+                          <label>Deskripsi Pesanan </label>
+                          <textarea class="form-control" rows="3" placeholder="Enter ..."  id="deskripsi" name="" readonly>{{$datatransaksi->deskripsi}}
+                          </textarea>
+                        </div>
                         <div class="form-group col-12">
                           <label for="exampleInputEmail1">Ajukan Harga Penawaran </label>
                           <input type="text" class="form-control money" id="harga_penawaran" name="harga_penawaran" placeholder="Harga Penawaran" required>

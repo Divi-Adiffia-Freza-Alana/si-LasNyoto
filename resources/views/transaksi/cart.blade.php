@@ -128,6 +128,10 @@
                             <label>Alamat </label>
                             <textarea class="form-control" rows="3" placeholder="Enter ..."  id="alamat" name="alamat"></textarea>
                           </div>
+                          <div class="form-group col-md-12">
+                            <label>Deskripsi </label>
+                            <textarea class="form-control" rows="3" placeholder="Enter ..."  id="deskripsi" name="deskripsi"></textarea>
+                          </div>
             
                     </div>
                  
