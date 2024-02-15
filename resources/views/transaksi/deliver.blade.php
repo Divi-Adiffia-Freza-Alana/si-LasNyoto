@@ -33,6 +33,7 @@
               @csrf
                 <div class="card-body">
                   <div class="row">
+                  <input type="hidden" id="id_pengiriman" name="id_pengiriman" value="<?php echo (isset($datatransaksi->pengiriman->id)?$datatransaksi->pengiriman->id:""); ?>">
                   <input type="hidden" id="id" name="id" value="<?php echo (isset($datatransaksi->id)?$datatransaksi->id:""); ?>">
                     <div class="form-group col-md-6">
                       <label for="exampleInputEmail1">Merk Kendaraan </label>
@@ -41,6 +42,10 @@
                     <div class="form-group col-md-6">
                       <label for="exampleInputEmail1">No. Polisi </label>
                       <input type="text" class="form-control" id="nopol" name="nopol"  placeholder="no. Polisi"  value="">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="exampleInputEmail1">Nama Penerima </label>
+                      <input type="text" class="form-control" id="namapenerima" name="namapenerima"  placeholder="Nama Penerima"  value="">
                     </div>
                    <!-- <div class="form-group col-md-6">
                       <label for="exampleInputEmail1">Tanggal Pengiriman </label>

@@ -48,6 +48,7 @@ class UserSeeder extends Seeder
             'foto_url' => 'http://localhost:8000/foto/Railing Deck-1705594868.jpg',
             'harga' => 300000,
             'status' => 'tersedia',
+            'tipe' => 'Regular',
             ]); 
 
             $produk2 = Produk::create([
@@ -60,7 +61,21 @@ class UserSeeder extends Seeder
                 'foto_url' => 'http://127.0.0.1:8000/foto/Kanopi-1705855191.jpg',
                 'harga' => 2000000,
                 'status' => 'tersedia',
+                'tipe' => 'Regular',
                 ]); 
+
+                $produk3 = Produk::create([
+                    'id' => Str::uuid(),
+                    'kode_produk' => "CS01",
+                    'nama' => 'Custom',
+                    'jenis' => 'Besi',
+                    'deskripsi' => 'abc',
+                    'foto' => 'Kanopi-1705855191.jpg',
+                    'foto_url' => 'http://127.0.0.1:8000/foto/Kanopi-1705855191.jpg',
+                    'harga' => 0,
+                    'status' => 'tersedia',
+                    'tipe' => 'Custom',
+                    ]); 
 
         $user = User::create([
             'id' => Str::uuid(),

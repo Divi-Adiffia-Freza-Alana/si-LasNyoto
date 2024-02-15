@@ -69,10 +69,25 @@
                       <label for="exampleInputEmail1">Total harga </label>
                       <input type="text" class="form-control money" id="total" name="total" placeholder="Harga" value="{{$datatransaksi->transaksi->total}}" readonly>
                     </div>
-                <div class="form-group col-md-4">
+                    <div class="form-group col-md-4">
                       <label for="exampleInputEmail1">Jumlah Bayar </label>
                       <input type="text" class="form-control money " id="bayar" name="bayar" placeholder="" value="" required>
-                    </div>   <!-- 
+                    </div>  
+                    <?php
+                    if($datatransaksi->estimasi = NULL){
+                     echo ' <div class="form-group col-md-4">
+                      <label>Tanggal Estimasi</label>
+                        <div class="input-group date">
+                            <input id="estimasi" type="text" class="form-control datepicker" name="estimasi" value="" required/>
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div> 
+                    </div>';
+                    }
+                      ?>
+    
+         <!-- 
                     <div class="form-group col-md-4">
                       <label for="exampleInputEmail1">Kembalian </label>
                       <input type="text" class="form-control" id="kembalian" name="kembalian" placeholder="kembalian" value="" readonly>

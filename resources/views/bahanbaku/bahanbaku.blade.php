@@ -44,6 +44,13 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              
+                <div class="form-group col-md-4">
+                  <label>Bahan Baku</label>
+                  <select id="selectbahanbaku" name="bahanbaku" class="form-control" style="width: 100%;" required>
+
+                  </select>
+                </div>
                 <table id="data-tables-bahanbaku" class="table table-bordered table-striped" style="width:100%!important">
                   <thead>
                   <tr>

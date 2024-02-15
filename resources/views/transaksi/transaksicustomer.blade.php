@@ -69,6 +69,7 @@
                     <th>Id</th>
                     <th>Kode</th>
                     <th>Tanggal</th>
+                    <th>Tanggal Estimasi</th>
                     <th>Pembeli</th>
                   <!--  <th>No Meja</th>
                     <th>Bag Dapur</th>

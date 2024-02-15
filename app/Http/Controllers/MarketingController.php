@@ -47,7 +47,7 @@ class MarketingController extends Controller
       //exit();
           if ($request->ajax()) {
   
-              $transaksimarketing = Transaksi::with(['produk','konsumen','sph'])->where('id_marketing', '=', auth()->user()->id);
+              $transaksimarketing = Transaksi::with(['produk','konsumen','sph'])->where('id_marketing', '=', auth()->user()->id)->where('tipe','=','Custom');
               return  DataTables::of($transaksimarketing)
                       ->addIndexColumn()
                    /* ->editColumn('category.nama', function($data){

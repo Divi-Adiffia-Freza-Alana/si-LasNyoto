@@ -22,18 +22,20 @@ return new class extends Migration
             $table->foreign('id_marketing')->references('id')->on('users');
             $table->uuid('id_metode_pembayaran')->required();
             $table->foreign('id_metode_pembayaran')->references('id')->on('metode_pembayaran');
-            $table->uuid('id_sph')->required();
-            $table->foreign('id_sph')->references('id')->on('sph');
+            $table->uuid('id_sph')->required()->nullable();
+            $table->uuid('id_pengiriman')->required();
+           // $table->foreign('id_sph')->references('id')->on('sph');
             $table->date('tgl_transaksi');
+            $table->datetime('estimasi')->nullable();
       //    $table->string('nama');
      //     $table->string('no_hp');
-            $table->text('alamat');
+           // $table->text('alamat');
             $table->integer('total')->nullable();
             $table->enum('jenispembayaran', ['Tunai','Kredit']);
+            $table->enum('tipe', ['Custom','Regular']);
             $table->string('statusorder');
-            $table->string('nopol')->nullable();
-            $table->string('kendaraan')->nullable();
-            $table->date('tgl_kirim')->nullable();
+
+
        //     $table->string('status_bayar');
             $table->timestamps();
             $table->softDeletes();

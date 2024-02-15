@@ -44,7 +44,7 @@ class CustomerController extends Controller
       //exit();
           if ($request->ajax()) {
   
-                  $transaksi = Transaksi::with(['produk','kurir','konsumen','marketing','sph','pembayaran','metodepembayaran'])->where('id_konsumen', '=', auth()->user()->id)->whereRelation('sph', 'status','diterima');
+                  $transaksi = Transaksi::with(['produk','kurir','konsumen','marketing','sph','pembayaran','metodepembayaran'])->where('id_konsumen', '=', auth()->user()->id)->where('tipe','=','Custom')->whereRelation('sph', 'status','diterima');
                   return  DataTables::of($transaksi)
                           ->addIndexColumn()
                        /* ->editColumn('category.nama', function($data){
@@ -52,6 +52,12 @@ class CustomerController extends Controller
                           })*/
                           ->editColumn('tgl_transaksi', function($data){ 
                               return dateformat($data->tgl_transaksi);
+                          })
+                        ->editColumn('estimasi', function($data){ 
+                            if($data->estimasi == null){
+                                return '';
+                               }
+                              return dateformat($data->estimasi);
                           })
                           ->editColumn('marketing.nama', function($data){
                               if($data->marketing == null){
@@ -219,6 +225,177 @@ class CustomerController extends Controller
       }
 
 
+      public function indextransaksicustomerregular(Request $request){
+
+        // var_dump(Barang::with('category')->get()->find('f997b850-662e-4f19-b0b6-4dc33a8b9c5b'));
+  
+      //exit();
+          if ($request->ajax()) {
+  
+                  $transaksi = Transaksi::with(['produk','kurir','konsumen','marketing','sph','pembayaran','metodepembayaran'])->where('id_konsumen', '=', auth()->user()->id)->where('tipe', '=', 'Regular');
+                  return  DataTables::of($transaksi)
+                          ->addIndexColumn()
+                       /* ->editColumn('category.nama', function($data){
+                              return $data->category[0]->nama;
+                          })*/
+                          ->editColumn('tgl_transaksi', function($data){ 
+                              return dateformat($data->tgl_transaksi);
+                          })
+                          ->editColumn('estimasi', function($data){ 
+                            if($data->estimasi == null){
+                                return '';
+                               }
+                              return dateformat($data->estimasi);
+                          })
+                          ->editColumn('marketing.nama', function($data){
+                              if($data->marketing == null){
+                                  return '';
+                              }
+                              return $data->marketing->name;
+                          }) 
+                          ->editColumn('jenispembayaran', function($data){
+                              if($data->jenispembayaran == 'Lunas'){
+                                  return 'Tunai';
+                              }else{
+                              return $data->jenispembayaran;}
+                          })
+                          ->editColumn('konsumen.name', function($data){
+                              return $data->konsumen->name;
+                          })
+                          ->addColumn('detail', function($row){
+                              $btn = '<a class="btn bg-blue" href="/transaksi-detail/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-eye"></i> </a>';
+                               return $btn;
+                       })
+        
+                       ->addColumn('statusorder', function($data){
+                          if($data->statusorder == 1){
+                              $btn = '<a class="btn bg-blue" href="" style="color:#00000;display:inline-block;" >Silahkan Tunggu</a>';
+                          }
+  
+                          else if($data->statusorder == 2){
+                              $btn = '<a class="btn bg-green" href=""  style="color:#00000;display:inline-block;" >Sedang Dikirim</a>';
+                          }
+                         
+                          else{
+                          
+                              $btn = '<a class="btn bg-green" href="" style="color:#ffff;display:inline-block;" >Selesai Diantar </a>';
+                          }
+                          
+                           return $btn;
+                      })
+                       ->addColumn('statusbayar', function($data){
+                          //pembayaran Kredit                        
+                          if($data->jenispembayaran == "Kredit"){
+                                //jenis pembayaran Bayar ditempat
+                                if($data->metodepembayaran->jenis == "Cash"){
+                                      
+                                      //Cicilan 1
+                                      if($data->pembayaran[0]->status == NULL){
+                                          $btn = '<a class="btn btn-warning" href="" style="color:#00000;display:inline-block;" >Bayar Cicilan 1</a>';
+                                      }
+                                      //Cicilan 2
+                                      else if($data->pembayaran[1]->status == NULL){
+                                          $btn = '<a class="btn btn-warning" href="" style="color:#00000;display:inline-block;" >Bayar Cicilan 2</a>';
+                                      //Lunas
+                                      }else{
+                                          $btn = '<a class="btn btn-warning" href="" style="color:#00000;display:inline-block;" >Lunas</a>';
+                                          }
+                                  }
+                                  else{
+                                  //jenis pembayaran TF
+                                      //Cicilan 1
+                                      if($data->pembayaran[0]->url_foto == ""){
+                                          $btn = '<a class="btn btn-warning" href="/paidtf/'.(isset($data->pembayaran[0]->id)?$data->pembayaran[0]->id:"").'" style="color:#00000;display:inline-block;" >Bayar Cicilan 1</a>';
+                                      }
+                                      //Cicilan 2
+                                      else if($data->pembayaran[1]->url_foto == ""){
+                                          $btn = '<a class="btn btn-warning" href="/paidtf/'.(isset($data->pembayaran[1]->id)?$data->pembayaran[1]->id:"").'" style="color:#00000;display:inline-block;" >Bayar Cicilan 2</a>';
+                                          //lunas
+                                      }else{
+                                          $btn = '<a class="btn btn-warning" href="" style="color:#00000;display:inline-block;" >Lunas</a>';
+                                          }
+                                 }
+                          }                  
+     
+                           //pembayaran Lunas
+                          else{
+                             //jenis pembayaran Bayar ditempat
+                             if($data->metodepembayaran->jenis == "Cash"){
+                                  $last = count($data->pembayaran)-1;
+                                  //awal pembayaran
+                                  if($data->pembayaran[$last]->status == NULL){
+                                      $btn = '<a class="btn btn-warning" href="" style="color:#00000;display:inline-block;" >Lakukan Pembayaran</a>';
+                                  }
+                                  //Lunas
+                                  else{
+                                      $btn = '<a class="btn btn-warning" href="" style="color:#00000;display:inline-block;" >Lunas</a>';
+                                      } 
+                              }
+                              else{
+                              //jenis pembayaran Bayar TF
+                                  $last = count($data->pembayaran)-1;
+                                  //awal pembayaran
+                                  if($data->pembayaran[$last]->status == NULL){
+                                      $btn = '<a class="btn btn-warning" href="/paidtf/'.(isset($data->pembayaran[$last]->id)?$data->pembayaran[$last]->id:"").'" style="color:#00000;display:inline-block;" >Lakukan Pembayaran</a>';
+                                  }
+                                  //Lunas
+                                  else{
+                                      $btn = '<a class="btn btn-warning" href="" style="color:#00000;display:inline-block;" >Lunas</a>';
+                                      } 
+  
+                              }
+                          }
+                       return $btn;
+                      })
+  
+  
+                          ->addColumn('action', function($row){
+                                 $btn ='<a class="btn btn-danger" href="/transaksi-delete/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-trash"></i></a>';
+                                  return $btn;
+                          })
+  
+                          ->filter(function ($instance) use ($request) {
+  
+                              if ($request->get('filtermonth') == NULL ) {
+      
+      
+      
+                                  $instance->with(['produk','kurir','konsumen'])->where('id_konsumen', '=', auth()->user()->id);
+                                  //exit();
+      
+      
+                                //  $instance->whereMonth('tgl_transaksi', $request->get('filtermonth'));
+      
+                              }
+                              
+                              else{
+                                //  var_dump($request->get('filtermonth'));
+                                  //$instance = Transaksi::with(['pelayan'=> function ($query) {
+                                    //  $query->where('id_user', '=', auth()->user()->id);}])->whereMonth('tgl_transaksi', $request->get('filtermonth'));
+                                 //$instance = Transaksi::with(['pelayan'])->get();
+                                 //$instance[0]->whereMonth('tgl_transaksi', $request->get('filtermonth'))
+                                 $instance->with(['produk','kurir','konsumen'])->where('id_konsumen', '=', auth()->user()->id)->whereMonth('tgl_transaksi', $request->get('filtermonth'));
+                         
+                                // $instance = Transaksi::with(['pelayan'=> function ($query) {
+                                 // $query->where('id_user', '=', auth()->user()->id);}]);
+                              
+                                 //$instance = Transaksi::whereMonth('tgl_transaksi', $request->get('filtermonth'));
+                                  //var_dump($instance);
+                              }
+      
+                   
+      
+                          })
+                          
+                          ->rawColumns(['action','sph','detail','statusbayar','statusorder','tambahpesanan'])
+                          ->make(true);
+  
+              }
+             
+          return view('transaksi.transaksicustomerregular'); 
+      }
+
+
     public function indextransaksisphcustomer(Request $request){
 
         // var_dump(Barang::with('category')->get()->find('f997b850-662e-4f19-b0b6-4dc33a8b9c5b'));
@@ -226,7 +403,7 @@ class CustomerController extends Controller
       //exit();
           if ($request->ajax()) {
   
-                  $transaksi = Transaksi::with(['produk','kurir','konsumen','marketing','sph','pembayaran','metodepembayaran'])->where('id_konsumen', '=', auth()->user()->id);
+                  $transaksi = Transaksi::with(['produk','kurir','konsumen','marketing','sph','pembayaran','metodepembayaran'])->where('id_konsumen', '=', auth()->user()->id)->where('tipe','=','Custom');
                   return  DataTables::of($transaksi)
                           ->addIndexColumn()
                        /* ->editColumn('category.nama', function($data){

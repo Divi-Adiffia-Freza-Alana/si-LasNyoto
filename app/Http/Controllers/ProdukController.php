@@ -80,7 +80,7 @@ class ProdukController extends Controller
 
   
     $validator = Validator::make($request->all(), [
-        'foto' => 'image|mimes:jpeg,png,jpg',
+        'foto' => 'image|mimes:jpeg,png,jpg'
     ]);
 
     if ($validator->fails()) {
@@ -106,6 +106,7 @@ class ProdukController extends Controller
                 'foto' => $namefile,
                 'foto_url' => urlimage($namefile),
                 'harga' => $request->harga,
+                'tipe' => $request->tipe,
                 'status' => $request->status,
 
             ]);
@@ -139,6 +140,7 @@ class ProdukController extends Controller
                 'foto' => $namefile,
                 'foto_url' => urlimage($namefile),
                 'harga' => $request->harga,
+                'tipe' => $request->tipe,
                 'status' => $request->status,
         ]);
 
@@ -215,11 +217,12 @@ class ProdukController extends Controller
 
 
 public function bahanbakuprodukindex(Request $request){
-            
+   
 
     if ($request->ajax()) {
        // $kurir = Kurir::with('');
        $bahanbakuproduk = BahanBaku_Produk_Detail::with(['bahanbaku','produk'])->where('id_produk', '=', $request->get('id'))->get();
+ 
         return  DataTables::of($bahanbakuproduk)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){

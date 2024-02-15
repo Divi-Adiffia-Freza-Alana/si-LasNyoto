@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('foto');
             $table->string('foto_url');
             $table->integer('harga');
+            $table->enum('tipe', ['Custom', 'Regular']);
             $table->enum('status', ['Tersedia', 'Kosong']);
             $table->timestamps();
             $table->softDeletes();

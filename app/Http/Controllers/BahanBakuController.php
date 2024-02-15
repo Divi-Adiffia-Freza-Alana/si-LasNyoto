@@ -66,6 +66,22 @@ class BahanBakuController extends Controller
                                 <a class="btn btn-danger" href="/bahanbaku-delete/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-trash"></i></a>';
                          return $btn;
                  })
+                 ->filter(function ($instance) use ($request) {
+  
+                    if ($request->get('id') ) {
+
+                      // var_dump("HAHA");
+                       // exit();
+
+                        $instance->Where('id', $request->get('id'));
+
+                    }else{
+                        $instance->orderBy('nama','asc');
+                    }
+
+         
+
+                })
                     ->rawColumns(['status','action'])
                     ->make(true);
         }

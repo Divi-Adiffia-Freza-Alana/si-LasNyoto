@@ -68,6 +68,7 @@
                   <tr>
                     <th>Bahan Baku</th>
                     <th>Qty</th>
+                    <th>Satuan</th>
                     <th>Action</th>
                   </tr>
                   </thead>

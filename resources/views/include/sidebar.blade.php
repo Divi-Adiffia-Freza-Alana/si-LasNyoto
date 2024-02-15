@@ -100,7 +100,15 @@
           <a href="/transaksi-customer" class="nav-link">
             <i class=" nav-icon fa-solid fa-cart-shopping"></i>
             <p>
-              Transaksi Customer
+              Transaksi Custom
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/transaksi-customerregular" class="nav-link">
+            <i class=" nav-icon fa-solid fa-cart-shopping"></i>
+            <p>
+              Transaksi Regular
             </p>
           </a>
         </li>

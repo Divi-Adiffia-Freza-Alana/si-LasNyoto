@@ -13,7 +13,7 @@ class Transaksi extends Model
     protected $table = 'transaksi';  
     
     //protected $fillable = ['id', 'kode', 'id_konsumen','id_kurir','id_marketing', 'id_metode_pembayaran', 'id_sph','tgl_transaksi', 'nama','no_hp','alamat', 'total','jenispembayaran','statusorder'];
-    protected $fillable = ['id', 'kode', 'id_konsumen','id_kurir','id_marketing', 'id_metode_pembayaran', 'id_sph','tgl_transaksi','alamat', 'total','jenispembayaran','statusorder','nopol','kendaraan','tgl_kirim'];
+    protected $fillable = ['id', 'kode', 'id_konsumen','id_kurir','id_marketing', 'id_metode_pembayaran', 'id_sph', 'id_pengiriman','tgl_transaksi','estimasi', 'total','jenispembayaran','tipe','statusorder'];
 
     public function getIncrementing(){
         return false;
@@ -41,6 +41,11 @@ class Transaksi extends Model
     public function kurir()
     {
         return $this->hasOne(Users::Class, 'id', 'id_kurir');
+    }
+
+    public function pengiriman()
+    {
+        return $this->hasOne(Pengiriman::Class, 'id', 'id_pengiriman');
     }
 
     

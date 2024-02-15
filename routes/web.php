@@ -163,6 +163,7 @@ Route::any('/selectmeja', [MejaController::class, 'selectMeja']);
 //Route Transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
 Route::get('/transaksi-customer', [CustomerController::class, 'indextransaksicustomer'])->name('transaksicustomer.index');
+Route::get('/transaksi-customerregular', [CustomerController::class, 'indextransaksicustomerregular'])->name('transaksicustomerregular.index');
 Route::get('/transaksi-sph-customer', [CustomerController::class, 'indextransaksisphcustomer'])->name('transaksisphcustomer.index');
 Route::get('/transaksi-marketing', [MarketingController::class, 'indextransaksimarketing'])->name('transaksimarketing.index');
 Route::get('/transaksi-owner', [TransaksiController::class, 'indextransaksiowner'])->name('transaksiowner.index');

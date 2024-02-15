@@ -18,6 +18,8 @@ use App\Models\Pembayaran;
 use App\Models\Sph;
 use App\Models\Transaksi_detail;
 use App\Models\BahanBaku;
+use App\Models\Pengiriman;
+
 use Illuminate\Http\RedirectResponse;
 
 
@@ -46,6 +48,12 @@ class TransaksiController extends Controller
                       ->addIndexColumn()
                       ->editColumn('tgl_transaksi', function($data){ 
                           return dateformat($data->tgl_transaksi);
+                      })
+                      ->editColumn('estimasi', function($data){ 
+                        if($data->estimasi == null){
+                            return '';
+                           }
+                          return dateformat($data->estimasi);
                       })
                       ->editColumn('kurir.nama', function($data){
                           if($data->kurir->name == null){
@@ -441,11 +449,15 @@ class TransaksiController extends Controller
    {
    
     $transaksidata = Transaksi::findOrFail($request->id);
-    $transaksidata->nopol = $request->nopol;
-    $transaksidata->kendaraan = $request->merk;
-    $transaksidata->tgl_kirim = Carbon::now()->format('Y-m-d');
     $transaksidata->statusorder = 3;
     $transaksidata->save();
+
+    $pengirimandata = Pengiriman::findOrFail($request->id_pengiriman);
+    $pengirimandata->nopol = $request->nopol;
+    $pengirimandata->kendaraan = $request->merk;
+    $pengirimandata->tgl_kirim = Carbon::now()->format('Y-m-d');
+    $pengirimandata->nama_penerima = $request->nama_penerima;
+    $pengirimandata->save();
      
     Session::flash('status', 'success');
     Session::flash('message', 'Data Pengirim Berhasil');
@@ -686,12 +698,7 @@ class TransaksiController extends Controller
         //$kode_sph = "SPH".Carbon::now()->format('Ymd').$number;
 
 
-        $sph = SPH::create([
-            'id' => Str::uuid(),
-            'kode' => '',
-            'deskripsi' => '',
-            
-        ]);
+
 
 
         $kurir = Users::select("id")->whereRelation('kurir', 'id_user', '!=', NULL)->get();
@@ -720,11 +727,59 @@ class TransaksiController extends Controller
 
         //var_dump($bagdapur);
         //exit()
+
         $items = \Cart::getContent();
 
-        if ($request->id == NULL || $request->id == "") {
-           
+        $tipe = '';
+        // BUG BACA REGULER
+        //CUSTOM 2 AMAN
+  
+        foreach ($items as $index=> $row) {    
 
+            $produkjenis = Produk::Where('id','=',$row->id)->get();
+
+            if($produkjenis[0]->tipe == "Custom"){
+             $tipe = "Custom";
+            }
+            else{
+                $tipe = "Regular";
+            }
+        }
+
+
+        $sph = NULL ;
+    
+        if($tipe == "Custom"){
+          
+            $sph = SPH::create([
+                'id' => Str::uuid(),
+                'kode' => '',
+                'deskripsi' => '',
+                
+            ]);
+        }
+
+
+
+
+       // var_dump($kurir[rand(0,count($kurir)-1)]->id);
+       // exit();
+        
+        $pengiriman = Pengiriman::create([
+            'id' => Str::uuid(),
+            'id_kurir' => $kurir[rand(0,count($kurir)-1)]->id,
+            'nopol' => '',
+            'kendaraan' => '',
+            'tgl_kirim' => NULL,
+            'alamat' => $request->alamat,
+            'nama_penerima' => '',
+            
+        ]);
+
+    
+
+        if ($request->id == NULL || $request->id == "") {
+ 
             $transaksi = Transaksi::create([
                 'id' => Str::uuid(),
                 'kode' => $id_transaksi,
@@ -732,12 +787,15 @@ class TransaksiController extends Controller
                 'id_kurir' => $kurir[rand(0,count($kurir)-1)]->id,
                 'id_marketing' => $marketing[rand(0,count($marketing)-1)]->id,
                 'id_metode_pembayaran' => $request->metode_pembayaran,
-                'id_sph' => $sph->id,
+                'id_sph' => (isset($sph->id)?$sph->id:NULL),
+                'id_pengiriman' => $pengiriman->id,
                 'tgl_transaksi' =>Carbon::now()->format('Y-m-d'),
+                'estimasi' =>NULL,
                 //'nama' => $request->nama,
                 //'no_hp' => $request->no_hp,
-                'alamat' => $request->alamat,
+               
                 'total' => \Cart::getTotal(),
+                'tipe' => $tipe,
                 'jenispembayaran' => $request->jenispembayaran,
                 'statusorder' => 1,
 
@@ -987,7 +1045,7 @@ public function validatepaidstore(Request $request): RedirectResponse
 
 
     
-   //$transaksi = Transaksi::with(['pembayaran'])->get()->find($request->id_transaksi);
+   $transaksi = Transaksi::with(['pembayaran'])->get()->find($request->id_transaksi);
    $pembayaran = Pembayaran::with(['transaksi'])->get()->find($request->id_pembayaran);
 
     //lunas
@@ -996,6 +1054,8 @@ public function validatepaidstore(Request $request): RedirectResponse
         $pembayaran->jumlah = $request->bayar;
         $pembayaran->status = 'Lunas';
         $pembayaran->save();
+        $transaksi->estimasi = date("Y-m-d", strtotime($request->estimasi));
+        $transaksi->save();
     }
     else{
     //cicilan
@@ -1008,6 +1068,8 @@ public function validatepaidstore(Request $request): RedirectResponse
         $pembayaran->jumlah = $request->bayar;
         $pembayaran->status = 'Cicilan1';
         $pembayaran->save();
+        $transaksi->estimasi = date("Y-m-d", strtotime($request->estimasi));
+        $transaksi->save();
 
     }
    // cicilan2

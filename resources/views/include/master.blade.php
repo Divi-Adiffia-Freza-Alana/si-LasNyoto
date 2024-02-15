@@ -180,6 +180,12 @@
 
   });
 
+  $('#selectbahanbaku').change(function(){
+    console.log("asup");
+    tablebahanbaku.draw();
+
+  });
+
   var table = $('#data-tables-pelayan').DataTable({
       processing: true,
       serverSide: true,
@@ -232,6 +238,7 @@
         {data: 'id', name: 'id',orderable: false, searchable: false,visible:false},
         {data: 'kode', name: 'kode'},
         {data: 'tgl_transaksi', name: 'tgl_transaksi'},
+        {data: 'estimasi', name: 'estimasi'},
         {data: 'konsumen.name', name: 'konsumen.name'},
        // {data: 'meja.nomor', name: 'meja.nomor'},
       //{data: 'bagdapur.nama', name: 'bagdapur.nama'},
@@ -311,6 +318,42 @@
         {data: 'id', name: 'id',orderable: false, searchable: false,visible:false},
         {data: 'kode', name: 'kode'},
         {data: 'tgl_transaksi', name: 'tgl_transaksi'},
+        {data: 'estimasi', name: 'estimasi'},
+        {data: 'konsumen.name', name: 'konsumen.name'},
+        {data: 'marketing.nama', name: 'marketing.nama'},
+        {data: 'jenispembayaran', name: 'jenispembayaran'},
+        {data: 'statusbayar', name: 'statusbayar'},
+        {data: 'statusorder', name: 'statusorder'},
+        {data: 'detail', name: 'detail', orderable: false, searchable: false}, 
+        {data: 'action', name: 'action', orderable: false, searchable: false},
+          
+      ]
+
+
+  });
+
+  var tabletransaksicustomerregular = $('#data-tables-transaksicustomerregular').DataTable({
+      processing: true,
+      serverSide: true,
+     // ajax: "{{ route('transaksi.index') }}",
+     ajax: {
+
+          url: "{{ route('transaksicustomerregular.index') }}",
+
+          data: function (d) {
+
+                d.filtermonth = $('#filtermonth').val(),
+
+                d.search = $('input[type="search"]').val()
+
+            }
+
+          },
+      columns: [
+        {data: 'id', name: 'id',orderable: false, searchable: false,visible:false},
+        {data: 'kode', name: 'kode'},
+        {data: 'tgl_transaksi', name: 'tgl_transaksi'},
+        {data: 'estimasi', name: 'estimasi'},
         {data: 'konsumen.name', name: 'konsumen.name'},
         {data: 'marketing.nama', name: 'marketing.nama'},
         {data: 'jenispembayaran', name: 'jenispembayaran'},
@@ -395,11 +438,20 @@
       tabletransaksi.columns( [8] ).visible( true );
       }*/
 
-  var table = $('#data-tables-bahanbaku').DataTable({
+  var tablebahanbaku = $('#data-tables-bahanbaku').DataTable({
       processing: true,
       serverSide: true,
       autoWidth: true,
-      ajax: "{{ route('bahanbaku.index') }}",
+      ajax: {
+
+        url: "{{ route('bahanbaku.index') }}",
+
+        data: function (d) {
+          d.id = $('#selectbahanbaku').val(),
+          d.search = $('input[type="search"]').val()
+          }
+
+        },
       columns: [ 
           {data: 'nama', name: 'nama'},
           {data: 'stok', name: 'stok'},
@@ -503,6 +555,7 @@
       columns: [
           {data: 'bahanbaku.nama', name: 'bahanbaku.nama'},
           {data: 'qty', name: 'qty'},
+          {data: 'bahanbaku.satuan', name: 'bahanbaku.satuan'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
           
       ]

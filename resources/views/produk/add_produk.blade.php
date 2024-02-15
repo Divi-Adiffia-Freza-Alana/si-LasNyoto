@@ -83,12 +83,20 @@
                       <input type="text" class="form-control money" name="harga" id="harga" placeholder="Harga" value="<?php echo (isset($data->harga)?$data->harga:""); ?>" data-mask="0.000.000.000" data-mask-reverse="true" required>
                     </div>
                     <div class="form-group">
+                      <label>Tipe</label>
+                      <select id="tipe" name="tipe" class="form-control" required>
+                      <option <?php echo (isset($data->tipe)&&$data->tipe=="Regular"?"selected":""); ?> value="Regular">Regular</option>
+                      <option <?php echo (isset($data->tipe)&&$data->tipe=="Custom"?"selected":""); ?> value="Custom">Custom</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label>status</label>
                       <select id="status" name="status" class="form-control" required>
                       <option <?php echo (isset($data->status)&&$data->status=="Tersedia"?"selected":""); ?> value="Tersedia">Tersedia</option>
                       <option <?php echo (isset($data->status)&&$data->status=="Kosong"?"selected":""); ?> value="Kosong">Kosong</option>
                       </select>
                     </div>
+                    
 
 
   

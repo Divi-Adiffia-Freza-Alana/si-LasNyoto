@@ -12,7 +12,7 @@ class Produk extends Model
 
     protected $table = 'produk';
     
-    protected $fillable = ['id','kode_produk','nama','jenis','deskripsi','foto','foto_url','harga', 'status'];
+    protected $fillable = ['id','kode_produk','nama','jenis','deskripsi','foto','foto_url','harga', 'status', 'tipe'];
 
     public function getIncrementing(){
         return false;
