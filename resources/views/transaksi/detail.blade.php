@@ -72,12 +72,23 @@
                       </textarea>
                     </div>
                    
-                  </div>     
+                  </div>    
+                  <br>
+                  <?php if($data->pengiriman->nama_penerima == NULL){
+                    echo  '                
+                        <div class="row"> 
+                        <div class="col-6"> Nama Penerima  :  '. $data->pengiriman->nama_penerima.'</div>
+                        <div class="col-6"> </div>
+                        <div class="col-6"> Tanggal Terima:  '. dateformat($data->pengiriman->tgl_kirim).' </div>
+
+                        </div>' ;
+                  } ?>
+
                   <br>
                   <div class="row"> 
 
                     
-                    <div class="col-6"> Status Pesanan: <b><?php if($data->status <= 5){ echo 'Dalam Proses';}else{ echo 'Telah Selesai';}?></b></div>
+                    <div class="col-6"> Status Pesanan: <b><?php if($data->statusorder <= 4){ echo 'Dalam Proses';}else{ echo 'Telah Selesai';}?></b></div>
                     <div class="col-6 " style="text-align:right;"> Total : Rp. <b class="money"> {{$data->total}}</b></div>
                     <?php  $last = count($data->pembayaran)-1;?>
                     <div class="col-6"> Status Pembayaran : <b> <?php if($data->pembayaran[$last]->status == NULL){ echo 'Belum lunas';}else{ echo 'Sudah Lunas';}?></b></div>
@@ -85,7 +96,7 @@
                     
                     <div class="col-6" > 
                       <br>
-                    <?php  if(auth()->user()->hasRole('superadmin') and $data->status == 3 and $data->status_bayar == 2  ){
+                    <?php  if(auth()->user()->hasRole('superadmin') and $data->statusorder >= 5 and $data->pembayaran[$last]->status== "Lunas"  ){
                       echo '<input class="no-print" style="float: left;" type="button" value="Print" onClick="window.print()">'; }?>
                     </div>
 

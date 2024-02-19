@@ -13,7 +13,7 @@ class Transaksi extends Model
     protected $table = 'transaksi';  
     
     //protected $fillable = ['id', 'kode', 'id_konsumen','id_kurir','id_marketing', 'id_metode_pembayaran', 'id_sph','tgl_transaksi', 'nama','no_hp','alamat', 'total','jenispembayaran','statusorder'];
-    protected $fillable = ['id', 'kode', 'id_konsumen','id_kurir','id_marketing', 'id_metode_pembayaran', 'id_sph', 'id_pengiriman','tgl_transaksi','estimasi', 'total','jenispembayaran','tipe','statusorder','deskripsi'];
+    protected $fillable = ['id', 'kode', 'id_konsumen','id_kurir','id_marketing','id_produksi', 'id_metode_pembayaran', 'id_sph', 'id_pengiriman','tgl_transaksi','estimasi', 'total','jenispembayaran','tipe','statusorder','deskripsi'];
 
     public function getIncrementing(){
         return false;

@@ -198,5 +198,171 @@ class MarketingController extends Controller
       
     }
 
+
+    
+    public function selectBagmarketing (Request $request)
+    {
+        $marketing = [];
+        if($request->has('q')){
+            $search = $request->q;
+            $marketing =Marketing::select("id", "nama")
+                    ->where('nama', 'LIKE', "%$search%")
+                    ->get();
+        }else{ 
+            $marketing =Marketing::select("id", "nama")->orderBy('id')->get(10);
+        }
+        return response()->json($marketing);
+    }
+
+    public function index(Request $request){
+
+        //dd(Keeper::with(['keeperfoto']));
+
+        if ($request->ajax()) {
+           // $kurir = Kurir::query('');
+           $marketing = Marketing::with('user');
+            return  DataTables::of($marketing)
+                    ->addIndexColumn()
+                  ->editColumn('user.name', function($data){
+                        return $data->user->name;
+                    })
+                   /* ->editColumn('status_kehadiran', function($data){
+                        if($data->status_kehadiran == "Hadir"){
+                            $btn = '<a class="btn btn-warning" href="/unpresent/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Hadir</a>';
+                        }
+                        else{
+                            $btn = '<a class="btn bg-green" href="/present/'.(isset($data->id)?$data->id:"").'" style="color:#00000;display:inline-block;" >Tidak hadir</a>';
+                        }
+                       
+                         return $btn;
+                    })*/
+                 
+                    ->addColumn('action', function($row){
+                           $btn = '<a class="btn btn-primary" href="/marketing-edit/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-pen-to-square"></i> </a>
+                                   <a class="btn btn-danger" href="/marketing-delete/'.(isset($row->id)?$row->id:"").'" style="color:#ffff;display:inline-block;" ><i class="fa-solid fa-trash"></i></a>';
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        return view('marketing.marketing');
+
+    }
+
+    public function add(){
+
+        return view('marketing.add_marketing');
+
+    }
+
+
+    public function edit($id){
+        
+        $marketingdata = Marketing::query()->get()->find($id);
+       // $kandangdata = Kandang::with('keeperKandang')->get()->find($id);
+        //dd($keeperdata);
+        return view('marketing.add_marketing',['data' =>$marketingdata]);
+
+    }
+
+    
+
+    public function store(Request $request): RedirectResponse
+    
+    {   
+
+
+ 
+            if($request->id == NULL || $request->id == "" ){
+
+                
+                $marketing = Marketing::create([
+                     'id' => Str::uuid(),
+                     'id_user' => $request->user,
+                     'jk' => $request->jk,
+                     'no_hp' => $request->no_hp,
+                  //   'status_kehadiran' => $request->status_kehadiran,
+                 ]); 
+                 
+             
+                 Session::flash('status', 'success');
+                 Session::flash('message', 'Tambah Data Marketing Berhasil');
+              }
+     else{
+        //dd($namefile);
+            
+        Marketing::updateOrCreate(
+             ['id' => $request->id],
+             [
+                'id_user' => $request->user,
+                'jk' => $request->jk,
+                'no_hp' => $request->no_hp,
+            //    'status_kehadiran' => $request->status_kehadiran,
+             ]
+             );
+ 
+           /*  $namefile='';
+             if ($request->file('foto')){
+             $extension = $request->file('foto')->getClientOriginalExtension();
+             $namefile = $request->nama.'-'.now()->timestamp.'.'.$extension;
+             $request->file('foto')->move('foto', $namefile);
+             Keeper_foto::create([
+                'id' => Str::uuid(),
+                'id_keeper' => $request->id,
+                'nama' => $namefile,
+                'url' => urlimage($namefile) 
+
+            ]);
+            }
+     
+             else{ 
+                 $namefile=$request->fotolabel;
+             }
+ 
+             if($request->fotolabel != NULL){
+                 $flight = Keeper_foto::find($request->id_foto);
+             
+                 $flight->nama = $namefile;
+                 $flight->url = urlimage($namefile); 
+                 $flight->save();
+             }*/
+ 
+     
+ 
+             /*Keeper_foto::updateOrCreate(
+                 ['id' => $request->id_foto],
+                 ['nama' => $namefile]);*/
+             
+ 
+             Session::flash('status', 'success');
+             Session::flash('message', 'Edit Data Marketing Berhasil');
+             
+         
+            
+        }
+
+
+
+      
+
+          
+
+        return redirect('/marketing');
+    }
+
+    public function delete($id){
+
+        $delete = Marketing::findorFail($id);
+        $delete->delete();
+
+        /*$deleteKeeperfoto = Keeper_foto::findorFail($id);
+        $deleteKeeperfoto->delete();*/
+        Session::flash('status', 'success');
+        Session::flash('message', 'Delete Data Marketing Berhasil');
+
+        return redirect('/marketing');
+
+    }
+
   
 }

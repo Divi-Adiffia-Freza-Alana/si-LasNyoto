@@ -153,26 +153,7 @@
 
 
       
-  var tabledapur = $('#data-tables-bagdapur').DataTable({
-      processing: true,
-      serverSide: true,
-      autoWidth: true,
-      //ajax: "{{ route('bagdapur.index') }}",
-      ajax: {
 
-        url: "{{ route('bagdapur.index') }}",
-
-        },
-      columns: [ 
-        {data: 'id', name: 'id', visible:false},
-          {data: 'user.name', name: 'user.name'},
-          {data: 'no_hp', name: 'no_hp'},
-          {data: 'jk', name: 'jk'},
-          {data: 'status_kehadiran', name: 'status_kehadiran'},
-          {data: 'action', name: 'action', orderable: false, searchable: false},
-      ]
-
-  });
 
   $('#filtermonth').change(function(){
     console.log("asup");
@@ -192,27 +173,58 @@
 
   });
 
-  var table = $('#data-tables-pelayan').DataTable({
-      processing: true,
-      serverSide: true,
-      autoWidth: true,
-      ajax: "{{ route('pelayan.index') }}",
-      columns: [ 
-         {data: 'id', name: 'id', visible:false},
-          {data: 'user.name', name: 'user.name'},
-          {data: 'no_hp', name: 'no_hp'},
-          {data: 'jk', name: 'jk'},
-          {data: 'status_kehadiran', name: 'status_kehadiran'},
-          {data: 'action', name: 'action', orderable: false, searchable: false},
-      ]
 
-  });
 
   var table = $('#data-tables-kurir').DataTable({
       processing: true,
       serverSide: true,
       autoWidth: true,
       ajax: "{{ route('kurir.index') }}",
+      columns: [ 
+         {data: 'id', name: 'id', visible:false},
+          {data: 'user.name', name: 'user.name'},
+          {data: 'no_hp', name: 'no_hp'},
+          {data: 'jk', name: 'jk'},
+          {data: 'action', name: 'action', orderable: false, searchable: false},
+      ]
+
+  });
+
+  var tablemarketing = $('#data-tables-marketing').DataTable({
+      processing: true,
+      serverSide: true,
+      autoWidth: true,
+      ajax: "{{ route('marketing.index') }}",
+      columns: [ 
+         {data: 'id', name: 'id', visible:false},
+          {data: 'user.name', name: 'user.name'},
+          {data: 'no_hp', name: 'no_hp'},
+          {data: 'jk', name: 'jk'},
+          {data: 'action', name: 'action', orderable: false, searchable: false},
+      ]
+
+  });
+
+  var tablepurchasing = $('#data-tables-purchasing').DataTable({
+      processing: true,
+      serverSide: true,
+      autoWidth: true,
+      ajax: "{{ route('purchasing.index') }}",
+      columns: [ 
+         {data: 'id', name: 'id', visible:false},
+          {data: 'user.name', name: 'user.name'},
+          {data: 'no_hp', name: 'no_hp'},
+          {data: 'jk', name: 'jk'},
+          {data: 'action', name: 'action', orderable: false, searchable: false},
+      ]
+
+  });
+
+  var tableproduksi = $('#data-tables-produksi').DataTable({
+      processing: true,
+      serverSide: true,
+      autoWidth: true,
+      ajax: "{{ route('produksi.index') }}",
       columns: [ 
          {data: 'id', name: 'id', visible:false},
           {data: 'user.name', name: 'user.name'},
@@ -660,6 +672,8 @@
         changeMonth: true,
         changeYear: true,
      });
+
+
 
     });
 

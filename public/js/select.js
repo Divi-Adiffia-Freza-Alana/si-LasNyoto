@@ -113,16 +113,11 @@ $(function () {
 });
 
 
-
-
-
-
-
 $(function () {
-    $('#selectpelayans').select2({
-        placeholder: 'Select Pelayan',
+    $('#selectmarketing').select2({
+        placeholder: 'Select Marketing',
           ajax: {
-              url: '/selectpelayans',
+              url: '/selectmarketing',
               dataType: 'json',
               delay: 250,
               processResults: function (data) {
@@ -142,10 +137,32 @@ $(function () {
 
 
 $(function () {
-    $('#selectdapurs').select2({
-        placeholder: 'Select Dapur',
+    $('#selectpurchasing').select2({
+        placeholder: 'Select Purchasing',
           ajax: {
-              url: '/selectdapurs',
+              url: '/selectpurchasing',
+              dataType: 'json',
+              delay: 250,
+              processResults: function (data) {
+                  return {
+                      results: $.map(data, function (item) {
+                          return {
+                              text: item.name,
+                              id: item.id
+                          }
+                      })
+                  };
+              },
+              cache: true
+          }
+      });
+});
+
+$(function () {
+    $('#selectproduksi').select2({
+        placeholder: 'Select Produksi',
+          ajax: {
+              url: '/selectproduksi',
               dataType: 'json',
               delay: 250,
               processResults: function (data) {
@@ -164,52 +181,11 @@ $(function () {
 });
 
 
-$(function () {
-    $('#selectbagdapur').select2({
-        placeholder: 'Select Bag Dapur',
-          ajax: {
-              url: '/selectbagdapur',
-              dataType: 'json',
-              delay: 250,
-              processResults: function (data) {
-                  return {
-                      results: $.map(data, function (item) {
-                          return {
-                              text: item.nama,
-                              id: item.id
-                          }
-                      })
-                  };
-              },
-              cache: true
-          }
-      });
-});
 
 
 
 
-$(function () {
-    $('#selectmeja').select2({
-        placeholder: 'Select Meja',
-          ajax: {
-              url: '/selectmeja',
-              dataType: 'json',
-              delay: 250,
-              processResults: function (data) {
-                  return {
-                      results: $.map(data, function (item) {
-                          return {
-                              text: item.nomor,
-                              id: item.id
-                          }
-                      })
-                  };
-              },
-              cache: true
-          }
-      });
-});
+
 
 
 $(function () {

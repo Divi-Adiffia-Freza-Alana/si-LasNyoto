@@ -27,14 +27,14 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Sidebar Menu Admin-->
           @hasrole('superadmin')
-          <li class="nav-item">
+         <!-- <li class="nav-item">
             <a href="/" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
-          </li>
+          </li>-->
           <li class="nav-item">
             <a href="/transaksi" class="nav-link">
               <i class=" nav-icon fa-solid fa-cart-shopping"></i>
@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/kurir" class="nav-link">
+            <a href="/marketing" class="nav-link">
               <i class=" nav-icon fa-solid fa-users"></i>
               <p>
                 Staf Penjualan 
@@ -60,10 +60,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/kurir" class="nav-link">
+            <a href="/purchasing" class="nav-link">
               <i class=" nav-icon fa-solid fa-users"></i>
               <p>
                 Staf Bahan Baku 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/produksi" class="nav-link">
+              <i class=" nav-icon fa-solid fa-users"></i>
+              <p>
+                Staf Produksi
               </p>
             </a>
           </li>

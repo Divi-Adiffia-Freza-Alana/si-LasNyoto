@@ -19,6 +19,8 @@ use App\Http\Controllers\TransaksiSuplierController;
 use App\Http\Controllers\SuplierController; 
 use App\Http\Controllers\ProdukController; 
 use App\Http\Controllers\KurirController; 
+use App\Http\Controllers\PurchasingController; 
+use App\Http\Controllers\ProduksiController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,6 +79,30 @@ Route::any('/bahanbakuprodukindex', [ProdukController::class, 'bahanbakuprodukin
 Route::any('/bahanbakuproduk-delete/{id}', [ProdukController::class, 'bahanbakuprodukdelete']);
 
 
+//Route Produksi
+Route::get('/produksi', [ProduksiController::class, 'index'])->name('produksi.index');
+Route::any('/produksistore', [ProduksiController::class, 'store']);
+Route::get('/produksi-add', [ProduksiController::class, 'add']);
+Route::any('/produksi-edit/{id}', [ProduksiController::class, 'edit']);
+Route::any('/produksi-delete/{id}', [ProduksiController::class, 'delete']);
+Route::any('/selectproduksi', [ProduksiController::class, 'selectBagProduksi']);
+
+//Route Purchasing
+Route::get('/purchasing', [PurchasingController::class, 'index'])->name('purchasing.index');
+Route::any('/purchasingstore', [PurchasingController::class, 'store']);
+Route::get('/purchasing-add', [PurchasingController::class, 'add']);
+Route::any('/purchasing-edit/{id}', [PurchasingController::class, 'edit']);
+Route::any('/purchasing-delete/{id}', [PurchasingController::class, 'delete']);
+Route::any('/selectpurchasing', [PurchasingController::class, 'selectBagPurchasing']);
+
+//Route Marketing
+Route::get('/marketing', [MarketingController::class, 'index'])->name('marketing.index');
+Route::any('/marketingstore', [MarketingController::class, 'store']);
+Route::get('/marketing-add', [MarketingController::class, 'add']);
+Route::any('/marketing-edit/{id}', [MarketingController::class, 'edit']);
+Route::any('/marketing-delete/{id}', [MarketingController::class, 'delete']);
+Route::any('/selectmarketing', [MarketingController::class, 'selectBagMarketing']);
+
 //Route Kurir
 Route::get('/kurir', [KurirController::class, 'index'])->name('kurir.index');
 Route::any('/kurirstore', [KurirController::class, 'store']);
@@ -91,7 +117,9 @@ Route::any('/selectkurir', [KurirController::class, 'selectBagKurir']);
 
 
 
-//Route Bag Dapur
+
+
+/*//Route Bag Dapur
 Route::get('/bagdapur', [BagDapurController::class, 'index'])->name('bagdapur.index');
 Route::any('/bagdapurstore', [BagDapurController::class, 'store']);
 Route::get('/bagdapur-add', [BagDapurController::class, 'add']);
@@ -106,7 +134,7 @@ Route::any('/pelayanstore', [PelayanController::class, 'store']);
 Route::get('/pelayan-add', [PelayanController::class, 'add']);
 Route::any('/pelayan-edit/{id}', [PelayanController::class, 'edit']);
 Route::any('/pelayan-delete/{id}', [PelayanController::class, 'delete']);
-Route::any('/selectpelayan', [PelayanController::class, 'selectPelayan']);
+Route::any('/selectpelayan', [PelayanController::class, 'selectPelayan']);*/
 
 
 

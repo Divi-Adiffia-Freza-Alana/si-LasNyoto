@@ -722,6 +722,7 @@ return redirect('/transaksi-kurir');
 
         $kurir = Users::select("id")->whereRelation('kurir', 'id_user', '!=', NULL)->get();
         $marketing = Users::select("id")->whereRelation('marketing', 'id_user', '!=', NULL)->get();
+        $produksi = Users::select("id")->whereRelation('produksi', 'id_user', '!=', NULL)->get();
        // var_dump($kurir);
         //exit();
       //  $bagdapur = Users::select("id")->whereRelation('bagdapur', 'status_kehadiran', '=', 'Hadir')->get();
@@ -805,6 +806,7 @@ return redirect('/transaksi-kurir');
                 'id_konsumen' => auth()->user()->id,
                 'id_kurir' => $kurir[rand(0,count($kurir)-1)]->id,
                 'id_marketing' => $marketing[rand(0,count($marketing)-1)]->id,
+                'id_produksi' => $produksi[rand(0,count($produksi)-1)]->id,
                 'id_metode_pembayaran' => $request->metode_pembayaran,
                 'id_sph' => (isset($sph->id)?$sph->id:NULL),
                 'id_pengiriman' => $pengiriman->id,

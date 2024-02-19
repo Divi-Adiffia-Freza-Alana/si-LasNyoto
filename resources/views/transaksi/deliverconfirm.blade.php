@@ -40,6 +40,7 @@
                       <label for="exampleInputEmail1">Nama Penerima </label>
                       <input type="text" class="form-control" id="penerima" name="penerima"  placeholder="Nama Penerima"  value="">
                     </div>
+                    
         
                    <!-- <div class="form-group col-md-6">
                       <label for="exampleInputEmail1">Tanggal Pengiriman </label>
