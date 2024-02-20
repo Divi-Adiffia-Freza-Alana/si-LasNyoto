@@ -255,8 +255,8 @@
 						<div class="col-lg-2 col-md-3 col-6 px-2">
 							<div class="product">
 								<div class="product-image">
-									<a href="#"><img src="{{$d->foto_url}}" alt="Image 1"></a>
-									<a href="#"><img src="{{$d->foto_url}}" alt="Image 1"></a>
+									<a href="#"><img  src="{{asset('/')}}foto/{{$d->foto}}" alt="Image 1"></a>
+									<a href="#"><img  src="{{asset('/')}}foto/{{$d->foto}}" alt="Image 1"></a>
 								<!--	<div class="sale-flash badge bg-danger p-2">Sale!</div>-->
 									<div class="bg-overlay">
 										<div class="bg-overlay-content align-items-end justify-content-between" data-hover-animate="fadeIn" data-hover-speed="400">
