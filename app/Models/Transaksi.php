@@ -54,6 +54,11 @@ class Transaksi extends Model
         return $this->hasOne(Users::Class, 'id', 'id_marketing');
     }
 
+    public function produksi()
+    {
+        return $this->hasOne(Users::Class, 'id', 'id_produksi');
+    }
+
     public function sph()
     {
         return $this->hasOne(Sph::Class, 'id', 'id_sph');
