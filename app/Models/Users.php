@@ -62,5 +62,11 @@ class Users extends Model
     {
     return $this->belongsTo(Marketing::Class, 'id', 'id_user');
     }
+
+    public function produksi()
+
+    {
+    return $this->belongsTo(Produksi::Class, 'id', 'id_user');
+    }
   
 }

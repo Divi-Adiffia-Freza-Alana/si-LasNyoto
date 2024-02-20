@@ -317,47 +317,11 @@
 
 
 
-      
-  var tabledapur = $('#data-tables-bagdapur').DataTable({
-      processing: true,
-      serverSide: true,
-      autoWidth: true,
-      //ajax: "{{ route('bagdapur.index') }}",
-      ajax: {
-
-        url: "{{ route('bagdapur.index') }}",
-
-        },
-      columns: [ 
-        {data: 'id', name: 'id', visible:false},
-          {data: 'user.name', name: 'user.name'},
-          {data: 'no_hp', name: 'no_hp'},
-          {data: 'jk', name: 'jk'},
-          {data: 'status_kehadiran', name: 'status_kehadiran'},
-          {data: 'action', name: 'action', orderable: false, searchable: false},
-      ]
-
-  });
+  
 
   $('#filtermonth').change(function(){
     console.log("asup");
     tabletransaksi.draw();
-
-  });
-
-  var table = $('#data-tables-pelayan').DataTable({
-      processing: true,
-      serverSide: true,
-      autoWidth: true,
-      ajax: "{{ route('pelayan.index') }}",
-      columns: [ 
-         {data: 'id', name: 'id', visible:false},
-          {data: 'user.name', name: 'user.name'},
-          {data: 'no_hp', name: 'no_hp'},
-          {data: 'jk', name: 'jk'},
-          {data: 'status_kehadiran', name: 'status_kehadiran'},
-          {data: 'action', name: 'action', orderable: false, searchable: false},
-      ]
 
   });
 
