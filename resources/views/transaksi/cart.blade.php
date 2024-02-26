@@ -132,7 +132,7 @@
                             <label>Deskripsi </label>
                             <textarea class="form-control" rows="3" placeholder="Enter ..."  id="deskripsi" name="deskripsi"></textarea>
                           </div>
-                          <label>* Untuk Pesanan Custom Deskripsi di isi detail pesanan seperti : panjang x lebar x tinggi</label>
+                          <label>* Untuk Pesanan Custom Deskripsi di isi detail pesanan seperti : panjang x lebar x tinggi </label>
             
                     </div>
                  
